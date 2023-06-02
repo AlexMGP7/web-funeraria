@@ -1,0 +1,124 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: linear-gradient(115deg, #ffffff, #080808);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .container {
+    width: 50%;
+    margin: 3.125rem auto 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    color: #333;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+  
+  label,
+  input {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  label {
+    font-size: 1.2rem;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    font-size: 1rem;
+  }
+  
+  .form-group {
+    margin: 0 auto 1.25rem auto;
+    padding: 0.25rem;
+    border-bottom: 2px solid #bbb;
+  }
+  
+  .form-control {
+    display: block;
+    width: 94%;
+    height: 2.375rem;
+    padding: 0.375rem 0.75rem;
+    color: #333;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(115deg, #363636, #a8a5a5, #363636);
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.5s;
+    animation: pulse 2s infinite;
+  }
+  
+  .submit-button:hover {
+    animation: bounce 0.5s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  
+  h1 {
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  label,
+  select {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  select {
+    margin-bottom: 15px;
+  }
+  
