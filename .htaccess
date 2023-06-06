@@ -1,0 +1,7 @@
+# Habilitar el motor de reescritura de URL
+RewriteEngine On
+
+# Redireccionar todas las solicitudes al archivo index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
