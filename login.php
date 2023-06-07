@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     // Incluir el archivo de conexión a la base de datos
-    include('core\conectar.php');
+    include('conectar.php');
 
     // Consultar si el usuario existe en la base de datos
     $query = "SELECT * FROM usuarios WHERE login = '$username' AND password = '$password'";
