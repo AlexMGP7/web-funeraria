@@ -1,76 +1,58 @@
 <?php
-session_start();
+// Establecer la conexión con la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "polizas_funerarias";
 
-// Verificar si el usuario ya ha iniciado sesión
-if (isset($_SESSION['user_id'])) {
-    // Redirigir al usuario a la página de inicio
-    header('Location: index.php');
-    exit;
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error al conectar con la base de datos: " . $conn->connect_error);
 }
 
-// Verificar si se ha enviado el formulario de inicio de sesión
-if (isset($_POST['login'])) {
-    // Obtener el nombre de usuario y la contraseña del formulario
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+// Comprobar si se ha enviado el formulario de inicio de sesión
+if (isset($_POST["login"])) {
+    $login = $_POST["login"];
+    $password = $_POST["password"];
 
-    // Incluir el archivo de conexión a la base de datos
-    include('conectar.php');
+    // Consultar la tabla de usuarios para verificar las credenciales
+    $query = "SELECT * FROM usuario WHERE Login = '$login' AND Password = '$password'";
+    $result = $conn->query($query);
 
-    // Consultar si el usuario existe en la base de datos
-    $query = "SELECT * FROM usuarios WHERE login = '$username' AND password = '$password'";
-    $result = mysqli_query($conn, $query);
-
-    // Verificar si se ha encontrado el usuario en la base de datos
-    if (mysqli_num_rows($result) > 0) {
-        // Obtener los datos del usuario desde el conjunto de resultados
-        $user = mysqli_fetch_assoc($result);
-
-        // Establecer las variables de sesión del usuario
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-
-        // Redirigir al usuario a la página de inicio
+    if ($result->num_rows == 1) {
+        // Inicio de sesión exitoso
+        echo "Inicio de sesión exitoso";
         header('Location: index.php');
-        exit;
+        // Realiza aquí las acciones adicionales que deseas realizar después del inicio de sesión exitoso
     } else {
-        // El usuario no existe o la contraseña es incorrecta
-        echo '<p>Usuario o contraseña inválidos.</p>';
+        // Credenciales incorrectas
+        echo "Credenciales incorrectas";
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Sistema de Administración de Pólizas de Seguros Funerarios</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Iniciar sesión</title>
 </head>
-
 <body>
+    <h2>Iniciar sesión</h2>
+    <form method="POST" action="login.php">
+        <label for="login">Usuario:</label>
+        <input type="text" name="login" id="login" required><br><br>
 
-    <header>
-        <h1>Sistema de Administración de Pólizas de Seguros Funerarios</h1>
-        <nav>
-            <a href="login.php">Iniciar sesión</a>
-            <a href="register.php">Registrarse</a>
-        </nav>
-    </header>
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password" required><br><br>
 
-    <main>
-        <h2>Iniciar sesión</h2>
-        <form action="login.php" method="post">
-            <input type="text" name="username" placeholder="Nombre de usuario">
-            <input type="password" name="password" placeholder="Contraseña">
-            <input type="submit" name="login" value="Iniciar sesión">
-        </form>
-    </main>
-
-    <footer>
-        <p>Derechos de autor &copy; 2023 Sistema de Administración de Pólizas de Seguros Funerarios</p>
-    </footer>
-
+        <input type="submit" value="Iniciar sesión">
+    </form>
 </body>
-
 </html>
+
+<?php
+// Cerrar la conexión
+$conn->close();
+?>
