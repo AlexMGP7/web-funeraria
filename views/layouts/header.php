@@ -20,9 +20,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/views/estado/estado_view.php">Estados</a>
-                        </li>
                     </ul>
                 </div>
             </div>

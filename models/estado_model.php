@@ -20,7 +20,7 @@ class estado_model
 
     public static function Update_Data($sql)
     {
-        include_once('core/conectar.php');
+        include_once('../../core/conectar.php');
         $conexion = conectar::conexion();
         mysqli_autocommit($conexion, FALSE);
         $result = mysqli_query($conexion, $sql);
@@ -74,21 +74,19 @@ class estado_model
 
     // Para la actualización
 
-    public static function BuscarEstadoByCodigo($codigo)
-    {
-        $sql_estado = "SELECT * FROM estado WHERE codigo = $codigo";
-        $result_estado = estado_model::Get_Data($sql_estado);
-        return $result_estado;
-    }
+    public static function BuscarEstadoByCodigo($codigo){
+    	$sql_estado = "SELECT * FROM estado WHERE codigo = $codigo";
+		$result_estado = estado_model::Get_Data($sql_estado);
+  		return $result_estado;
+	}
+
 
     public static function UpdateEstado2($codigo, $descripcion)
     {
-
-        $sql_estado = "UPDATE estado SET titular = '$descripcion' WHERE id = $codigo";
+        $sql_estado = "UPDATE estado SET codigo = '$codigo', descripcion = '$descripcion' WHERE codigo = $codigo";
         $result_estado = estado_model::Update_Data($sql_estado);
         return $result_estado;
     }
-
 
     // Para eliminar
 
