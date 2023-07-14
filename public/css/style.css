@@ -1,0 +1,83 @@
+/* Estilos para la sección jumbotron*/
+.jumbotron {
+    background-image: url('background.jpg'); /* Reemplaza "background.jpg" con la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    height: 100vh;
+    min-height: calc(100vh - 60px); /* Ajusta el valor 60px según la altura del footer */
+    display: flex;
+    flex-direction: column;
+}
+
+.jumbotron h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.jumbotron p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Estilos para el botón de inicio de sesión */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #fff;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin-bottom: 60px; /* Altura del footer */
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py-4 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+} 
