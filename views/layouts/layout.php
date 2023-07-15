@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje_tipo'])) {
+    $mensaje = $_SESSION['mensaje'];
+    $mensaje_tipo = $_SESSION['mensaje_tipo'];
+    unset($_SESSION['mensaje']);
+    unset($_SESSION['mensaje_tipo']);
+?>
+
+    <div class="alert alert-<?php echo $mensaje_tipo; ?>">
+        <?php echo $mensaje; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+<?php
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,6 +32,7 @@
     <link rel="stylesheet" href="../../public/css/style.css">
     <!-- Incluye las bibliotecas de DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
@@ -20,6 +42,7 @@
 
     <section>
         <div class="container">
+            <?php require_once('../../views/submenu.php'); ?>
             <?php
             // carga el archivo routing.php para direccionar a la página .php que se incrustará entre la header y el footer
             require_once('../../views/routing.php');

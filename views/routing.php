@@ -1,7 +1,7 @@
 <?php
-
 $controllers = array(
-	'Estado' => ['ListarEstado', 'IngresarEstado', 'IngresarEstado1', 'UpdateEstado', 'UpdateEstado1', 'DeleteEstado']
+	'Estado' => ['ListarEstado', 'IngresarEstado', 'IngresarEstado1', 'UpdateEstado', 'UpdateEstado1', 'DeleteEstado'],
+	'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'IngresarMunicipio1', 'UpdateMunicipio', 'UpdateMunicipio1', 'DeleteMunicipio']
 	// Agrega más controladores y acciones según sea necesario
 );
 
@@ -15,7 +15,8 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
 		call('Estado', 'ListarEstado');
 	}
 } else {
-	call('Estado', 'ListarEstado');
+	// call('Estado', 'ListarEstado');
+	call('Municipio', 'ListarMunicipio');
 }
 
 function call($controller, $action)
@@ -47,6 +48,33 @@ function call($controller, $action)
 					break;
 				default:
 					$estadoController->ListarEstado();
+					break;
+			}
+			break;
+		case 'Municipio':
+			$municipioController = new MunicipioController();
+
+			switch ($action) {
+				case 'ListarMunicipio':
+					$municipioController->ListarMunicipio();
+					break;
+				case 'IngresarMunicipio':
+					$municipioController->IngresarMunicipio();
+					break;
+				case 'IngresarMunicipio1':
+					$municipioController->IngresarMunicipio1();
+					break;
+				case 'UpdateMunicipio':
+					$municipioController->UpdateMunicipio();
+					break;
+				case 'UpdateMunicipio1':
+					$municipioController->UpdateMunicipio1();
+					break;
+				case 'DeleteMunicipio':
+					$municipioController->DeleteMunicipio();
+					break;
+				default:
+					$municipioController->ListarMunicipio();
 					break;
 			}
 			break;

@@ -1,6 +1,6 @@
 <?php
 
-class estado_model
+class EstadoModel
 {
 
     function __construct()
@@ -50,7 +50,7 @@ class estado_model
     public static function ListarEstado()
     {
         $sql_estado = "SELECT codigo, trim(descripcion) as descripcion FROM estado ORDER BY codigo asc";
-        $result_estado = estado_model::Get_Data($sql_estado);
+        $result_estado = EstadoModel::Get_Data($sql_estado);
         return $result_estado;
     }
 
@@ -60,7 +60,7 @@ class estado_model
     {
 
         $sql_estado = "SELECT (max(codigo)) as identific FROM estado order BY codigo asc";
-        $result_estado = estado_model::Get_Data($sql_estado);
+        $result_estado = EstadoModel::Get_Data($sql_estado);
         return $result_estado;
     }
 
@@ -68,7 +68,7 @@ class estado_model
     {
 
         $sql_estado = "INSERT INTO estado (codigo, descripcion) VALUES ($codigo, '$descripcion')";
-        $result_estado = estado_model::Update_Data($sql_estado);
+        $result_estado = EstadoModel::Update_Data($sql_estado);
         return $result_estado;
     }
 
@@ -76,7 +76,7 @@ class estado_model
 
     public static function BuscarEstadoByCodigo($codigo){
     	$sql_estado = "SELECT * FROM estado WHERE codigo = $codigo";
-		$result_estado = estado_model::Get_Data($sql_estado);
+		$result_estado = EstadoModel::Get_Data($sql_estado);
   		return $result_estado;
 	}
 
@@ -84,7 +84,7 @@ class estado_model
     public static function UpdateEstado2($codigo, $descripcion)
     {
         $sql_estado = "UPDATE estado SET codigo = '$codigo', descripcion = '$descripcion' WHERE codigo = $codigo";
-        $result_estado = estado_model::Update_Data($sql_estado);
+        $result_estado = EstadoModel::Update_Data($sql_estado);
         return $result_estado;
     }
 
@@ -93,7 +93,7 @@ class estado_model
     public static function DeleteEstado($codigo)
     {
         $sql_estado = "DELETE FROM estado WHERE codigo = $codigo";
-        $result_estado = estado_model::Update_Data($sql_estado);
+        $result_estado = EstadoModel::Update_Data($sql_estado);
         return $result_estado;
     }
 }

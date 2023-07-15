@@ -15,7 +15,7 @@ class EstadoController
     static public function ListarEstado1()
     {
         require_once('../../models/estado_model.php');
-        $result_Listar = estado_model::Listarestado();
+        $result_Listar = EstadoModel::Listarestado();
         return $result_Listar;
     }
 
@@ -24,7 +24,7 @@ class EstadoController
     static public function BuscarUltimoEstado()
     {
         require_once('../../models/estado_model.php');
-        $result_Listar = estado_model::BuscarUltimoEstado();
+        $result_Listar = EstadoModel::BuscarUltimoEstado();
         return $result_Listar;
     }
 
@@ -41,7 +41,7 @@ class EstadoController
     static public function IngresarEstado2($codigo, $descripcion)
     {
         require_once('../../models/estado_model.php');
-        $result_Listar = estado_model::IngresarEstado2($codigo, $descripcion);
+        $result_Listar = EstadoModel::IngresarEstado2($codigo, $descripcion);
         return $result_Listar;
     }
 
@@ -50,7 +50,7 @@ class EstadoController
     static public function BuscarEstadoByCodigo($codigo)
     {
         require_once('../../models/estado_model.php');
-        $estado_model = new estado_model();
+        $estado_model = new EstadoModel();
         $result_estado = $estado_model->BuscarEstadoByCodigo($codigo); // Llama al método correcto en el modelo
         return $result_estado;
     }
@@ -70,7 +70,7 @@ class EstadoController
     function UpdateEstado2($codigo, $descripcion)
     {
         require_once('../../models/estado_model.php');
-        $result_Listar = estado_model::UpdateEstado2($codigo, $descripcion);
+        $result_Listar = EstadoModel::UpdateEstado2($codigo, $descripcion);
         return $result_Listar;
     }
 
@@ -84,7 +84,7 @@ class EstadoController
     static public function DeleteEstado1($codigo)
     {
         require_once('../../models/estado_model.php');
-        $result_Listar = estado_model::DeleteEstado($codigo);
+        $result_Listar = EstadoModel::DeleteEstado($codigo);
         return $result_Listar;
     }
 }

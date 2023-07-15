@@ -1,0 +1,20 @@
+.navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+    transform: none !important;
+}
+
+.navbar-nav .dropdown-menu .dropdown-menu {
+    margin-top: 0;
+    margin-left: 100%;
+    margin-right: 0;
+}
+
+.navbar-nav .dropdown-item {
+    white-space: nowrap;
+}
