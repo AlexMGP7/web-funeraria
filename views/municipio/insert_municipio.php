@@ -1,3 +1,12 @@
+<?php
+
+require_once('../../controllers/municipio_controller.php');
+$controller = new MunicipioController();
+$result_municipio = $controller->BuscarUltimoMunicipio();
+$numrows = mysqli_num_rows($result_municipio);
+
+?>
+
 <div class="container">
     <div class="page-content">
         <form action="?controller=Municipio&action=IngresarMunicipio1" method="POST">
