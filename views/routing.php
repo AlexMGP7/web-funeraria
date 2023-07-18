@@ -1,11 +1,11 @@
 <?php
 $controllers = array(
     'Estado' => ['ListarEstado', 'IngresarEstado', 'IngresarEstado1', 'UpdateEstado', 'UpdateEstado1', 'DeleteEstado'],
-    'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'IngresarMunicipio1', 'UpdateMunicipio', 'UpdateMunicipio1', 'DeleteMunicipio','ObtenerMunicipiosPorEstado'],
-    'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'IngresarParroquia1', 'UpdateParroquia', 'UpdateParroquia1', 'DeleteParroquia']
+    'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'IngresarMunicipio1', 'UpdateMunicipio', 'UpdateMunicipio1', 'DeleteMunicipio', 'ObtenerMunicipiosPorEstado'],
+    'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'IngresarParroquia1', 'UpdateParroquia', 'UpdateParroquia1', 'DeleteParroquia'],
+    'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'IngresarCiudad1', 'UpdateCiudad', 'UpdateCiudad1', 'DeleteCiudad']
     // Agrega más controladores y acciones según sea necesario
 );
-
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = $_GET['controller'];
@@ -17,9 +17,10 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
         call('Estado', 'ListarEstado');
     }
 } else {
-    // call('Estado', 'ListarEstado');
+    call('Estado', 'ListarEstado');
     // call('Municipio', 'ListarMunicipio');
-    call('Parroquia', 'ListarParroquia');
+    // call('Parroquia', 'ListarParroquia');
+    // call('Ciudad', 'ListarCiudad');
 }
 
 function call($controller, $action)
@@ -76,6 +77,7 @@ function call($controller, $action)
                 case 'DeleteMunicipio':
                     $municipioController->DeleteMunicipio();
                     break;
+
                 default:
                     $municipioController->ListarMunicipio();
                     break;
@@ -103,15 +105,44 @@ function call($controller, $action)
                 case 'DeleteParroquia':
                     $parroquiaController->DeleteParroquia();
                     break;
+                case 'ObtenerMunicipiosPorEstado':
+                    $municipioController->ObtenerMunicipiosPorEstado();
+                    break;
                 default:
                     $parroquiaController->ListarParroquia();
                     break;
             }
             break;
-        // Agregar más casos según los controladores que se necesiten
+        case 'Ciudad':
+            $ciudadController = new CiudadController();
+
+            switch ($action) {
+                case 'ListarCiudad':
+                    $ciudadController->ListarCiudad();
+                    break;
+                case 'IngresarCiudad':
+                    $ciudadController->IngresarCiudad();
+                    break;
+                case 'IngresarCiudad1':
+                    $ciudadController->IngresarCiudad1();
+                    break;
+                case 'UpdateCiudad':
+                    $ciudadController->UpdateCiudad();
+                    break;
+                case 'UpdateCiudad1':
+                    $ciudadController->UpdateCiudad1();
+                    break;
+                case 'DeleteCiudad':
+                    $ciudadController->DeleteCiudad();
+                    break;
+                default:
+                    $ciudadController->ListarCiudad();
+                    break;
+            }
+            break;
+            // Agregar más casos según los controladores que se necesiten
         default:
             call('Estado', 'ListarEstado');
             break;
     }
 }
-?>

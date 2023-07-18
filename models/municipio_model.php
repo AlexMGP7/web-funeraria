@@ -109,6 +109,7 @@ class MunicipioModel
 
 
 
+
     public static function UpdateMunicipio2($codigo, $descripcion, $estado_codigo)
     {
         $sql_municipio = "UPDATE municipio SET codigo = '$codigo', descripcion = '$descripcion', Estado_Codigo = $estado_codigo WHERE codigo = $codigo";

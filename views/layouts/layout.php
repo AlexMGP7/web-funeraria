@@ -26,10 +26,11 @@ if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje_tipo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polizas de Seguros Funerarios</title>
-    <!-- Enlace a Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Estilos CSS personalizados -->
-    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Enlace a Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" ;> <!-- Bootstrap carga los componentes del css desde directorio-->
     <!-- Incluye las bibliotecas de DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
@@ -38,11 +39,12 @@ if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje_tipo'])) {
 <body>
     <header>
         <?php require('../../views/layouts/header.php'); ?>
+            <?php require('../../views/submenu.php'); ?>
+
     </header>
 
     <section>
         <div class="container">
-            <?php require_once('../../views/submenu.php'); ?>
             <?php
             // carga el archivo routing.php para direccionar a la página .php que se incrustará entre la header y el footer
             require_once('../../views/routing.php');
@@ -55,8 +57,10 @@ if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje_tipo'])) {
     </footer>
 
     <!-- Scripts JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
