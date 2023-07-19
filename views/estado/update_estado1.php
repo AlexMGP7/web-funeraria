@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (isset($_POST['codigo'])) {
     $codigo = $_POST['codigo'];
     $descripcion = $_POST['descripcion'];
@@ -19,9 +17,6 @@ if (isset($_POST['codigo'])) {
     }
 
     header("Location: ../../views/layouts/layout.php");
-    exit();
-} else {
-    header("Location: ../../views/estado/list_estado.php");
     exit();
 }
 

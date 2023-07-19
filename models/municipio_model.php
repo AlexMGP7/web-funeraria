@@ -7,6 +7,29 @@ class MunicipioModel
 
     // FUNCIONES GENERICAS PARA CONSULTAR Y ACTUALIZAR (INSERTAR, MODIFICAR Y ELIMINAR)
 
+    // public static function ObtenerMunicipiosPorEstado($estadoCodigo) {
+    //     include_once('../../core/conectar.php');
+    //     // Aquí debes escribir la lógica para obtener los municipios correspondientes al estado seleccionado
+    //     // Puedes utilizar consultas SQL u otros métodos de acceso a datos según tu configuración y preferencias
+
+    //     // Por ejemplo, supongamos que tienes una tabla "municipios" con una columna "estado_codigo"
+    //     // Puedes realizar una consulta SQL para seleccionar los municipios que coincidan con el código de estado
+    //     $sql = "SELECT * FROM municipios WHERE estado_codigo = $estadoCodigo";
+
+    //     // Ejecutar la consulta y obtener los resultados
+    //     $result = mysqli_query($connection, $sql);
+
+    //     // Crear un array para almacenar los municipios
+    //     $municipios = array();
+
+    //     // Recorrer los resultados y agregar cada municipio al array
+    //     while ($row = mysqli_fetch_assoc($result)) {
+    //         $municipios[] = $row;
+    //     }
+
+    //     // Retornar el array de municipios
+    //     return $municipios;
+    // }
     public static function Get_Data($sql)
     {
         include_once('../../core/conectar.php');
@@ -99,15 +122,46 @@ class MunicipioModel
         return $result_municipio;
     }
 
-    public static function ObtenerMunicipiosPorEstado($estadoCodigo)
-    {
-        $sql = "SELECT codigo, descripcion FROM municipio WHERE Estado_Codigo = $estadoCodigo";
-        $result = MunicipioModel::Get_Data($sql);
-        return $result;
+    public static function ObtenerMunicipiosPorEstado($estadoCodigo) {
+        try {
+            include_once('../../core/conectar.php');
+            $conexion = conectar::conexion();
+
+            // Aquí debes escribir la lógica para obtener los municipios correspondientes al estado seleccionado
+            // Puedes utilizar consultas SQL u otros métodos de acceso a datos según tu configuración y preferencias
+
+            // Por ejemplo, supongamos que tienes una tabla "municipios" con una columna "estado_codigo"
+            // Puedes realizar una consulta SQL para seleccionar los municipios que coincidan con el código de estado
+            $sql = "SELECT codigo, descripcion FROM municipios WHERE estado_codigo = $estadoCodigo";
+
+            // Ejecutar la consulta y obtener los resultados
+            $result = mysqli_query($conexion, $sql);
+
+            // Verificar si se obtuvieron resultados
+            if (!$result) {
+                throw new Exception(mysqli_error($conexion));
+            }
+
+            // Crear un array para almacenar los municipios
+            $municipios = array();
+
+            // Recorrer los resultados y agregar cada municipio al array
+            while ($row = mysqli_fetch_assoc($result)) {
+                $municipios[] = $row;
+            }
+
+            // Retornar el array de municipios
+            return $municipios;
+        } catch (Exception $e) {
+            // Capturar cualquier excepción ocurrida durante el procesamiento
+            throw new Exception("Error en el modelo: " . $e->getMessage());
+        } finally {
+            // Cerrar la conexión a la base de datos
+            if (isset($conexion)) {
+                conectar::desconexion($conexion);
+            }
+        }
     }
-
-
-
 
 
     public static function UpdateMunicipio2($codigo, $descripcion, $estado_codigo)

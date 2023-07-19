@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $codigo = $_POST['codigo'];
 $descripcion = $_POST['descripcion'];
