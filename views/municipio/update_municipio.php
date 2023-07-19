@@ -44,6 +44,7 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="estado_codigo"><b>Código del Estado:</b></label>
                                     <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo; ?>" readonly>
+                                    <br>
                                 </div>
                             </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>

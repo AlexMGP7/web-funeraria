@@ -44,6 +44,7 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="municipio_codigo"><b>Código del Municipio:</b></label>
                                     <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
+                                    <br>
                                 </div>
                             </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>

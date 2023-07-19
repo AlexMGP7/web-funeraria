@@ -26,21 +26,19 @@ if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje_tipo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polizas de Seguros Funerarios</title>
-    <!-- Estilos CSS personalizados -->
-    <link rel="stylesheet" href="../../css/styles.css">
     <!-- Enlace a Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css" ;> <!-- Bootstrap carga los componentes del css desde directorio-->
     <!-- Incluye las bibliotecas de DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body>
     <header>
-        <?php require('../../views/layouts/header.php'); ?>
-            <?php require('../../views/submenu.php'); ?>
-
+        <?php require_once('../../views/layouts/header.php'); ?>
+        <?php require_once('../../views/layouts/submenu.php'); ?>
     </header>
 
     <section>

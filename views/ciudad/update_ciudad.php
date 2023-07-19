@@ -44,6 +44,7 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="parroquia_codigo"><b>Código de la Parroquia:</b></label>
                                     <input class="form-control" type="text" name="parroquia_codigo" value="<?php echo $parroquia_codigo; ?>" readonly>
+                                    <br>
                                 </div>
                             </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>

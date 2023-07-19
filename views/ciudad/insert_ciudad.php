@@ -23,16 +23,15 @@ $numrows = mysqli_num_rows($result_parroquia);
                             <label for="descripcion" align="right"><b>Descripción:</b></label>
                             <textarea class="form-control" maxlength="200" placeholder="Ingrese aquí la descripción de la ciudad" id="descripcion" name="descripcion" rows="4" required></textarea>
                             <br>
-                            <label for="parroquia_codigo" align="right"><b>Código de la Parroquia:</b></label>
-                            <select class="form-control" name="parroquia_codigo" id="parroquia_codigo" required>
+                            <label for="estado_codigo" align="right"><b>Código del Estado:</b></label>
+                            <select class="form-control" name="estado_codigo" id="estado_codigo" required>
                                 <?php
-                                $controller = new CiudadController();
-                                $result_parroquias = $controller->ListarParroquias();
+                                $result_estados = $controller->ListarEstados();
 
-                                while ($row_parroquia = mysqli_fetch_array($result_parroquias)) {
-                                    $codigo_parroquia = $row_parroquia['codigo'];
-                                    $descripcion_parroquia = $row_parroquia['descripcion'];
-                                    echo "<option value='$codigo_parroquia'>$codigo_parroquia - $descripcion_parroquia</option>";
+                                while ($row_estado = mysqli_fetch_array($result_estados)) {
+                                    $codigo_estado = $row_estado['codigo'];
+                                    $descripcion_estado = $row_estado['descripcion'];
+                                    echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
                                 }
                                 ?>
                             </select>
@@ -50,19 +49,22 @@ $numrows = mysqli_num_rows($result_parroquia);
                                 ?>
                             </select>
                             <br>
-                            <label for="estado_codigo" align="right"><b>Código del Estado:</b></label>
-                            <select class="form-control" name="estado_codigo" id="estado_codigo" required>
+                            <label for="parroquia_codigo" align="right"><b>Código de la Parroquia:</b></label>
+                            <select class="form-control" name="parroquia_codigo" id="parroquia_codigo" required>
                                 <?php
-                                $result_estados = $controller->ListarEstados();
+                                $controller = new CiudadController();
+                                $result_parroquias = $controller->ListarParroquias();
 
-                                while ($row_estado = mysqli_fetch_array($result_estados)) {
-                                    $codigo_estado = $row_estado['codigo'];
-                                    $descripcion_estado = $row_estado['descripcion'];
-                                    echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
+                                while ($row_parroquia = mysqli_fetch_array($result_parroquias)) {
+                                    $codigo_parroquia = $row_parroquia['codigo'];
+                                    $descripcion_parroquia = $row_parroquia['descripcion'];
+                                    echo "<option value='$codigo_parroquia'>$codigo_parroquia - $descripcion_parroquia</option>";
                                 }
                                 ?>
                             </select>
                             <br>
+                            
+                            
                         </div>
                     </div>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
