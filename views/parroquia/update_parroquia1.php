@@ -16,6 +16,5 @@ try {
     $_SESSION['mensaje_tipo'] = "warning";
 }
 
-header("Location: ../../views/layouts/layout.php");
+header("Location: ?controller=Parroquia&action=ListarParroquia");
 exit();
-?>

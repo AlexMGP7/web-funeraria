@@ -24,7 +24,7 @@ if (isset($_GET['i'])) {
                 $parroquia_codigo = "";
             }
         }
-        ?>
+?>
         <div class="container">
             <div class="page-content">
 
@@ -53,7 +53,7 @@ if (isset($_GET['i'])) {
                 </form>
             </div>
         </div>
-        <?php
+<?php
     } else {
         require_once('../../views/parroquia/list_parroquia.php');
     }

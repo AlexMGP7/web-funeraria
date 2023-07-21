@@ -18,4 +18,3 @@ try {
 
 header("Location: ../../views/layouts/layout.php");
 exit();
-?>

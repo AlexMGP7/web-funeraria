@@ -63,8 +63,8 @@ $numrows = mysqli_num_rows($result_parroquia);
                                 ?>
                             </select>
                             <br>
-                            
-                            
+
+
                         </div>
                     </div>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>

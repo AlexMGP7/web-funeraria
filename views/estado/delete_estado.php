@@ -22,5 +22,3 @@ if (isset($_GET['i'])) {
     header("Location: ../../views/estado/list_estado.php");
     exit();
 }
-
-?>

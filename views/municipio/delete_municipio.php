@@ -20,4 +20,3 @@ if (isset($_GET['i'])) {
 
 header("Location: ../../views/layouts/layout.php");
 exit();
-?>

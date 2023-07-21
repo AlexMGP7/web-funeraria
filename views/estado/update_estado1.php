@@ -16,8 +16,6 @@ if (isset($_POST['codigo'])) {
         $_SESSION['mensaje_tipo'] = "warning";
     }
 
-    header("Location: ../../views/layouts/layout.php");
+    header("Location: ?controller=Estado&action=ListarEstado");
     exit();
 }
-
-?>
