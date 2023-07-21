@@ -39,7 +39,16 @@ $numrows = mysqli_num_rows($result_parroquia);
                             <br>
                             <label for="municipio_codigo" align="right"><b>Código del Municipio:</b></label>
                             <select class="form-control" name="municipio_codigo" id="municipio_codigo" required>
-                                <!-- Municipios options will be populated dynamically using JavaScript -->
+                            <?php
+                                $controller = new ParroquiaController();
+                                $result_estados = $controller->ListarMunicipios();
+
+                                while ($row_municipo = mysqli_fetch_array($result_estados)) {
+                                    $codigo_municipio = $row_municipo['codigo'];
+                                    $descripcion_municipio = $row_municipo['descripcion'];
+                                    echo "<option value='$codigo_municipio'>$codigo_municipio - $descripcion_municipio</option>";
+                                }
+                                ?>
                             </select>
                             <br>
                         </div>
