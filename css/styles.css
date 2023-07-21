@@ -1,0 +1,16 @@
+/* CSS personalizado */
+main {
+    margin-bottom: 16px; /* Equivalente a la clase py-3 de Bootstrap */
+  }
+
+/* CSS personalizado */
+.table-responsive {
+  width: 70%;
+  margin: 0 auto; /* Esto centrará el contenido del contenedor en la página */
+  padding: 20px; /* Opcional: puedes agregar un espacio de relleno para mejorar la apariencia */
+}
+
+/* Asegurarse de que la tabla ocupe el 100% del contenedor */
+.table-responsive table {
+  width: 100%;
+}
