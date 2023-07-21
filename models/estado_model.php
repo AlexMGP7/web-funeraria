@@ -99,4 +99,31 @@ class EstadoModel
         $result_estado = EstadoModel::Update_Data($sql_estado);
         return $result_estado;
     }
+    public static function CheckReferencedRecords($codigo)
+    {
+        // Verificar si hay municipios relacionados con el estado
+        $sql_check_municipio = "SELECT COUNT(*) AS num_referenced_municipios FROM Municipio WHERE Estado_codigo = $codigo";
+        $result_check_municipio = EstadoModel::Get_Data($sql_check_municipio);
+        $row_municipio = mysqli_fetch_assoc($result_check_municipio);
+        $num_referenced_municipios = $row_municipio['num_referenced_municipios'];
+
+        // Verificar si hay parroquias relacionadas con el estado
+        $sql_check_parroquia = "SELECT COUNT(*) AS num_referenced_parroquias FROM Parroquia WHERE Municipio_codigo IN (SELECT Codigo FROM Municipio WHERE Estado_codigo = $codigo)";
+        $result_check_parroquia = EstadoModel::Get_Data($sql_check_parroquia);
+        $row_parroquia = mysqli_fetch_assoc($result_check_parroquia);
+        $num_referenced_parroquias = $row_parroquia['num_referenced_parroquias'];
+
+        // Verificar si hay ciudades relacionadas con el estado
+        $sql_check_ciudad = "SELECT COUNT(*) AS num_referenced_ciudades FROM Ciudad WHERE Parroquia_codigo IN (SELECT Codigo FROM Parroquia WHERE Municipio_codigo IN (SELECT Codigo FROM Municipio WHERE Estado_codigo = $codigo))";
+        $result_check_ciudad = EstadoModel::Get_Data($sql_check_ciudad);
+        $row_ciudad = mysqli_fetch_assoc($result_check_ciudad);
+        $num_referenced_ciudades = $row_ciudad['num_referenced_ciudades'];
+
+        // Si hay algún municipio, parroquia o ciudad relacionada, entonces no se puede eliminar el estado
+        if ($num_referenced_municipios > 0 || $num_referenced_parroquias > 0 || $num_referenced_ciudades > 0) {
+            return true;
+        }
+
+        return false;
+    }
 }

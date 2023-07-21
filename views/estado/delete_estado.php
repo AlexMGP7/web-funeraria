@@ -1,9 +1,5 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 if (isset($_GET['i'])) {
     $codigo = $_GET['i'];
     require_once('../../controllers/estado_controller.php');
@@ -18,6 +14,7 @@ if (isset($_GET['i'])) {
         $_SESSION['mensaje_tipo'] = "warning";
     }
 
+    // Redirige a la página de listado de estados después de intentar eliminar
     header("Location: ?controller=Estado&action=ListarEstado");
     exit();
 } else {

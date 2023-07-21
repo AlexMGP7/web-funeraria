@@ -1,7 +1,5 @@
 <?php
 
-//if (isset($_SESSION['User']) == 1)
-//{
 require_once('../../controllers/estado_controller.php');
 $controller = new EstadoController();
 $result_estado = $controller->BuscarUltimoEstado();

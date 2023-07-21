@@ -164,4 +164,27 @@ class MunicipioModel
         $result_municipio = MunicipioModel::Update_Data($sql_municipio);
         return $result_municipio;
     }
+
+    public static function CheckReferencedRecords($codigo)
+{
+    // Verificar si hay parroquias relacionadas con el municipio
+    $sql_check_parroquia = "SELECT COUNT(*) AS num_referenced_parroquias FROM Parroquia WHERE Municipio_codigo = $codigo";
+    $result_check_parroquia = MunicipioModel::Get_Data($sql_check_parroquia);
+    $row_parroquia = mysqli_fetch_assoc($result_check_parroquia);
+    $num_referenced_parroquias = $row_parroquia['num_referenced_parroquias'];
+
+    // Verificar si hay ciudades relacionadas con el municipio
+    $sql_check_ciudad = "SELECT COUNT(*) AS num_referenced_ciudades FROM Ciudad WHERE Parroquia_codigo IN (SELECT Codigo FROM Parroquia WHERE Municipio_codigo = $codigo)";
+    $result_check_ciudad = MunicipioModel::Get_Data($sql_check_ciudad);
+    $row_ciudad = mysqli_fetch_assoc($result_check_ciudad);
+    $num_referenced_ciudades = $row_ciudad['num_referenced_ciudades'];
+
+    // Si hay alguna parroquia o ciudad relacionada, entonces no se puede eliminar el municipio
+    if ($num_referenced_parroquias > 0 || $num_referenced_ciudades > 0) {
+        return true;
+    }
+
+    return false;
+}
+
 }

@@ -31,7 +31,7 @@ if (isset($_GET['i'])) {
                         <div class="alert alert-success">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="codigo"><b>Nuevo Código del Estado:</b></label>
+                                    <label for="codigo"><b>Código del Estado:</b></label>
                                     <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>">
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>

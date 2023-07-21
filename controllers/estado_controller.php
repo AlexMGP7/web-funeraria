@@ -84,6 +84,15 @@ class EstadoController
     static public function DeleteEstado1($codigo)
     {
         require_once('../../models/estado_model.php');
+
+        // Verificar si existen registros relacionados en otras tablas
+        $hasReferencedRecords = EstadoModel::CheckReferencedRecords($codigo);
+
+        if ($hasReferencedRecords) {
+            throw new Exception("No se puede eliminar el estado porque tiene claves foráneas referenciadas en otras tablas.");
+        }
+
+        // Si no hay referencias, procede con la eliminación
         $result_Listar = EstadoModel::DeleteEstado($codigo);
         return $result_Listar;
     }

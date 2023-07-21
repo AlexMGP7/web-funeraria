@@ -105,4 +105,21 @@ class ParroquiaModel
         $result_parroquia = ParroquiaModel::Update_Data($sql_parroquia);
         return $result_parroquia;
     }
+
+    public static function CheckReferencedRecords($codigo)
+{
+    // Verificar si hay ciudades relacionadas con la parroquia
+    $sql_check_ciudad = "SELECT COUNT(*) AS num_referenced_ciudades FROM Ciudad WHERE Parroquia_codigo = $codigo";
+    $result_check_ciudad = ParroquiaModel::Get_Data($sql_check_ciudad);
+    $row_ciudad = mysqli_fetch_assoc($result_check_ciudad);
+    $num_referenced_ciudades = $row_ciudad['num_referenced_ciudades'];
+
+    // Si hay alguna ciudad relacionada, entonces no se puede eliminar la parroquia
+    if ($num_referenced_ciudades > 0) {
+        return true;
+    }
+
+    return false;
+}
+
 }
