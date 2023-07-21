@@ -17,8 +17,9 @@ $numrows = mysqli_num_rows($result_parroquia);
                 <div class="alert alert-success">
                     <div class="row">
                         <div class="col-6">
-                            <label for="codigo_parroquia" align="right"><b>Código de la Parroquia:</b></label>
-                            <input class="form-control" type="text" name="codigo_parroquia" id="codigo_parroquia" maxlength="5" required placeholder="Ingrese el código de la parroquia">
+                            <label for="codigo_parroquia" align="right" size="40"><b>Codigo de la parroquia:</b></label>
+                            <input class="form-control mr-sm-2" type="text" name="codigo_parroquia" id="codigo_parroquia" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese el código de la parroquia" />
+                            <span class="text-black">Solo se permiten números.</span>
                             <br>
                             <label for="descripcion" align="right"><b>Descripción:</b></label>
                             <textarea class="form-control" maxlength="200" placeholder="Ingrese aquí la descripción de la parroquia" id="descripcion" name="descripcion" rows="4" required></textarea>
@@ -39,7 +40,7 @@ $numrows = mysqli_num_rows($result_parroquia);
                             <br>
                             <label for="municipio_codigo" align="right"><b>Código del Municipio:</b></label>
                             <select class="form-control" name="municipio_codigo" id="municipio_codigo" required>
-                            <?php
+                                <?php
                                 $controller = new ParroquiaController();
                                 $result_estados = $controller->ListarMunicipios();
 

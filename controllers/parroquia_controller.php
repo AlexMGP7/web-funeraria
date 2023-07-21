@@ -111,7 +111,7 @@ class ParroquiaController
     static public function DeleteParroquia1($codigo)
     {
         require_once('../../models/parroquia_model.php');
-        
+
         // Verificar si existen registros relacionados en otras tablas
         $hasReferencedRecords = ParroquiaModel::CheckReferencedRecords($codigo);
 

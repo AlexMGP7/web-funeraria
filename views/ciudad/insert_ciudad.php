@@ -17,8 +17,9 @@ $numrows = mysqli_num_rows($result_parroquia);
                 <div class="alert alert-success">
                     <div class="row">
                         <div class="col-6">
-                            <label for="codigo_ciudad" align="right"><b>Código de la Ciudad:</b></label>
-                            <input class="form-control" type="text" name="codigo_ciudad" id="codigo_ciudad" maxlength="5" required placeholder="Ingrese el código de la ciudad">
+                            <label for="codigo_ciudad" align="right" size="40"><b>Codigo de la ciudad:</b></label>
+                            <input class="form-control mr-sm-2" type="text" name="codigo_ciudad" id="codigo_ciudad" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese el código de la ciudad" />
+                            <span class="text-black">Solo se permiten números.</span>
                             <br>
                             <label for="descripcion" align="right"><b>Descripción:</b></label>
                             <textarea class="form-control" maxlength="200" placeholder="Ingrese aquí la descripción de la ciudad" id="descripcion" name="descripcion" rows="4" required></textarea>
