@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_GET['i'])) {
     $codigo = $_GET['i'];
@@ -16,9 +18,9 @@ if (isset($_GET['i'])) {
         $_SESSION['mensaje_tipo'] = "warning";
     }
 
-    header("Location: ../../views/layouts/layout.php");
+    header("Location: ?controller=Estado&action=ListarEstado");
     exit();
 } else {
-    header("Location: ../../views/estado/list_estado.php");
+    header("Location: ?controller=Estado&action=ListarEstado");
     exit();
 }

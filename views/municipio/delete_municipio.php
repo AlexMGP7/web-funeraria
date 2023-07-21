@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_GET['i'])) {
     $codigo = $_GET['i'];
@@ -18,5 +20,6 @@ if (isset($_GET['i'])) {
     }
 }
 
-header("Location: ../../views/layouts/layout.php");
+header("Location: ?controller=Municipio&action=ListarMunicipio");
 exit();
+

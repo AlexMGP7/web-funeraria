@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $codigo = $_POST['codigo_municipio'];
 $descripcion = $_POST['descripcion'];
@@ -17,5 +20,6 @@ try {
     $_SESSION['mensaje_tipo'] = "warning";
 }
 
-header("Location: ../../views/layouts/layout.php");
+header("Location: ?controller=Municipio&action=ListarMunicipio");
 exit();
+

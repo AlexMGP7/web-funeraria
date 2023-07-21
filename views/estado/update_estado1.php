@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (isset($_POST['codigo'])) {
     $codigo = $_POST['codigo'];
     $descripcion = $_POST['descripcion'];

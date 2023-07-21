@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $codigo = $_GET['i'];
 
@@ -15,5 +18,5 @@ try {
     $_SESSION['mensaje_tipo'] = "warning";
 }
 
-header("Location: ../../views/layouts/layout.php");
+header("Location: ?controller=Ciudad&action=ListarCiudad");
 exit();

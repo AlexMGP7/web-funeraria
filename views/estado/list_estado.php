@@ -1,4 +1,9 @@
 <?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once('../../controllers/estado_controller.php');
 $controller = new EstadoController();
 $result_estado = $controller->ListarEstado1();
