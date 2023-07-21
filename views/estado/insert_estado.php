@@ -6,20 +6,7 @@ $controller = new EstadoController();
 $result_estado = $controller->BuscarUltimoEstado();
 $numrows = mysqli_num_rows($result_estado);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar que el campo Codigo del Estado sea un número
-    if (!empty($_POST['codigo_estado']) && !is_numeric($_POST['codigo_estado'])) {
-        echo '<div class="alert alert-danger">El Código del Estado debe ser un número.</div>';
-    } else {
-        // Resto del procesamiento cuando el Código del Estado es válido
-        // ...
 
-        // Por ejemplo:
-        // $codigo_estado = $_POST['codigo_estado'];
-        // $descripcion = $_POST['descripcion'];
-        // Procesar los valores ingresados
-    }
-}
 ?>
 
 <div class="contaniner"> <!-- 1 -->
