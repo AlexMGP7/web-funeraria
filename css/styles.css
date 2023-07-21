@@ -3,7 +3,7 @@ main {
   }
 
 .table-responsive {
-  width: 70%;
+  width: 100%;
   margin: 0 auto; /* Esto centrará el contenido del contenedor en la página */
   padding: 20px;
 }
