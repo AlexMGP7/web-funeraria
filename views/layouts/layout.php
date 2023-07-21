@@ -1,3 +1,7 @@
+<?php
+// Verificar si no estamos en la página específica donde no queremos mostrar el footer
+$mostrarFooter = !strpos($_SERVER['REQUEST_URI'], 'layout.php?controller=Estado&action=ListarEstado');
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -55,9 +59,13 @@
 
     </main>
 
-    <footer>
-        <?php require('../../views/layouts/footer.php'); ?>
-    </footer>
+    <?php
+    // Verificar si se debe mostrar el footer
+    if (!$mostrarFooter) {
+        // Mostrar el footer solo si $mostrarFooter es verdadero
+        require('../../views/layouts/footer.php');
+    }
+    ?>
 
     <!-- Scripts JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
