@@ -74,11 +74,14 @@ class EstadoModel
 
     // Para la actualización
 
-    public static function BuscarEstadoByCodigo($codigo){
-    	$sql_estado = "SELECT * FROM estado WHERE codigo = $codigo";
-		$result_estado = EstadoModel::Get_Data($sql_estado);
-  		return $result_estado;
-	}
+    public static function BuscarEstadoByCodigo($codigo)
+    {
+        $sql_estado = "SELECT * FROM estado WHERE codigo = $codigo";
+        $result_estado = EstadoModel::Get_Data($sql_estado);
+
+        return $result_estado;
+    }
+
 
 
     public static function UpdateEstado2($codigo, $descripcion)

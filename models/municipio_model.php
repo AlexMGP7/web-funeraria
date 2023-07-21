@@ -7,29 +7,14 @@ class MunicipioModel
 
     // FUNCIONES GENERICAS PARA CONSULTAR Y ACTUALIZAR (INSERTAR, MODIFICAR Y ELIMINAR)
 
-    // public static function ObtenerMunicipiosPorEstado($estadoCodigo) {
-    //     include_once('../../core/conectar.php');
-    //     // Aquí debes escribir la lógica para obtener los municipios correspondientes al estado seleccionado
-    //     // Puedes utilizar consultas SQL u otros métodos de acceso a datos según tu configuración y preferencias
+    public static function ListarMunicipiosByEstado($estado_codigo)
+    {
+        // Modify the SQL query to filter by estado_codigo
+        $sql_municipios = "SELECT * FROM municipio WHERE Estado_Codigo = $estado_codigo";
+        $result_municipios = MunicipioModel::Get_Data($sql_municipios);
+        return $result_municipios;
+    }
 
-    //     // Por ejemplo, supongamos que tienes una tabla "municipios" con una columna "estado_codigo"
-    //     // Puedes realizar una consulta SQL para seleccionar los municipios que coincidan con el código de estado
-    //     $sql = "SELECT * FROM municipios WHERE estado_codigo = $estadoCodigo";
-
-    //     // Ejecutar la consulta y obtener los resultados
-    //     $result = mysqli_query($connection, $sql);
-
-    //     // Crear un array para almacenar los municipios
-    //     $municipios = array();
-
-    //     // Recorrer los resultados y agregar cada municipio al array
-    //     while ($row = mysqli_fetch_assoc($result)) {
-    //         $municipios[] = $row;
-    //     }
-
-    //     // Retornar el array de municipios
-    //     return $municipios;
-    // }
     public static function Get_Data($sql)
     {
         include_once('../../core/conectar.php');

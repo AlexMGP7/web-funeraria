@@ -76,28 +76,12 @@ class ParroquiaController
         return $result_parroquia;
     }
 
-    public function ObtenerMunicipiosPorEstado() {
-        try {
-            // Obtener el código de estado enviado por la solicitud AJAX
-            if (isset($_POST['estado_codigo'])) {
-                $estadoCodigo = $_POST['estado_codigo'];
-
-                // Llamar a un método del modelo de Parroquia para obtener los municipios correspondientes al estado seleccionado
-                $municipios = MunicipioModel::ObtenerMunicipiosPorEstado($estadoCodigo);
-
-                // Devolver la respuesta como JSON
-                header('Content-Type: application/json');
-                echo json_encode($municipios);
-            } else {
-                // No se recibió el código de estado
-                echo 'Código de estado no especificado';
-            }
-        } catch (Exception $e) {
-            // Capturar cualquier excepción ocurrida durante el procesamiento
-            echo 'Error en el controlador: ' . $e->getMessage();
-        }
+    static public function ListarMunicipiosByEstado($estado_codigo)
+    {
+        require_once('../../models/municipio_model.php');
+        $result_municipios = MunicipioModel::ListarMunicipiosByEstado($estado_codigo);
+        return $result_municipios;
     }
-
 
 
     function UpdateParroquia()

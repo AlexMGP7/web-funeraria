@@ -81,13 +81,17 @@ class CiudadModel
     }
 
     public static function BuscarCiudadByCodigo($codigo)
-    {
-        $sql_ciudad = "SELECT * FROM ciudad WHERE codigo = $codigo";
-        $result_ciudad = CiudadModel::Get_Data($sql_ciudad);
-        return $result_ciudad;
-    }
+{
+    $sql_ciudad = "SELECT c.*, p.Municipio_Codigo AS municipio_codigo, e.codigo AS codigo_estado
+                   FROM ciudad c
+                   JOIN parroquia p ON c.parroquia_codigo = p.Codigo
+                   JOIN municipio m ON p.Municipio_Codigo = m.Codigo
+                   JOIN estado e ON m.Estado_codigo = e.Codigo
+                   WHERE c.codigo = $codigo";
 
-
+    $result_ciudad = CiudadModel::Get_Data($sql_ciudad);
+    return $result_ciudad;
+}
     public static function UpdateCiudad2($codigo, $descripcion, $parroquia_codigo)
     {
         $sql_ciudad = "UPDATE ciudad SET codigo = '$codigo', descripcion = '$descripcion', Parroquia_Codigo = $parroquia_codigo WHERE codigo = $codigo";

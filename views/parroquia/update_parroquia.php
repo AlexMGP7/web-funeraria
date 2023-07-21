@@ -23,6 +23,11 @@ if (isset($_GET['i'])) {
             } else {
                 $municipio_codigo = "";
             }
+            if (isset($row["codigo_estado"])) {
+                $codigo_estado = $row["codigo_estado"];
+            } else {
+                $codigo_estado = "";
+            }
         }
 ?>
         <div class="container">
@@ -44,6 +49,9 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="municipio_codigo"><b>Código del Municipio:</b></label>
                                     <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
+                                    <br>
+                                    <label for="codigo_estado"><b>Código del Estado:</b></label>
+                                    <input class="form-control" type="text" name="codigo_estado" value="<?php echo $codigo_estado; ?>" readonly>
                                     <br>
                                 </div>
                             </div>

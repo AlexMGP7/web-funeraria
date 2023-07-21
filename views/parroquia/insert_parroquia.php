@@ -39,15 +39,7 @@ $numrows = mysqli_num_rows($result_parroquia);
                             <br>
                             <label for="municipio_codigo" align="right"><b>Código del Municipio:</b></label>
                             <select class="form-control" name="municipio_codigo" id="municipio_codigo" required>
-                                <?php
-                                $result_municipios = $controller->ListarMunicipios();
-
-                                while ($row_municipio = mysqli_fetch_array($result_municipios)) {
-                                    $codigo_municipio = $row_municipio['codigo'];
-                                    $descripcion_municipio = $row_municipio['descripcion'];
-                                    echo "<option value='$codigo_municipio'>$codigo_municipio - $descripcion_municipio</option>";
-                                }
-                                ?>
+                                <!-- Municipios options will be populated dynamically using JavaScript -->
                             </select>
                             <br>
                         </div>
@@ -59,3 +51,28 @@ $numrows = mysqli_num_rows($result_parroquia);
     </div>
     <br>
 </div>
+<!--
+<script>
+$(document).on('change', '#estado_codigo', function () {
+    var estadoCodigo = $(this).val();
+    $.ajax({
+        url: 'get_municipios_by_estado.php',
+        data: { estado_codigo: estadoCodigo },
+        type: 'GET',
+        dataType: 'json',
+        success: function (res) {
+            var municipioSelect = $("#municipio_codigo");
+            municipioSelect.empty(); // Vacía las opciones anteriores
+            $.each(res, function (index, municipio) {
+                municipioSelect.append($('<option>').text(municipio.codigo + " - " + municipio.descripcion).attr('value', municipio.codigo));
+            });
+        },
+        error: function (xhr, status) {
+            alert('Ocurrió un problema al cargar los municipios.');
+        },
+        complete: function (xhr, status) {
+            // Se ejecuta cuando se completa la petición (opcional)
+        }
+    });
+});
+</script> -->

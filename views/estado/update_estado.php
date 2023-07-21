@@ -35,9 +35,11 @@ if (isset($_GET['i'])) {
                                     <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>">
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
-                                    <textarea class="form-control" name="descripcion" rows="4" required><?php echo $descripcion; ?></textarea>
+                                    <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
                                     <br>
                                 </div>
+
+
                             </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
                         </div>

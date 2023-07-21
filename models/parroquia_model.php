@@ -81,11 +81,16 @@ class ParroquiaModel
     }
 
     public static function BuscarParroquiaByCodigo($codigo)
-    {
-        $sql_parroquia = "SELECT * FROM parroquia WHERE codigo = $codigo";
-        $result_parroquia = ParroquiaModel::Get_Data($sql_parroquia);
-        return $result_parroquia;
-    }
+{
+    $sql_parroquia = "SELECT p.*, e.codigo AS codigo_estado
+                      FROM parroquia p
+                      JOIN municipio m ON p.Municipio_codigo = m.Codigo
+                      JOIN estado e ON m.Estado_codigo = e.Codigo
+                      WHERE p.Codigo = $codigo";
+
+    $result_parroquia = ParroquiaModel::Get_Data($sql_parroquia);
+    return $result_parroquia;
+}
 
     public static function UpdateParroquia2($codigo, $descripcion, $municipio_codigo)
     {

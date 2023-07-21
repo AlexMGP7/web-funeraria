@@ -23,6 +23,17 @@ if (isset($_GET['i'])) {
             } else {
                 $parroquia_codigo = "";
             }
+            // Add the estado and municipio data to the loop
+            if (isset($row["municipio_codigo"])) {
+                $municipio_codigo = $row["municipio_codigo"];
+            } else {
+                $municipio_codigo = "";
+            }
+            if (isset($row["codigo_estado"])) {
+                $codigo_estado = $row["codigo_estado"];
+            } else {
+                $codigo_estado = "";
+            }
         }
 ?>
         <div class="container">
@@ -44,6 +55,12 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="parroquia_codigo"><b>Código de la Parroquia:</b></label>
                                     <input class="form-control" type="text" name="parroquia_codigo" value="<?php echo $parroquia_codigo; ?>" readonly>
+                                    <br>
+                                    <label for="municipio_codigo"><b>Código del Municipio:</b></label>
+                                    <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
+                                    <br>
+                                    <label for="codigo_estado"><b>Código del Estado:</b></label>
+                                    <input class="form-control" type="text" name="codigo_estado" value="<?php echo $codigo_estado; ?>" readonly>
                                     <br>
                                 </div>
                             </div>
