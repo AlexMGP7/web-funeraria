@@ -7,11 +7,18 @@ class MunicipioModel
 
     // FUNCIONES GENERICAS PARA CONSULTAR Y ACTUALIZAR (INSERTAR, MODIFICAR Y ELIMINAR)
 
-    public static function ListarMunicipiosByEstado($estado_codigo)
+    public static function ListarMunicipiosPorEstado($estado_codigo)
     {
         // Modify the SQL query to filter by estado_codigo
-        $sql_municipios = "SELECT * FROM municipio WHERE Estado_Codigo = $estado_codigo";
+        $sql_municipios = "SELECT m.codigo, m.descripcion AS municipio_descripcion,
+                             e.codigo AS estado_codigo, e.descripcion AS estado_descripcion
+                      FROM municipio AS m
+                      INNER JOIN estado AS e ON m.Estado_codigo = e.Codigo
+                      WHERE e.codigo = $estado_codigo";
+        
         $result_municipios = MunicipioModel::Get_Data($sql_municipios);
+        var_dump($result_municipios);
+        echo ("soy el modelo");
         return $result_municipios;
     }
 
@@ -193,24 +200,6 @@ class MunicipioModel
         return false;
     }
 
-    function ListarMunicipiosDinamicos($estado_codigo)
-{
-    try {
-        // Modificar la consulta para filtrar por estado_codigo
-        $sql = "SELECT codigo, descripcion FROM municipio WHERE Estado_Codigo = $estado_codigo";
-        $result = MunicipioModel::Get_Data($sql);
-
-        $arreglo = array();
-        while ($consulta_VU = mysqli_fetch_array($result)) {
-            $arreglo[] = $consulta_VU;
-        }
-
-        return $arreglo;
-    } catch (Exception $e) {
-        // Capturar cualquier excepción ocurrida durante el procesamiento
-        throw new Exception("Error en el modelo al listar municipios dinámicos: " . $e->getMessage());
-    }
-}
-
+    
 
 }
