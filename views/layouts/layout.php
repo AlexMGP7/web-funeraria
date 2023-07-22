@@ -1,7 +1,3 @@
-<?php
-// Verificar si no estamos en la página específica donde no queremos mostrar el footer
-$mostrarFooter = !strpos($_SERVER['REQUEST_URI'], 'layout.php?controller=Estado&action=ListarEstado');
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +7,6 @@ $mostrarFooter = !strpos($_SERVER['REQUEST_URI'], 'layout.php?controller=Estado&
     <title>Polizas de Seguros Funerarios</title>
     <!-- Enlace a Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
     <!-- Incluye las bibliotecas de DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- Estilos CSS personalizados -->
@@ -58,13 +53,8 @@ $mostrarFooter = !strpos($_SERVER['REQUEST_URI'], 'layout.php?controller=Estado&
         </section>
 
     </main>
-
     <?php
-    // Verificar si se debe mostrar el footer
-    if (!$mostrarFooter) {
-        // Mostrar el footer solo si $mostrarFooter es verdadero
-        require('../../views/layouts/footer.php');
-    }
+    require('../../views/layouts/footer.php');
     ?>
 
     <!-- Scripts JavaScript -->

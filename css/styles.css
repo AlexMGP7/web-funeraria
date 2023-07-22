@@ -1,6 +1,14 @@
+/* Estilos generales */
+body {
+  position: relative; /* Asegura que el footer esté posicionado correctamente */
+  padding-bottom: 100px; /* Altura aproximada del footer */
+  min-height: 100vh; /* Establece una altura mínima de la ventana para el cuerpo */
+}
+
 main {
-    margin-bottom: 16px; /* Equivalente a la clase py-3 de Bootstrap */
-  }
+  margin-top: 20px; /* Margen superior para evitar que el contenido se superponga con el footer */
+  margin-bottom: 16px; /* Espacio entre el main y el footer */
+}
 
 .table-responsive {
   width: 100%;
@@ -11,4 +19,16 @@ main {
 /* Asegurarse de que la tabla ocupe el 100% del contenedor */
 .table-responsive table {
   width: 100%;
+}
+
+/* Estilos para el footer */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
