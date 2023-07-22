@@ -9,24 +9,22 @@ if (isset($_GET['i'])) {
     if ($numrows != 0) {
         while ($row = mysqli_fetch_array($result_parroquia)) {
             if (isset($row["codigo"])) {
-                $codigo_bd = $row["codigo"];
-            } else {
-                $codigo_bd = "";
+                $parroquia_codigo = $row["codigo"];
             }
-            if (isset($row["descripcion"])) {
-                $descripcion = $row["descripcion"];
-            } else {
-                $descripcion = "";
+            if (isset($row["parroquia_descripcion"])) {
+                $descripcion = $row["parroquia_descripcion"];
             }
-            if (isset($row["Municipio_Codigo"])) {
-                $municipio_codigo = $row["Municipio_Codigo"];
-            } else {
-                $municipio_codigo = "";
+            if (isset($row["municipio_codigo"])) {
+                $municipio_codigo = $row["municipio_codigo"];
             }
-            if (isset($row["codigo_estado"])) {
-                $codigo_estado = $row["codigo_estado"];
-            } else {
-                $codigo_estado = "";
+            if (isset($row["municipio_descripcion"])) {
+                $municipio_descripcion = $row["municipio_descripcion"];
+            }
+            if (isset($row["estado_codigo"])) {
+                $estado_codigo = $row["estado_codigo"];
+            }
+            if (isset($row["estado_descripcion"])) {
+                $estado_descripcion = $row["estado_descripcion"];
             }
         }
 ?>
@@ -45,13 +43,13 @@ if (isset($_GET['i'])) {
                                     <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
-                                    <textarea class="form-control" name="descripcion" rows="4" required><?php echo $descripcion; ?></textarea>
+                                    <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
                                     <br>
                                     <label for="municipio_codigo"><b>Código del Municipio:</b></label>
                                     <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
                                     <br>
-                                    <label for="codigo_estado"><b>Código del Estado:</b></label>
-                                    <input class="form-control" type="text" name="codigo_estado" value="<?php echo $codigo_estado; ?>" readonly>
+                                    <label for="estado_codigo"><b>Código del Estado:</b></label>
+                                    <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo; ?>" readonly>
                                     <br>
                                 </div>
                             </div>

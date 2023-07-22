@@ -1,5 +1,6 @@
 <?php
 if (isset($_GET['i'])) {
+    $descripcion = 'err000';
     $codigo = $_GET['i'];
     require_once('../../controllers/estado_controller.php');
     $controller = new EstadoController();
@@ -10,13 +11,10 @@ if (isset($_GET['i'])) {
         while ($row = mysqli_fetch_array($result_estado)) {
             if (isset($row["codigo"])) {
                 $codigo_bd = $row["codigo"];
-            } else {
-                $codigo_bd = "";
             }
+
             if (isset($row["descripcion"])) {
                 $descripcion = $row["descripcion"];
-            } else {
-                $descripcion = "";
             }
         }
 ?>
@@ -32,7 +30,7 @@ if (isset($_GET['i'])) {
                             <div class="row">
                                 <div class="col-6">
                                     <label for="codigo"><b>Código del Estado:</b></label>
-                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>">
+                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
                                     <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>

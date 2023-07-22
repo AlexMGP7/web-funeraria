@@ -81,16 +81,19 @@ class ParroquiaModel
     }
 
     public static function BuscarParroquiaByCodigo($codigo)
-{
-    $sql_parroquia = "SELECT p.*, e.codigo AS codigo_estado
-                      FROM parroquia p
-                      JOIN municipio m ON p.Municipio_codigo = m.Codigo
-                      JOIN estado e ON m.Estado_codigo = e.Codigo
-                      WHERE p.Codigo = $codigo";
+    {
+        $sql_parroquia = "SELECT p.codigo, p.descripcion AS parroquia_descripcion,
+                             m.codigo AS municipio_codigo, m.descripcion AS municipio_descripcion,
+                             e.codigo AS estado_codigo, e.descripcion AS estado_descripcion
+                      FROM parroquia AS p
+                      INNER JOIN municipio AS m ON p.Municipio_codigo = m.Codigo
+                      INNER JOIN estado AS e ON m.Estado_codigo = e.Codigo
+                      WHERE p.codigo = $codigo";
 
-    $result_parroquia = ParroquiaModel::Get_Data($sql_parroquia);
-    return $result_parroquia;
-}
+        $result_parroquia = ParroquiaModel::Get_Data($sql_parroquia);
+        return $result_parroquia;
+    }
+
 
     public static function UpdateParroquia2($codigo, $descripcion, $municipio_codigo)
     {
@@ -107,19 +110,18 @@ class ParroquiaModel
     }
 
     public static function CheckReferencedRecords($codigo)
-{
-    // Verificar si hay ciudades relacionadas con la parroquia
-    $sql_check_ciudad = "SELECT COUNT(*) AS num_referenced_ciudades FROM Ciudad WHERE Parroquia_codigo = $codigo";
-    $result_check_ciudad = ParroquiaModel::Get_Data($sql_check_ciudad);
-    $row_ciudad = mysqli_fetch_assoc($result_check_ciudad);
-    $num_referenced_ciudades = $row_ciudad['num_referenced_ciudades'];
+    {
+        // Verificar si hay ciudades relacionadas con la parroquia
+        $sql_check_ciudad = "SELECT COUNT(*) AS num_referenced_ciudades FROM Ciudad WHERE Parroquia_codigo = $codigo";
+        $result_check_ciudad = ParroquiaModel::Get_Data($sql_check_ciudad);
+        $row_ciudad = mysqli_fetch_assoc($result_check_ciudad);
+        $num_referenced_ciudades = $row_ciudad['num_referenced_ciudades'];
 
-    // Si hay alguna ciudad relacionada, entonces no se puede eliminar la parroquia
-    if ($num_referenced_ciudades > 0) {
-        return true;
+        // Si hay alguna ciudad relacionada, entonces no se puede eliminar la parroquia
+        if ($num_referenced_ciudades > 0) {
+            return true;
+        }
+
+        return false;
     }
-
-    return false;
-}
-
 }

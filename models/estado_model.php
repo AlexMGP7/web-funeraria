@@ -13,10 +13,14 @@ class EstadoModel
     {
         include_once('../../core/conectar.php');
         $conexion = conectar::conexion();
-        if (!$result = mysqli_query($conexion, $sql)) die();
+        if (!$result = mysqli_query($conexion, $sql)) {
+            die('Error in query: ' . mysqli_error($conexion)); // Print the error message
+        }
         $conexion = conectar::desconexion($conexion);
         return $result;
     }
+
+
 
     public static function Update_Data($sql)
     {
@@ -49,7 +53,7 @@ class EstadoModel
 
     public static function ListarEstado()
     {
-        $sql_estado = "SELECT codigo, trim(descripcion) as descripcion FROM estado ORDER BY codigo asc";
+        $sql_estado = "SELECT codigo, descripcion FROM estado ORDER BY codigo ASC";
         $result_estado = EstadoModel::Get_Data($sql_estado);
         return $result_estado;
     }
@@ -76,7 +80,8 @@ class EstadoModel
 
     public static function BuscarEstadoByCodigo($codigo)
     {
-        $sql_estado = "SELECT * FROM estado WHERE codigo = $codigo";
+        //$sql_estado = "SELECT codigo, descripcion FROM estado ORDER BY codigo ASC";
+        $sql_estado = "SELECT codigo, descripcion FROM estado WHERE codigo = $codigo";
         $result_estado = EstadoModel::Get_Data($sql_estado);
 
         return $result_estado;
