@@ -99,4 +99,13 @@ class MunicipioController
         $result_Listar = MunicipioModel::DeleteMunicipio($codigo);
         return $result_Listar;
     }
+
+    static public function ListarMunicipiosDinamicosListarMunDin($codigo)
+    {
+        require '../modelo/modelo_ubigeo.php';
+        $MU = new MunicipioModel();
+        $estado_codigo  = $_POST['estado_codigo'];
+        $consulta = $MU->ListarMunicipiosDinamicos($estado_codigo);
+        echo json_encode($consulta);
+    }
 }

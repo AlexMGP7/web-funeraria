@@ -192,4 +192,25 @@ class MunicipioModel
 
         return false;
     }
+
+    function ListarMunicipiosDinamicos($estado_codigo)
+{
+    try {
+        // Modificar la consulta para filtrar por estado_codigo
+        $sql = "SELECT codigo, descripcion FROM municipio WHERE Estado_Codigo = $estado_codigo";
+        $result = MunicipioModel::Get_Data($sql);
+
+        $arreglo = array();
+        while ($consulta_VU = mysqli_fetch_array($result)) {
+            $arreglo[] = $consulta_VU;
+        }
+
+        return $arreglo;
+    } catch (Exception $e) {
+        // Capturar cualquier excepción ocurrida durante el procesamiento
+        throw new Exception("Error en el modelo al listar municipios dinámicos: " . $e->getMessage());
+    }
+}
+
+
 }
