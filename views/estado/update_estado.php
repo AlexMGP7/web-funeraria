@@ -30,7 +30,7 @@ if (isset($_GET['i'])) {
                             <div class="row">
                                 <div class="col-6">
                                     <label for="codigo"><b>Código del Estado:</b></label>
-                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
+                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo . ' - ' . $descripcion; ?>" readonly>
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
                                     <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>

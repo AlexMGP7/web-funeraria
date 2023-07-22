@@ -102,7 +102,8 @@ class MunicipioModel
 
     public static function BuscarMunicipioByCodigo($codigo)
     {
-        $sql_municipio = "SELECT m.codigo, m.descripcion AS municipio_descripcion, e.codigo AS estado_codigo
+        $sql_municipio = "SELECT m.codigo, m.descripcion AS municipio_descripcion,
+                             e.codigo AS estado_codigo, e.descripcion AS estado_descripcion
                       FROM municipio AS m
                       INNER JOIN estado AS e ON m.Estado_codigo = e.Codigo
                       WHERE m.codigo = $codigo";

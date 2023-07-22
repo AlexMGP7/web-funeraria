@@ -40,16 +40,16 @@ if (isset($_GET['i'])) {
                             <div class="row">
                                 <div class="col-6">
                                     <label for="codigo"><b>Código de la Parroquia:</b></label>
-                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
+                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo . ' - ' . $descripcion; ?>" readonly>
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
                                     <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
                                     <br>
                                     <label for="municipio_codigo"><b>Código del Municipio:</b></label>
-                                    <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
+                                    <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo . ' - ' . $municipio_descripcion; ?>" readonly>
                                     <br>
                                     <label for="estado_codigo"><b>Código del Estado:</b></label>
-                                    <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo; ?>" readonly>
+                                    <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo . ' - ' . $estado_descripcion; ?>" readonly>
                                     <br>
                                 </div>
                             </div>
