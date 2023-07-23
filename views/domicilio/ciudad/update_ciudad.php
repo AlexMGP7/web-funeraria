@@ -73,7 +73,6 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="parroquia_codigo"><b>Parroquia:</b></label>
                                     <select class="form-control" id="parroquia_codigo" name="parroquia_codigo">
-                                        <!-- Options will be populated dynamically based on the selected municipality -->
                                     </select>
                                     <br>
                                 </div>

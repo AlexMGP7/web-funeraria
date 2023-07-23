@@ -1,9 +1,5 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $codigo = $_POST['codigo'];
 $descripcion = $_POST['descripcion'];
 
@@ -19,5 +15,5 @@ try {
     $_SESSION['mensaje_tipo'] = "warning";
 }
 
-header("Location: ?controller=Estado&action=ListarEstado");
+echo '<script>window.location.href = "?controller=Estado&action=ListarEstado";</script>';
 exit();

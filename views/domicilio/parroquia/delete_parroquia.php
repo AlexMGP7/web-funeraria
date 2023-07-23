@@ -19,5 +19,5 @@ if (isset($_GET['i'])) {
     }
 }
 
-header("Location: ?controller=Parroquia&action=ListarParroquia");
+echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
 exit();

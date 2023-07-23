@@ -15,9 +15,7 @@ if (isset($_GET['i'])) {
     }
 
     // Redirige a la página de listado de estados después de intentar eliminar
-    header("Location: ?controller=Estado&action=ListarEstado");
-    exit();
-} else {
-    header("Location: ?controller=Estado&action=ListarEstado");
-    exit();
 }
+
+echo '<script>window.location.href = "?controller=Estado&action=ListarEstado";</script>';
+exit();

@@ -20,6 +20,6 @@ try {
     $_SESSION['mensaje_tipo'] = "warning";
 }
 
-header("Location: ?controller=Municipio&action=ListarMunicipio");
+echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
 exit();
 

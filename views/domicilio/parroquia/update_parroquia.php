@@ -62,7 +62,6 @@ if (isset($_GET['i'])) {
                                     <br>
                                     <label for="municipio_codigo"><b>Municipio:</b></label>
                                     <select class="form-control" id="municipio_codigo" name="municipio_codigo">
-                                        <option value="">Seleccione un Municipio</option>
                                     </select>
                                     <br>
                                 </div>
@@ -107,6 +106,12 @@ if (isset($_GET['i'])) {
                         $('#municipio_codigo').html('<option value="">Seleccione un municipio</option>');
                     }
                 });
+                // Pre-select the previous municipality value
+                var prevMunicipioCodigo = '<?php echo $municipio_codigo; ?>';
+                if (prevMunicipioCodigo !== '') {
+                    loadOptions('municipios', '<?php echo $estado_codigo; ?>', '#municipio_codigo');
+                    $('#municipio_codigo').val(prevMunicipioCodigo);
+                }
 
             });
         </script>
