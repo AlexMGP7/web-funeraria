@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="style_submenu.css">
-    <!-- <link rel="stylesheet" href="style_header.css"> -->
+    <link rel="stylesheet" href="style_header.css">
+    <link rel="stylesheet" href="style_cuadro.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <!-- Scripts -->
@@ -67,37 +67,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#dtBasicExample').DataTable({
-                "lengthMenu": [5, 10, 15, 30],
-                "language": {
-                    "sEmptyTable": "No se encontraron resultados",
-                    "sInfo": "Mostrando _START_ - _END_ de _TOTAL_ resultados",
-                    "sInfoEmpty": "Mostrando 0 resultados",
-                    "sInfoFiltered": "(filtrado de _MAX_ total de resultados)",
-                    "sInfoPostFix": "",
-                    "sInfoThousands": ",",
-                    "sLengthMenu": "Mostrar _MENU_ resultados",
-                    "sLoadingRecords": "Cargando...",
-                    "sProcessing": "Procesando...",
-                    "sSearch": "Buscar:",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="script_header.js"></script>
+    <script src="script_cuadro.js"></script>
 
 </body>
 
