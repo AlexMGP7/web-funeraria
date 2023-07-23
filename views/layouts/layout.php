@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="../../css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>

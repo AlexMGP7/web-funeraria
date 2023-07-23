@@ -39,17 +39,31 @@ if (isset($_GET['i'])) {
                         <div class="alert alert-success">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="codigo"><b>Código de la Parroquia:</b></label>
+                                    <label for="codigo"><b>Parroquia:</b></label>
                                     <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
                                     <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
                                     <br>
-                                    <label for="municipio_codigo"><b>Código del Municipio:</b></label>
-                                    <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
+                                    <label for="estado_codigo"><b>Estado:</b></label>
+                                    <select class="form-control" name="estado_codigo" id="estado_codigo" required>
+                                        <?php
+                                        $controller = new ParroquiaController();
+                                        $result_estados = $controller->ListarEstados();
+
+                                        while ($row_estado = mysqli_fetch_array($result_estados)) {
+                                            $codigo_estado = $row_estado['codigo'];
+                                            $descripcion_estado = $row_estado['descripcion'];
+                                            $selected = ($codigo_estado == $estado_codigo) ? 'selected' : '';
+                                            echo "<option value='$codigo_estado' $selected>$codigo_estado - $descripcion_estado</option>";
+                                        }
+                                        ?>
+                                    </select>
                                     <br>
-                                    <label for="estado_codigo"><b>Código del Estado:</b></label>
-                                    <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo; ?>" readonly>
+                                    <label for="municipio_codigo"><b>Municipio:</b></label>
+                                    <select class="form-control" id="municipio_codigo" name="municipio_codigo">
+                                        <option value="">Seleccione un Municipio</option>
+                                    </select>
                                     <br>
                                 </div>
                             </div>
@@ -59,6 +73,43 @@ if (isset($_GET['i'])) {
                 </form>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                // Función para cargar datos en los selectores según el tipo
+                function loadOptions(type, id, targetSelector) {
+                    $.ajax({
+                        url: '../../models/obtener_domicilio.php',
+                        type: 'GET',
+                        data: {
+                            type: type,
+                            id: id
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            var options = '<option value="">Seleccione una opción</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                options += '<option value="' + data[i]['codigo'] + '">' + data[i]['descripcion'] + '</option>';
+                            }
+                            $(targetSelector).html(options);
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                }
+
+                // Cargar los municipios al seleccionar un estado
+                $('#estado_codigo').on('change', function() {
+                    var estadoId = $(this).val();
+                    if (estadoId !== '') {
+                        loadOptions('municipios', estadoId, '#municipio_codigo');
+                    } else {
+                        $('#municipio_codigo').html('<option value="">Seleccione un municipio</option>');
+                    }
+                });
+
+            });
+        </script>
 <?php
     } else {
         require_once('../../views/domicilio/parroquia/list_parroquia.php');

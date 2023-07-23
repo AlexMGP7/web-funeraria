@@ -6,7 +6,6 @@ $result_ciudad = $controller->BuscarUltimaCiudad();
 $numrows = mysqli_num_rows($result_ciudad);
 
 ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div class="container">
     <div class="page-content">
         <form action="?controller=Ciudad&action=IngresarCiudad1" method="POST">
@@ -17,14 +16,14 @@ $numrows = mysqli_num_rows($result_ciudad);
                 <div class="alert alert-success">
                     <div class="row">
                         <div class="col-6">
-                            <label for="codigo_ciudad" align="right" size="40"><b>Código de la ciudad:</b></label>
+                            <label for="codigo_ciudad" align="right" size="40"><b>Ciudad:</b></label>
                             <input class="form-control mr-sm-2" type="text" name="codigo_ciudad" id="codigo_ciudad" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese el código de la ciudad" />
                             <span class="text-black">Solo se permiten números.</span>
                             <br>
                             <label for="descripcion" align="right"><b>Descripción:</b></label>
                             <textarea class="form-control" maxlength="200" placeholder="Ingrese aquí la descripción de la ciudad" id="descripcion" name="descripcion" rows="4" required></textarea>
                             <br>
-                            <label for="estado_codigo" align="right"><b>Código del Estado:</b></label>
+                            <label for="estado_codigo" align="right"><b>Estado:</b></label>
                             <select class="form-control" name="estado_codigo" id="estado_codigo" required>
                                 <?php
                                 $controller = new CiudadController();
@@ -38,12 +37,12 @@ $numrows = mysqli_num_rows($result_ciudad);
                                 ?>
                             </select>
                             <br>
-                            <label for="municipio_codigo" align="right"><b>Código del Municipio:</b></label>
+                            <label for="municipio_codigo" align="right"><b>Municipio:</b></label>
                             <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
                                 <option value="">Seleccione un Municipio</option>
                             </select>
                             <br>
-                            <label for="parroquia_codigo" align="right"><b>Código de la Parroquia:</b></label>
+                            <label for="parroquia_codigo" align="right"><b>Parroquia:</b></label>
                             <select class="form-control" id="parroquia_codigo" name="parroquia_codigo" required>
                                 <option value="">Seleccione una Parroquia</option>
                             </select>
