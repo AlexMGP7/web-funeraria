@@ -13,17 +13,19 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style_submenu.css">
+    <!-- <link rel="stylesheet" href="style_header.css"> -->
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 </head>
 
 <body>
 
-    <header>
-        <?php require_once('../../views/layouts/header.php'); ?>
-        <?php require_once('../../views/layouts/submenu.php'); ?>
-    </header>
+    <?php require_once('../../views/layouts/header.php'); ?>
 
     <?php
 
@@ -45,7 +47,7 @@
     }
     ?>
 
-    <main>
+    <main class="main">
 
         <section>
             <div class="container">
@@ -57,9 +59,6 @@
         </section>
 
     </main>
-    <?php
-    require('../../views/layouts/footer.php');
-    ?>
 
     <!-- Scripts JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -68,6 +67,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
     <script>
         $(document).ready(function() {
             $('#dtBasicExample').DataTable({

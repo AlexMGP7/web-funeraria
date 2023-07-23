@@ -1,25 +1,71 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">Polizas Funerarias</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Polizas</a>
-                </li>
+<nav class="sidebar">
+    <a href="#" class="logo">Polizas Funerarias</a>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
-            </ul>
-        </div>
+    <div class="menu-content">
+        <ul class="menu-items">
+            <div class="menu-title">Interacciones</div>
+
+            <li class="item">
+                <a href="#">Inicio</a>
+            </li>
+
+            <li class="item">
+                <div class="submenu-item">
+                    <span>Polizas</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <ul class="menu-items submenu">
+                    <div class="menu-title">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        Polizas Submenu
+                    </div>
+                    <li class="item">
+                        <a href="#">Poliza 1</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Poliza 2</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Poliza 3</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <a href="#">Servicios</a>
+            </li>
+            <li class="item">
+                <a href="#">Contacto</a>
+            </li>
+            <li class="item">
+                <div class="submenu-item">
+                    <span>Domicilio</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <ul class="menu-items submenu">
+                    <div class="menu-title">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        Ubicaciones
+                    </div>
+                    <li class="item">
+                        <a href="?controller=Estado&action=ListarEstado">Estados</a>
+                    </li>
+                    <li class="item">
+                        <a href="?controller=Municipio&action=ListarMunicipio">Municipios</a>
+                    </li>
+                    <li class="item">
+                        <a href="?controller=Parroquia&action=ListarParroquia">Parroquias</a>
+                    </li>
+                    <li class="item">
+                        <a href="?controller=Ciudad&action=ListarCiudad">Ciudades</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
+</nav>
+<nav class="navbar">
+    <i class="fa-solid fa-bars" id="sidebar-close"></i>
 </nav>
