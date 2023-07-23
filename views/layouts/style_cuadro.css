@@ -1,0 +1,82 @@
+.table-responsive {
+  width: 100%;
+  margin: 0 auto; /* Esto centrará el contenido del contenedor en la página */
+  padding: 20px;
+}
+
+/* Asegurarse de que la tabla ocupe el 100% del contenedor */
+.table-responsive table {
+  width: 100%;
+}
+
+/* Cambiar el color del fondo del encabezado de la tabla */
+#dtBasicExample thead th {
+  background-color: #f2f2f2;
+}
+
+/* Cambiar el color del texto del encabezado de la tabla */
+#dtBasicExample thead th {
+  color: #333;
+}
+
+/* Estilizar el paginador */
+#dtBasicExample_paginate .paginate_button {
+  color: #fff;
+  border: none;
+}
+
+/* Cambiar el color del texto del paginador cuando está desactivado */
+#dtBasicExample_paginate .paginate_button.disabled {
+  color: #6c757d;
+}
+
+/* Estilizar el botón de búsqueda */
+#dtBasicExample_filter input[type="search"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Ajustar la posición del botón de búsqueda */
+#dtBasicExample_filter {
+  margin-bottom: 10px;
+}
+
+/* Ajustar la posición del mensaje de "Mostrar _MENU_ resultados" */
+#dtBasicExample_length {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Ajustar la posición de la paginación */
+#dtBasicExample_paginate {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Estilizar el botón de búsqueda */
+#dtBasicExample_filter input[type="search"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilizar el botón de búsqueda al enfocarse */
+#dtBasicExample_filter input[type="search"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
+}
+
+/* Ajustar el tamaño de la fuente de la paginación */
+#dtBasicExample_paginate .paginate_button {
+  font-size: 14px;
+}
+
+/* Ajustar el padding horizontal de los botones de paginación */
+#dtBasicExample_paginate .paginate_button {
+  padding: 5px 10px;
+}
+
+/* Ajustar el padding vertical del botón de paginación activo */
+#dtBasicExample_paginate .paginate_button.current {
+  padding: 5px 10px;
+}

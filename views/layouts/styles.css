@@ -6,26 +6,19 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-.table-responsive {
-  width: 100%;
-  margin: 0 auto; /* Esto centrará el contenido del contenedor en la página */
-  padding: 20px;
-}
 
-/* Asegurarse de que la tabla ocupe el 100% del contenedor */
-.table-responsive table {
-  width: 100%;
+.main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 100;
+  background: #e7f2fd;
 }
-
-/* Estilos para el footer */
-/* footer {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #11101d;
-  color: #fff;
+.main h1 {
+  color: #11101d;
+  font-size: 40px;
   text-align: center;
-  padding: 10px;
-  z-index: 98;
-} */
+}
 
