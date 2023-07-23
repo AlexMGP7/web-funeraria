@@ -128,3 +128,6 @@
   cursor: pointer;
 }
 
+.main {
+  z-index: 100;
+}
