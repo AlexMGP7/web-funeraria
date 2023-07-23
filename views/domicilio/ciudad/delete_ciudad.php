@@ -1,9 +1,5 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $codigo = $_GET['i'];
 
 require_once('../../controllers/ciudad_controller.php');

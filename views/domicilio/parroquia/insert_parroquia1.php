@@ -1,9 +1,5 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $codigo = $_POST['codigo_parroquia'];
 $descripcion = $_POST['descripcion'];
 $municipio_codigo = $_POST['municipio_codigo'];
