@@ -18,7 +18,7 @@ $numrows = mysqli_num_rows($result_estado);
                     <div class="row">
                         <div class="col-6">
                             <label for="codigo_estado" align="right" size="40"><b>Estado:</b></label>
-                            <input class="form-control mr-sm-2" type="text" name="codigo_estado" id="codigo_estado" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese el Estado" />
+                            <input class="form-control mr-sm-2" type="text" name="codigo_estado" id="codigo_estado" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aqui el codigo del Estado" />
                             <span class="text-black">Solo se permiten números.</span>
                             <br>
                             <label for="descripcion" align="right" size="40"><b>Descripción:</b></label>
