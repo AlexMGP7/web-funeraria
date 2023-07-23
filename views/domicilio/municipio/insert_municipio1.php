@@ -18,4 +18,3 @@ try {
 
 echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
 exit();
-

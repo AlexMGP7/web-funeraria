@@ -103,6 +103,4 @@ class CiudadController
         $result_Listar = CiudadModel::DeleteCiudad($codigo);
         return $result_Listar;
     }
-
-
 }

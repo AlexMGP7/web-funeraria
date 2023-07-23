@@ -156,5 +156,4 @@ class MunicipioModel
         // echo ("soy el modelo");
         return $result_municipios;
     }
-
 }

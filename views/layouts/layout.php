@@ -19,36 +19,36 @@
 </head>
 
 <body>
-    
+
     <header>
         <?php require_once('../../views/layouts/header.php'); ?>
         <?php require_once('../../views/layouts/submenu.php'); ?>
     </header>
-    
+
     <?php
-    
+
     if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje_tipo'])) {
         $mensaje = $_SESSION['mensaje'];
         $mensaje_tipo = $_SESSION['mensaje_tipo'];
         unset($_SESSION['mensaje']);
         unset($_SESSION['mensaje_tipo']);
-        ?>
+    ?>
 
-<div class="alert alert-<?php echo $mensaje_tipo; ?>">
+        <div class="alert alert-<?php echo $mensaje_tipo; ?>">
             <?php echo $mensaje; ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
 
-        <?php
+    <?php
     }
     ?>
 
-<main>
-    
-    <section>
-        <div class="container">
+    <main>
+
+        <section>
+            <div class="container">
                 <?php
                 // carga el archivo routing.php para direccionar a la página .php que se incrustará entre la header y el footer
                 require_once('../../views/routing.php');

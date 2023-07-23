@@ -7,4 +7,3 @@ return array(
     "database"  =>"polizas_funerarias",
     "charset"   =>"utf8"
 );
-?>

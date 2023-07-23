@@ -47,4 +47,3 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
 
 // Cierra la conexión a la base de datos
 $conn->close();
-?>
