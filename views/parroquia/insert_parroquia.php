@@ -39,9 +39,11 @@ $numrows = mysqli_num_rows($result_parroquia);
                                 ?>
                             </select>
                             <br>
-                            <label for="municipio_codigo" align="right"><b>Código del Municipio:</b></label>
-                            <select class="form-control" name="municipio_codigo" id="municipio_codigo" required>
+                            <label for="estado_codigo" align="right"><b>Código del Municipio:</b></label>
+                            <select class="form-control" id="municipio_codigo" name="municipio_codigo">
+                                <option value="">Seleccione un Municipio</option>
                             </select>
+                            <br>
                             <br>
                         </div>
                     </div>
@@ -54,42 +56,38 @@ $numrows = mysqli_num_rows($result_parroquia);
 </div>
 <script>
     $(document).ready(function() {
-        // Evento que se activa cada vez que se cambia la selección del estado
-        $("#estado_codigo").change(function() {
-            var estadoCodigo = $(this).val(); // Obtener el código del estado seleccionado
-
-            console.log("Estado seleccionado: " + estadoCodigo);
-            // Realizar la solicitud AJAX al controlador para obtener los municipios del estado seleccionado
+        // Función para cargar datos en los selectores según el tipo
+        function loadOptions(type, id, targetSelector) {
             $.ajax({
-                url: '../../controllers/municipio_controller.php',
-                type: 'POST',
+                url: '../../models/obtener_domicilio.php',
+                type: 'GET',
                 data: {
-                    action: 'ListarMunicipiosPorEstado',
-                    estado_codigo: estadoCodigo
+                    type: type,
+                    id: id
                 },
                 dataType: 'json',
                 success: function(data) {
-                    var options = ""; // Variable para almacenar las opciones del select de municipios
-
-                    if (data.length > 0) {
-                        // Construir las opciones del select con los municipios obtenidos
-                        for (var i = 0; i < data.length; i++) {
-                            options += "<option value='" + data[i].codigo + "'>" + data[i].descripcion + "</option>";
-                        }
-                    } else {
-                        // Si no se encontraron municipios, mostrar una opción de "No se encontraron registros"
-                        options = "<option value=''>NO SE ENCONTRARON REGISTROS</option>";
+                    var options = '<option value="">Seleccione una opción</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        options += '<option value="' + data[i]['codigo'] + '">' + data[i]['descripcion'] + '</option>';
                     }
-
-                    // Actualizar el select de municipios con las opciones generadas
-                    $("#municipio_codigo").html(options);
-                    alert(JSON.stringify(data));
+                    $(targetSelector).html(options);
                 },
-                error: function(xhr, status, error) {
-                    console.error("Error en la solicitud AJAX: " + error);
-                    console.log(xhr.responseText);
+                error: function(error) {
+                    console.log(error);
                 }
             });
+        }
+
+        // Cargar los municipios al seleccionar un estado
+        $('#estado_codigo').on('change', function() {
+            var estadoId = $(this).val();
+            if (estadoId !== '') {
+                loadOptions('municipios', estadoId, '#municipio_codigo');
+            } else {
+                $('#municipio_codigo').html('<option value="">Seleccione un municipio</option>');
+            }
         });
+
     });
 </script>

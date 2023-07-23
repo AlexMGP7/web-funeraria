@@ -100,21 +100,19 @@ class MunicipioController
         return $result_Listar;
     }
 
-    // En municipio_controller.php
-
     function ListarMunicipiosPorEstado()
     {
-        $debug_message = "Se ha accedido a la función ListarMunicipiosPorEstado en el controlador.";
+        // $debug_message = "Se ha accedido a la función ListarMunicipiosPorEstado en el controlador.";
 
-        // Imprimir el mensaje en el log de errores del servidor
-        error_log($debug_message);
+        // // Imprimir el mensaje en el log de errores del servidor
+        // error_log($debug_message);
 
         // Obtener el código del estado seleccionado desde la solicitud AJAX
-        $estado_codigo = $_POST['estado_codigo'];
+        $estadoCodigo = $_POST['estadoCodigo'];
 
         // Llamar a la función del modelo para obtener los municipios por estado
         require_once('../../models/municipio_model.php');
-        $result_municipios = MunicipioModel::ListarMunicipiosPorEstado($estado_codigo);
+        $result_municipios = MunicipioModel::ListarMunicipiosPorEstado($estadoCodigo);
 
         // Convertir el resultado a un arreglo asociativo para ser devuelto como JSON
         $municipios = array();
@@ -122,7 +120,12 @@ class MunicipioController
             $municipios[] = $row;
         }
 
+        // Convertir la matriz a un objeto
+        $municipios_objeto = json_decode(json_encode($municipios));
+
         // Devolver la lista de municipios en formato JSON
-        echo json_encode($municipios);
+        //echo json_encode($municipios_objeto);
+        return json_encode($municipios_objeto);
     }
+
 }

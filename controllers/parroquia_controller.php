@@ -76,14 +76,6 @@ class ParroquiaController
         return $result_parroquia;
     }
 
-    static public function ListarMunicipiosByEstado($estado_codigo)
-    {
-        require_once('../../models/municipio_model.php');
-        $result_municipios = MunicipioModel::ListarMunicipiosByEstado($estado_codigo);
-        return $result_municipios;
-    }
-
-
     function UpdateParroquia()
     {
         require_once('../../views/parroquia/update_parroquia.php');
