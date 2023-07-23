@@ -21,7 +21,6 @@ if (isset($_GET['i'])) {
         <div class="container">
             <div class="page-content">
 
-                <hr>
                 <h4>Actualización de Estados</h4>
                 <form action="?controller=Estado&action=UpdateEstado1" method="POST">
                     <div class="col-12">

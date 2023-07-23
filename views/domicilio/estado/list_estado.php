@@ -20,7 +20,7 @@ $numrows = mysqli_num_rows($result_estado);
     <a href="<?php echo $_SERVER['PHP_SELF'] ?>?controller=Estado&action=IngresarEstado" class="btn btn-primary mb-3">Agregar Estado</a>
 
     <div class="table-responsive">
-        <table id="dtBasicExample" data-order='[[ 0, "asc" ]]' data-page-length='10' class="table table-sm table-striped table-hover table-bordered" cellspacing="0" width="100%">
+        <table id="dtBasicExample" data-order='[[ 0, "asc" ]]' data-page-length='5' class="table table-sm table-striped table-hover table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th class="th-sm">Código</th>
