@@ -8,7 +8,7 @@
 }
 
 .main {
-  flex: 1; /* Hace que el .main ocupe todo el espacio vertical disponible */  
+  flex: 1; /* Hace que el .main ocupe todo el espacio vertical disponible */
   position: relative;
   display: flex;
   align-items: center;
@@ -22,14 +22,8 @@
   font-size: 40px;
   text-align: center;
 }
-/* styles.css */
-.page-content {
-  margin-top: 40px; /* Ajusta el valor según el espacio que desees entre el header y el contenido */
-}
 
-.form-group {
-  margin-bottom: 20px; /* Ajusta el valor según el espacio entre los elementos del formulario */
-}
+
 
 .container h4 {
   margin-top: 100px;
@@ -38,3 +32,16 @@
 .container {
   min-height: 100vh;
 }
+/* CSS to make input and textarea elements occupy 100% width */
+
+.alert-success {
+  display: flex;
+  flex-direction: column;
+}
+
+.alert-success input,
+.alert-success textarea,
+.alert-success select {
+  margin-bottom: 10px;
+}
+

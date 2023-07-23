@@ -36,30 +36,26 @@ if (isset($_GET['i'])) {
                     <div class="col-12">
                         <br>
                         <div class="alert alert-success">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="codigo"><b>Municipio:</b></label>
-                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
-                                    <br>
-                                    <label for="descripcion"><b>Nueva Descripción:</b></label>
-                                    <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
-                                    <br>
-                                    <label for="estado_codigo" align="right"><b>Estado:</b></label>
-                                    <select class="form-control" name="estado_codigo" id="estado_codigo" required>
-                                        <?php
-                                        $controller = new MunicipioController();
-                                        $result_estados = $controller->ListarEstados();
+                            <label for="codigo"><b>Municipio:</b></label>
+                            <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
+                            <br>
+                            <label for="descripcion"><b>Nueva Descripción:</b></label>
+                            <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                            <br>
+                            <label for="estado_codigo" align="right"><b>Estado:</b></label>
+                            <select class="form-control" name="estado_codigo" id="estado_codigo" required>
+                                <?php
+                                $controller = new MunicipioController();
+                                $result_estados = $controller->ListarEstados();
 
-                                        while ($row_estado = mysqli_fetch_array($result_estados)) {
-                                            $codigo_estado = $row_estado['codigo'];
-                                            $descripcion_estado = $row_estado['descripcion'];
-                                            echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                    <br>
-                                </div>
-                            </div>
+                                while ($row_estado = mysqli_fetch_array($result_estados)) {
+                                    $codigo_estado = $row_estado['codigo'];
+                                    $descripcion_estado = $row_estado['descripcion'];
+                                    echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
+                                }
+                                ?>
+                            </select>
+                            <br>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
                         </div>
                     </div>

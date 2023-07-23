@@ -69,6 +69,7 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="script_header.js"></script>
     <script src="script_cuadro.js"></script>
+</body>
 
 </body>
 
