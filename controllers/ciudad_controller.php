@@ -7,7 +7,7 @@ class CiudadController
 
     function ListarCiudad()
     {
-        require_once('../../views/ciudad/list_ciudad.php');
+        require_once('../../views/domicilio/ciudad/list_ciudad.php');
     }
 
     static public function ListarCiudad1()
@@ -48,12 +48,12 @@ class CiudadController
     }
     function IngresarCiudad()
     {
-        require_once('../../views/ciudad/insert_ciudad.php');
+        require_once('../../views/domicilio/ciudad/insert_ciudad.php');
     }
 
     function IngresarCiudad1()
     {
-        require_once('../../views/ciudad/insert_ciudad1.php');
+        require_once('../../views/domicilio/ciudad/insert_ciudad1.php');
     }
 
     static public function IngresarCiudad2($codigo, $descripcion, $parroquia_codigo)
@@ -75,12 +75,12 @@ class CiudadController
 
     function UpdateCiudad()
     {
-        require_once('../../views/ciudad/update_ciudad.php');
+        require_once('../../views/domicilio/ciudad/update_ciudad.php');
     }
 
     function UpdateCiudad1()
     {
-        require_once('../../views/ciudad/update_ciudad1.php');
+        require_once('../../views/domicilio/ciudad/update_ciudad1.php');
     }
 
     function UpdateCiudad2($codigo, $descripcion, $parroquia_codigo)
@@ -94,7 +94,7 @@ class CiudadController
 
     function DeleteCiudad()
     {
-        require_once('../../views/ciudad/delete_ciudad.php');
+        require_once('../../views/domicilio/ciudad/delete_ciudad.php');
     }
 
     static public function DeleteCiudad1($codigo)

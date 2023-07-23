@@ -9,7 +9,7 @@ class EstadoController
 
     function ListarEstado()
     {
-        require_once('../../views/estado/list_estado.php');
+        require_once('../../views/domicilio/estado/list_estado.php');
     }
 
     static public function ListarEstado1()
@@ -30,12 +30,12 @@ class EstadoController
 
     function IngresarEstado()
     {
-        require_once('../../views/estado/insert_estado.php');
+        require_once('../../views/domicilio/estado/insert_estado.php');
     }
 
     function IngresarEstado1()
     {
-        require_once('../../views/estado/insert_estado1.php');
+        require_once('../../views/domicilio/estado/insert_estado1.php');
     }
 
     static public function IngresarEstado2($codigo, $descripcion)
@@ -59,12 +59,12 @@ class EstadoController
 
     function UpdateEstado()
     {
-        require_once('../../views/estado/update_estado.php');
+        require_once('../../views/domicilio/estado/update_estado.php');
     }
 
     function UpdateEstado1()
     {
-        require_once('../../views/estado/update_estado1.php');
+        require_once('../../views/domicilio/estado/update_estado1.php');
     }
 
     function UpdateEstado2($codigo, $descripcion)
@@ -78,7 +78,7 @@ class EstadoController
 
     function DeleteEstado()
     {
-        require_once('../../views/estado/delete_estado.php');
+        require_once('../../views/domicilio/estado/delete_estado.php');
     }
 
     static public function DeleteEstado1($codigo)

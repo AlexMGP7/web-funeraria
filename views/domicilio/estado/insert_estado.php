@@ -1,6 +1,4 @@
 <?php
-//if (isset($_SESSION['User']) == 1)
-//{
 require_once('../../controllers/estado_controller.php');
 $controller = new EstadoController();
 $result_estado = $controller->BuscarUltimoEstado();
@@ -38,10 +36,3 @@ $numrows = mysqli_num_rows($result_estado);
     <p> <br> </p>
 
 </div> <!-- 1 -->
-
-<?php
-//}
-// else {
-//    require_once('../revista-cientifica-catedra-digital/views/Estados/insertnot.php');
-// }
-?>

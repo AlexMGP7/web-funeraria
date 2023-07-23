@@ -7,7 +7,7 @@ class ParroquiaController
 
     function ListarParroquia()
     {
-        require_once('../../views/parroquia/list_parroquia.php');
+        require_once('../../views/domicilio/parroquia/list_parroquia.php');
     }
 
     static public function ListarParroquia1()
@@ -51,12 +51,12 @@ class ParroquiaController
 
     function IngresarParroquia()
     {
-        require_once('../../views/parroquia/insert_parroquia.php');
+        require_once('../../views/domicilio/parroquia/insert_parroquia.php');
     }
 
     function IngresarParroquia1()
     {
-        require_once('../../views/parroquia/insert_parroquia1.php');
+        require_once('../../views/domicilio/parroquia/insert_parroquia1.php');
     }
 
     static public function IngresarParroquia2($codigo, $descripcion, $municipio_codigo)
@@ -78,12 +78,12 @@ class ParroquiaController
 
     function UpdateParroquia()
     {
-        require_once('../../views/parroquia/update_parroquia.php');
+        require_once('../../views/domicilio/parroquia/update_parroquia.php');
     }
 
     function UpdateParroquia1()
     {
-        require_once('../../views/parroquia/update_parroquia1.php');
+        require_once('../../views/domicilio/parroquia/update_parroquia1.php');
     }
 
     function UpdateParroquia2($codigo, $descripcion, $municipio_codigo)
@@ -97,7 +97,7 @@ class ParroquiaController
 
     function DeleteParroquia()
     {
-        require_once('../../views/parroquia/delete_parroquia.php');
+        require_once('../../views/domicilio/parroquia/delete_parroquia.php');
     }
 
     static public function DeleteParroquia1($codigo)

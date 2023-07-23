@@ -7,7 +7,7 @@ class MunicipioController
 
     function ListarMunicipio()
     {
-        require_once('../../views/municipio/list_municipio.php');
+        require_once('../../views/domicilio/municipio/list_municipio.php');
     }
 
     static public function ListarMunicipio1()
@@ -35,12 +35,12 @@ class MunicipioController
 
     function IngresarMunicipio()
     {
-        require_once('../../views/municipio/insert_municipio.php');
+        require_once('../../views/domicilio/municipio/insert_municipio.php');
     }
 
     function IngresarMunicipio1()
     {
-        require_once('../../views/municipio/insert_municipio1.php');
+        require_once('../../views/domicilio/municipio/insert_municipio1.php');
     }
 
     static public function IngresarMunicipio2($codigo, $descripcion, $codigoEstado)
@@ -62,12 +62,12 @@ class MunicipioController
 
     function UpdateMunicipio()
     {
-        require_once('../../views/municipio/update_municipio.php');
+        require_once('../../views/domicilio/municipio/update_municipio.php');
     }
 
     function UpdateMunicipio1()
     {
-        require_once('../../views/municipio/update_municipio1.php');
+        require_once('../../views/domicilio/municipio/update_municipio1.php');
     }
 
     function UpdateMunicipio2($codigo, $descripcion, $codigoEstado)
@@ -81,7 +81,7 @@ class MunicipioController
 
     function DeleteMunicipio()
     {
-        require_once('../../views/municipio/delete_municipio.php');
+        require_once('../../views/domicilio/municipio/delete_municipio.php');
     }
 
     static public function DeleteMunicipio1($codigo)

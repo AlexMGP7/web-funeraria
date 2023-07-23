@@ -1,18 +1,24 @@
 <?php
 if (isset($_GET['i'])) {
     $codigo = $_GET['i'];
-    require_once('../../controllers/parroquia_controller.php');
-    $controller = new ParroquiaController();
-    $result_parroquia = $controller->BuscarParroquiaByCodigo($codigo);
-    $numrows = mysqli_num_rows($result_parroquia);
+    require_once('../../controllers/ciudad_controller.php');
+    $controller = new CiudadController();
+    $result_ciudad = $controller->BuscarCiudadByCodigo($codigo);
+    $numrows = mysqli_num_rows($result_ciudad);
 
     if ($numrows != 0) {
-        while ($row = mysqli_fetch_array($result_parroquia)) {
+        while ($row = mysqli_fetch_array($result_ciudad)) {
             if (isset($row["codigo"])) {
-                $parroquia_codigo = $row["codigo"];
+                $ciudad_codigo = $row["codigo"];
+            }
+            if (isset($row["ciudad_descripcion"])) {
+                $descripcion = $row["ciudad_descripcion"];
+            }
+            if (isset($row["parroquia_codigo"])) {
+                $parroquia_codigo = $row["parroquia_codigo"];
             }
             if (isset($row["parroquia_descripcion"])) {
-                $descripcion = $row["parroquia_descripcion"];
+                $parroquia_descripcion = $row["parroquia_descripcion"];
             }
             if (isset($row["municipio_codigo"])) {
                 $municipio_codigo = $row["municipio_codigo"];
@@ -32,24 +38,27 @@ if (isset($_GET['i'])) {
             <div class="page-content">
 
                 <hr>
-                <h4>Actualización de Parroquia</h4>
-                <form action="?controller=Parroquia&action=UpdateParroquia1" method="POST">
+                <h4>Actualización de Ciudad</h4>
+                <form action="?controller=Ciudad&action=UpdateCiudad1" method="POST">
                     <div class="col-12">
                         <br>
                         <div class="alert alert-success">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="codigo"><b>Código de la Parroquia:</b></label>
-                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo . ' - ' . $descripcion; ?>" readonly>
+                                    <label for="codigo"><b>Código de la Ciudad:</b></label>
+                                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                                     <br>
                                     <label for="descripcion"><b>Nueva Descripción:</b></label>
                                     <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
                                     <br>
+                                    <label for="parroquia_codigo"><b>Código de la Parroquia:</b></label>
+                                    <input class="form-control" type="text" name="parroquia_codigo" value="<?php echo $parroquia_codigo; ?>" readonly>
+                                    <br>
                                     <label for="municipio_codigo"><b>Código del Municipio:</b></label>
-                                    <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo . ' - ' . $municipio_descripcion; ?>" readonly>
+                                    <input class="form-control" type="text" name="municipio_codigo" value="<?php echo $municipio_codigo; ?>" readonly>
                                     <br>
                                     <label for="estado_codigo"><b>Código del Estado:</b></label>
-                                    <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo . ' - ' . $estado_descripcion; ?>" readonly>
+                                    <input class="form-control" type="text" name="estado_codigo" value="<?php echo $estado_codigo; ?>" readonly>
                                     <br>
                                 </div>
                             </div>
@@ -61,9 +70,9 @@ if (isset($_GET['i'])) {
         </div>
 <?php
     } else {
-        require_once('../../views/parroquia/list_parroquia.php');
+        require_once('../../views/domicilio/parroquia/list_parroquia.php');
     }
 } else {
-    require_once('../../views/parroquia/list_parroquia.php');
+    require_once('../../views/domicilio/parroquia/list_parroquia.php');
 }
 ?>
