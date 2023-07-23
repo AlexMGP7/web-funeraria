@@ -23,8 +23,6 @@
   text-align: center;
 }
 
-
-
 .container h4 {
   margin-top: 100px;
 }
@@ -34,7 +32,7 @@
 }
 /* CSS to make input and textarea elements occupy 100% width */
 
-.alert-success {
+.col-12 .alert-success {
   display: flex;
   flex-direction: column;
 }
@@ -43,5 +41,32 @@
 .alert-success textarea,
 .alert-success select {
   margin-bottom: 10px;
+}
+
+.fixed-alert {
+  margin-top: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+/* Estilos adicionales para el mensaje de alert */
+.alert {
+  border-radius: 0; /* Borra las esquinas redondeadas de Bootstrap */
+  margin-bottom: 0; /* Evita el margen inferior adicional */
+}
+
+/* Estilos para el botón "Cerrar" del mensaje */
+.close {
+  padding: 0; /* Elimina el relleno del botón */
+  font-size: 1.5rem; /* Ajusta el tamaño del botón */
+  opacity: 0.8; /* Reduce la opacidad del botón */
+  transition: opacity 0.2s ease; /* Agrega una transición suave en la opacidad */
+}
+
+.close:hover {
+  opacity: 1; /* Restaura la opacidad completa al pasar el cursor sobre el botón */
 }
 

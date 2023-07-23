@@ -7,7 +7,7 @@ if (isset($_GET['i'])) {
     $controller = new MunicipioController();
 
     try {
-        $result_municipio = $controller->DeleteMunicipio1($codigo);
+        $controller->DeleteMunicipio1($codigo);
         $_SESSION['mensaje'] = "El municipio se ha eliminado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
     } catch (Exception $e) {

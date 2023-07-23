@@ -36,11 +36,13 @@
         unset($_SESSION['mensaje_tipo']);
     ?>
 
-        <div class="alert alert-<?php echo $mensaje_tipo; ?>">
-            <?php echo $mensaje; ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="fixed-alert">
+            <div class="alert alert-<?php echo $mensaje_tipo; ?>">
+                <?php echo $mensaje; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
 
     <?php

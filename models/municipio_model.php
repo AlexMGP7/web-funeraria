@@ -142,18 +142,4 @@ class MunicipioModel
         return false;
     }
 
-    public static function ListarMunicipiosPorEstado($estadoCodigo)
-    {
-        // Modify the SQL query to filter by estado_codigo
-        $sql_municipios = "SELECT m.codigo, m.descripcion AS municipio_descripcion,
-                             e.codigo AS estado_codigo, e.descripcion AS estado_descripcion
-                      FROM municipio AS m
-                      INNER JOIN estado AS e ON m.Estado_codigo = e.Codigo
-                      WHERE e.codigo = $estadoCodigo";
-
-        $result_municipios = MunicipioModel::Get_Data($sql_municipios);
-        // var_dump($result_municipios);
-        // echo ("soy el modelo");
-        return $result_municipios;
-    }
 }

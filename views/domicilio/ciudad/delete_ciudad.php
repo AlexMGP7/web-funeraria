@@ -6,7 +6,7 @@ require_once('../../controllers/ciudad_controller.php');
 $controller = new CiudadController();
 
 try {
-    $result_ciudad = $controller->DeleteCiudad1($codigo);
+    $controller->DeleteCiudad1($codigo);
     $_SESSION['mensaje'] = "La ciudad se ha eliminado correctamente.";
     $_SESSION['mensaje_tipo'] = "success";
 } catch (Exception $e) {

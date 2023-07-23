@@ -20,8 +20,6 @@ class EstadoModel
         return $result;
     }
 
-
-
     public static function Update_Data($sql)
     {
         include_once('../../core/conectar.php');
@@ -47,9 +45,7 @@ class EstadoModel
         return $result;
     }
 
-
     // para el resto de las operaciones
-
 
     public static function ListarEstado()
     {

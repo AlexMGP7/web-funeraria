@@ -6,7 +6,7 @@ if (isset($_GET['i'])) {
     $controller = new EstadoController();
 
     try {
-        $result_estado = $controller->DeleteEstado1($codigo);
+        $controller->DeleteEstado1($codigo);
         $_SESSION['mensaje'] = "El estado ha sido eliminado de la base de datos de forma satisfactoria.";
         $_SESSION['mensaje_tipo'] = "success";
     } catch (Exception $e) {
