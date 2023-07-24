@@ -104,9 +104,9 @@ tr:hover td{
 
 /* Cambiar el color del texto en el botón cuando se le da clic (opcional) */
 .custom-btn:focus, .custom-btn:hover {
-  color: #302727; /* Color del texto cuando se le da clic o se pasa el cursor */
-  background-color: rgb(89, 185, 185);
-}
+  /* color: #302727; Color del texto cuando se le da clic o se pasa el cursor */
+  background-color: rgb(19, 82, 82);
+} 
 
 /* Cambiar el color del borde cuando se le da clic (opcional) */
 .custom-btn:focus, .custom-btn:hover {

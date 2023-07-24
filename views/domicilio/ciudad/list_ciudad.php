@@ -8,7 +8,7 @@ $numrows = mysqli_num_rows($result_ciudad);
 <div class="container">
 
     <br> <br>
-    <h4>Listado de Ciudades registradas en el Sistema</h4>
+    <h4>Listado de Ciudades registradas en el Sistema de Polizas Funerarias</h4>
     <br> <br>
 
     <!-- Botón Agregar -->
