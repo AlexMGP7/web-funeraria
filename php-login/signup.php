@@ -1,6 +1,6 @@
 <?php
 
-require '../../config/database.php';
+require '../config/database.php';
 
 $message = '';
 
@@ -23,7 +23,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>SignUp</title>
+    <title>Registrar Usuario</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -36,13 +36,15 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         <p> <?= $message ?></p>
     <?php endif; ?>
 
-    <h1>SignUp</h1>
-    <span>or <a href="login.php">Login</a></span>
+    <h1>Registrarse</h1>
+    <span> <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a></span> /<span> </span> <span><a href="login.php">Iniciar Sesión</a></span>
 
     <form action="signup.php" method="POST">
-        <input name="email" type="text" placeholder="Enter your email">
-        <input name="password" type="password" placeholder="Enter your Password">
-        <input name="confirm_password" type="password" placeholder="Confirm Password">
+        <input name="id" type="text" placeholder="Ingresa la cedula existente">
+        <input name="id" type="text" placeholder="Ingresa tu numero de identificacion">
+        <input name="id" type="text" placeholder="Ingresa tu username">
+        <input name="password" type="password" placeholder="Ingresa tu contraseña">
+        <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
         <input type="submit" value="Submit">
     </form>
 

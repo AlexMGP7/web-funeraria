@@ -3,7 +3,7 @@
 
     <div class="menu-content">
         <ul class="menu-items">
-            <div class="menu-title">Maestro</div>
+            <div class="menu-title">>Maestro<</div>
 
             <!-- <li class="item">
                 <a href="../../index.php">Inicio</a>
@@ -85,7 +85,7 @@
                 </ul>
             </li>
 
-            <div class="menu-title">Seguridad</div>
+            <div class="menu-title">>Seguridad<</div>
 
             <li class="item">
                 <a href="#">Usuarios</a>

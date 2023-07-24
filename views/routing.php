@@ -3,7 +3,8 @@ $controllers = array(
     'Estado' => ['ListarEstado', 'IngresarEstado', 'IngresarEstado1', 'UpdateEstado', 'UpdateEstado1', 'DeleteEstado'],
     'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'IngresarMunicipio1', 'UpdateMunicipio', 'UpdateMunicipio1', 'DeleteMunicipio'],
     'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'IngresarParroquia1', 'UpdateParroquia', 'UpdateParroquia1', 'DeleteParroquia'],
-    'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'IngresarCiudad1', 'UpdateCiudad', 'UpdateCiudad1', 'DeleteCiudad']
+    'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'IngresarCiudad1', 'UpdateCiudad', 'UpdateCiudad1', 'DeleteCiudad'],
+    'Persona' => ['ListarPersona', 'IngresarPersona', 'IngresarPersona1', 'UpdatePersona', 'UpdatePersona1', 'DeletePersona']
     // Agrega más controladores y acciones según sea necesario
 );
 
@@ -139,10 +140,31 @@ function call($controller, $action)
                     $ciudadController->ListarCiudad();
                     break;
             }
-            break;
-            // Agregar más casos según los controladores que se necesiten
+        case 'Persona':
+            $personaController = new PersonaController();
+
+            switch ($action) {
+                case 'ListarPersona':
+                    $personaController->ListarPersona();
+                    break;
+                case 'IngresarPersona':
+                    $personaController->IngresarPersona();
+                    break;
+                case 'IngresarPersona1':
+                    $personaController->IngresarPersona1();
+                    break;
+                case 'UpdatePersona':
+                    $personaController->UpdatePersona();
+                    break;
+                case 'DeletePersona':
+                    $personaController->DeletePersona();
+                    break;
+                default:
+                    $personaController->ListarPersona();
+                    break;
+            }
         default:
-            call('Estado', 'ListarEstado');
+            $personaController->IngresarPersona();
             break;
     }
 }
