@@ -9,44 +9,42 @@ $numrows = mysqli_num_rows($result_ciudad);
 <div class="container">
     <div class="page-content">
         <form action="?controller=Ciudad&action=IngresarCiudad1" method="POST">
-            <div class="col-12">
+            <br>
+            <h4>Ingreso de Ciudades</h4>
+            <br>
+            <div class="alert alert-success">
+                <label for="codigo_ciudad" align="right" size="40"><b>Ciudad:</b></label>
+                <input class="form-control mr-sm-2" type="text" name="codigo_ciudad" id="codigo_ciudad" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aqui el código de la ciudad" />
+                <span class="text-black">Solo se permiten números.</span>
                 <br>
-                <h4>Ingreso de Ciudades</h4>
+                <label for="descripcion" align="right"><b>Descripción:</b></label>
+                <textarea class="form-control" maxlength="200" placeholder="Ingrese aquí la descripción de la ciudad" id="descripcion" name="descripcion" rows="4" required></textarea>
                 <br>
-                <div class="alert alert-success">
-                    <label for="codigo_ciudad" align="right" size="40"><b>Ciudad:</b></label>
-                    <input class="form-control mr-sm-2" type="text" name="codigo_ciudad" id="codigo_ciudad" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aqui el código de la ciudad" />
-                    <span class="text-black">Solo se permiten números.</span>
-                    <br>
-                    <label for="descripcion" align="right"><b>Descripción:</b></label>
-                    <textarea class="form-control" maxlength="200" placeholder="Ingrese aquí la descripción de la ciudad" id="descripcion" name="descripcion" rows="4" required></textarea>
-                    <br>
-                    <label for="estado_codigo" align="right"><b>Estado:</b></label>
-                    <select class="form-control" name="estado_codigo" id="estado_codigo" required>
-                        <?php
-                        $controller = new CiudadController();
-                        $result_estados = $controller->ListarEstados();
+                <label for="estado_codigo" align="right"><b>Estado:</b></label>
+                <select class="form-control" name="estado_codigo" id="estado_codigo" required>
+                    <?php
+                    $controller = new CiudadController();
+                    $result_estados = $controller->ListarEstados();
 
-                        while ($row_estado = mysqli_fetch_array($result_estados)) {
-                            $codigo_estado = $row_estado['codigo'];
-                            $descripcion_estado = $row_estado['descripcion'];
-                            echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
-                        }
-                        ?>
-                    </select>
-                    <br>
-                    <label for="municipio_codigo" align="right"><b>Municipio:</b></label>
-                    <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
-                        <option value="">Seleccione un Municipio</option>
-                    </select>
-                    <br>
-                    <label for="parroquia_codigo" align="right"><b>Parroquia:</b></label>
-                    <select class="form-control" id="parroquia_codigo" name="parroquia_codigo" required>
-                        <option value="">Seleccione una Parroquia</option>
-                    </select>
-                    <br>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
-                </div>
+                    while ($row_estado = mysqli_fetch_array($result_estados)) {
+                        $codigo_estado = $row_estado['codigo'];
+                        $descripcion_estado = $row_estado['descripcion'];
+                        echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
+                    }
+                    ?>
+                </select>
+                <br>
+                <label for="municipio_codigo" align="right"><b>Municipio:</b></label>
+                <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
+                    <option value="">Seleccione un Municipio</option>
+                </select>
+                <br>
+                <label for="parroquia_codigo" align="right"><b>Parroquia:</b></label>
+                <select class="form-control" id="parroquia_codigo" name="parroquia_codigo" required>
+                    <option value="">Seleccione una Parroquia</option>
+                </select>
+                <br>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
             </div>
         </form>
     </div>

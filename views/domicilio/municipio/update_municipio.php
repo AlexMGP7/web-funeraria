@@ -1,8 +1,5 @@
 <?php
 if (isset($_GET['i'])) {
-    $estado_codigo = "err000";
-    $estado_descripcion = "err000";
-    $descripcion = 'err000';
     $codigo = $_GET['i'];
     require_once('../../controllers/municipio_controller.php');
     $controller = new MunicipioController();
@@ -30,38 +27,44 @@ if (isset($_GET['i'])) {
 ?>
         <div class="container">
             <div class="page-content">
-
                 <h4>Actualización de Municipio</h4>
                 <form action="?controller=Municipio&action=UpdateMunicipio1" method="POST">
-                    <div class="col-12">
+                    <br>
+                    <div class="alert alert-success">
+                        <label for="codigo"><b>Municipio:</b></label>
+                        <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                         <br>
-                        <div class="alert alert-success">
-                            <label for="codigo"><b>Municipio:</b></label>
-                            <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
-                            <br>
-                            <label for="descripcion"><b>Nueva Descripción:</b></label>
-                            <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
-                            <br>
-                            <label for="estado_codigo" align="right"><b>Estado:</b></label>
-                            <select class="form-control" name="estado_codigo" id="estado_codigo" required>
-                                <?php
-                                $controller = new MunicipioController();
-                                $result_estados = $controller->ListarEstados();
+                        <label for="descripcion"><b>Nueva Descripción:</b></label>
+                        <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                        <br>
+                        <label for="estado_codigo" align="right"><b>Estado:</b></label>
+                        <select class="form-control" name="estado_codigo" id="estado_codigo" required>
+                            <?php
+                            $controller = new MunicipioController();
+                            $result_estados = $controller->ListarEstados();
 
-                                while ($row_estado = mysqli_fetch_array($result_estados)) {
-                                    $codigo_estado = $row_estado['codigo'];
-                                    $descripcion_estado = $row_estado['descripcion'];
-                                    echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
-                                }
-                                ?>
-                            </select>
-                            <br>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
-                        </div>
+                            while ($row_estado = mysqli_fetch_array($result_estados)) {
+                                $codigo_estado = $row_estado['codigo'];
+                                $descripcion_estado = $row_estado['descripcion'];
+                                echo "<option value='$codigo_estado'>$codigo_estado - $descripcion_estado</option>";
+                            }
+                            ?>
+                        </select>
+                        <br>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
                     </div>
                 </form>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                // Pre-select the previous estado_codigo value
+                var prevEstadoCodigo = '<?php echo $estado_codigo; ?>';
+                if (prevEstadoCodigo !== '') {
+                    $('#estado_codigo').val(prevEstadoCodigo);
+                }
+            });
+        </script>
 <?php
     } else {
         require_once('../../views/domicilio/municipio/list_municipio.php');

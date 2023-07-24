@@ -32,9 +32,24 @@
 }
 /* CSS to make input and textarea elements occupy 100% width */
 
-.col-12 .alert-success {
+.main .alert-success {
   display: flex;
   flex-direction: column;
+}
+
+.main .alert.alert-success {
+  display: flex; /* Utilizamos flexbox para organizar los elementos internos */
+  flex-direction: column; /* Alinear los elementos en columna */
+}
+
+.main .button-container {
+  flex: 1; /* Hace que el contenedor del botón ocupe todo el espacio disponible */
+  display: flex; /* Para alinear el botón en el centro horizontal */
+  justify-content: center; /* Alinea el botón en el centro horizontal */
+}
+
+.main .button-container button {
+  margin-top: 10px;
 }
 
 .alert-success input,
