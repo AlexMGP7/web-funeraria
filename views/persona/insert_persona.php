@@ -23,8 +23,18 @@ $numrows = mysqli_num_rows($result_persona);
                 <input class="form-control mr-sm-2" type="text" name="apellido" id="apellido" maxlength="50" required placeholder="Ingrese aquí el apellido de la Persona" />
                 <br>
                 <label for="ciudad_codigo" align="right"><b>Ciudad Código:</b></label>
-                <input class="form-control mr-sm-2" type="text" name="ciudad_codigo" id="ciudad_codigo" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aquí el código de la Ciudad" />
-                <span class="text-black">Solo se permiten números.</span>
+                <select class="form-control" name="ciudad_codigo" id="ciudad_codigo" required>
+                    <?php
+                    $controller = new PersonaController();
+                    $result_ciudad = $controller->ListarCiudades();
+
+                    while ($row_ciudad = mysqli_fetch_array($result_ciudad)) {
+                        $codigo_ciudad = $row_ciudad['codigo'];
+                        $descripcion_ciudad = $row_ciudad['descripcion'];
+                        echo "<option value='$codigo_ciudad'>$codigo_ciudad - $descripcion_ciudad</option>";
+                    }
+                    ?>
+                </select>
                 <br>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
             </div>

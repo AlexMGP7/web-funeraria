@@ -12,6 +12,13 @@ class PersonaController
         require_once('../../views/persona/list_persona.php');
     }
 
+    static public function ListarCiudades()
+    {
+        require_once('../../models/ciudad_model.php');
+        $result_estados = CiudadModel::ListarCiudad();
+        return $result_estados;
+    }
+
     static public function ListarPersona1()
     {
         require_once('../../models/persona_model.php');
