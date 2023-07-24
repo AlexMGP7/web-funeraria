@@ -12,7 +12,7 @@ $numrows = mysqli_num_rows($result_parroquia);
     <br> <br>
 
     <!-- Botón Agregar -->
-    <a href="<?php echo $_SERVER['PHP_SELF'] ?>?controller=Parroquia&action=IngresarParroquia" class="btn btn-primary mb-3">Agregar Parroquia</a>
+    <a href="<?php echo $_SERVER['PHP_SELF'] ?>?controller=Parroquia&action=IngresarParroquia" class="btn btn-primary custom-btn">Agregar Parroquia</a>
 
     <div class="table-responsive">
         <table id="dtBasicExample" data-order='[[ 0, "asc" ]]' data-page-length='10' class="table table-sm table-striped table-hover table-bordered" cellspacing="0" width="100%">
