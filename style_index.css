@@ -6,7 +6,7 @@ body, h1, p, a {
   
   body {
     font-family: 'Roboto', sans-serif;
-    background: url(../imagenes/login.jpeg) no-repeat center center fixed;
+    background: url(imagenes/login.jpeg) no-repeat center center fixed;
     background-size: cover;
   }
   

@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+}
+
 require_once('../../controllers/parroquia_controller.php');
 $controller = new ParroquiaController();
 $result_parroquia = $controller->ListarParroquia1();

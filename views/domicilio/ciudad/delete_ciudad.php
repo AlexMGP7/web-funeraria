@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+}
+
 $codigo = $_GET['i'];
 
 require_once('../../controllers/ciudad_controller.php');

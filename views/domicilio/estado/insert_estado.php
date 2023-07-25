@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+}
+
 require_once('../../controllers/estado_controller.php');
 $controller = new EstadoController();
 $result_estado = $controller->BuscarUltimoEstado();

@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+}
+
 require_once('../../controllers/municipio_controller.php');
 $controller = new MunicipioController();
 $result_municipio = $controller->ListarMunicipio1();

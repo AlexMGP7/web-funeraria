@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+}
+
 $codigo = $_POST['codigo'];
 $descripcion = $_POST['descripcion'];
 $parroquia_codigo = $_POST['parroquia_codigo'];
