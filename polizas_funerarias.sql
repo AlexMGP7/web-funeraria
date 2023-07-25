@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-07-2023 a las 03:16:19
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 25-07-2023 a las 09:51:30
+-- Versión del servidor: 5.7.36
+-- Versión de PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cementerio`
 --
 
-CREATE TABLE `cementerio` (
+DROP TABLE IF EXISTS `cementerio`;
+CREATE TABLE IF NOT EXISTS `cementerio` (
   `Tipo` varchar(45) NOT NULL,
-  `Rif` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Rif` int(11) NOT NULL,
+  PRIMARY KEY (`Rif`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38,18 +40,22 @@ CREATE TABLE `cementerio` (
 -- Estructura de tabla para la tabla `ciudad`
 --
 
-CREATE TABLE `ciudad` (
+DROP TABLE IF EXISTS `ciudad`;
+CREATE TABLE IF NOT EXISTS `ciudad` (
   `Codigo` int(11) NOT NULL,
   `Descripcion` varchar(45) NOT NULL,
-  `Parroquia_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Parroquia_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Codigo`,`Parroquia_Codigo`),
+  KEY `fk_Ciudad_Parroquia1` (`Parroquia_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ciudad`
 --
 
 INSERT INTO `ciudad` (`Codigo`, `Descripcion`, `Parroquia_Codigo`) VALUES
-(222, 'nuevaciudad', 111);
+(23131, 'dsfdfsdf', 1122),
+(43254, 'mod1', 1122);
 
 -- --------------------------------------------------------
 
@@ -57,14 +63,16 @@ INSERT INTO `ciudad` (`Codigo`, `Descripcion`, `Parroquia_Codigo`) VALUES
 -- Estructura de tabla para la tabla `difunto`
 --
 
-CREATE TABLE `difunto` (
+DROP TABLE IF EXISTS `difunto`;
+CREATE TABLE IF NOT EXISTS `difunto` (
   `Codigo` int(11) NOT NULL,
   `Fecha de N.` datetime NOT NULL,
   `Fecha de D.` datetime NOT NULL,
   `Partida de N.` varchar(45) DEFAULT NULL,
   `Causa de M.` varchar(45) NOT NULL,
-  `cedula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `cedula` int(11) NOT NULL,
+  PRIMARY KEY (`cedula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -72,18 +80,28 @@ CREATE TABLE `difunto` (
 -- Estructura de tabla para la tabla `estado`
 --
 
-CREATE TABLE `estado` (
+DROP TABLE IF EXISTS `estado`;
+CREATE TABLE IF NOT EXISTS `estado` (
   `Codigo` int(11) NOT NULL,
-  `Descripcion` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `estado`
 --
 
 INSERT INTO `estado` (`Codigo`, `Descripcion`) VALUES
-(5206, 'prueba1'),
-(6301, 'Nueva Esparta');
+(1111, 'erwer'),
+(3231, 'dsfrf'),
+(4323, 'rgrg'),
+(5206, 'aaaaaaaaaaa'),
+(5546, '44fd'),
+(6301, 'Nueva Esparta'),
+(9802, 'Sofi'),
+(12312, 'fadsfas'),
+(22321, 'aaaa'),
+(23123, 'sfsdf');
 
 -- --------------------------------------------------------
 
@@ -91,12 +109,15 @@ INSERT INTO `estado` (`Codigo`, `Descripcion`) VALUES
 -- Estructura de tabla para la tabla `factura_anual`
 --
 
-CREATE TABLE `factura_anual` (
+DROP TABLE IF EXISTS `factura_anual`;
+CREATE TABLE IF NOT EXISTS `factura_anual` (
   `Numero` int(11) NOT NULL,
   `Fecha` datetime NOT NULL,
   `Monto` varchar(45) NOT NULL,
-  `Polizas_De_Seguro_Numero` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Polizas_De_Seguro_Numero` int(11) NOT NULL,
+  PRIMARY KEY (`Numero`),
+  KEY `fk_Factura_Anual_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -104,10 +125,12 @@ CREATE TABLE `factura_anual` (
 -- Estructura de tabla para la tabla `funeraria`
 --
 
-CREATE TABLE `funeraria` (
+DROP TABLE IF EXISTS `funeraria`;
+CREATE TABLE IF NOT EXISTS `funeraria` (
   `Tipo` varchar(45) NOT NULL,
-  `Rif` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Rif` int(11) NOT NULL,
+  PRIMARY KEY (`Rif`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -115,10 +138,13 @@ CREATE TABLE `funeraria` (
 -- Estructura de tabla para la tabla `funeraria_has_servicios_prestados`
 --
 
-CREATE TABLE `funeraria_has_servicios_prestados` (
+DROP TABLE IF EXISTS `funeraria_has_servicios_prestados`;
+CREATE TABLE IF NOT EXISTS `funeraria_has_servicios_prestados` (
   `Funeraria_Rif` int(11) NOT NULL,
-  `Servicios_Prestados_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Servicios_Prestados_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Funeraria_Rif`,`Servicios_Prestados_Codigo`),
+  KEY `fk_Funeraria_has_Servicios_Prestados_Servicios_Prestados1` (`Servicios_Prestados_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -126,20 +152,23 @@ CREATE TABLE `funeraria_has_servicios_prestados` (
 -- Estructura de tabla para la tabla `municipio`
 --
 
-CREATE TABLE `municipio` (
+DROP TABLE IF EXISTS `municipio`;
+CREATE TABLE IF NOT EXISTS `municipio` (
   `Codigo` int(11) NOT NULL,
   `Descripcion` varchar(45) NOT NULL,
-  `Estado_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Estado_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Codigo`),
+  KEY `fk_Municipio_Estado1` (`Estado_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `municipio`
 --
 
 INSERT INTO `municipio` (`Codigo`, `Descripcion`, `Estado_Codigo`) VALUES
-(123, 'dffdsf', 5206),
-(132, 'maneiro', 5206),
-(321, 'maneiro', 6301);
+(321, 'maneiro', 6301),
+(3213, 'siuuuuuuuuuuuuu', 9802),
+(3233, 'eeee', 1111);
 
 -- --------------------------------------------------------
 
@@ -147,12 +176,15 @@ INSERT INTO `municipio` (`Codigo`, `Descripcion`, `Estado_Codigo`) VALUES
 -- Estructura de tabla para la tabla `pagos_mensuales`
 --
 
-CREATE TABLE `pagos_mensuales` (
+DROP TABLE IF EXISTS `pagos_mensuales`;
+CREATE TABLE IF NOT EXISTS `pagos_mensuales` (
   `Numero` int(11) NOT NULL,
   `Fecha` datetime NOT NULL,
   `Monto` varchar(45) NOT NULL,
-  `Polizas_De_Seguro_Numero` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Polizas_De_Seguro_Numero` int(11) NOT NULL,
+  PRIMARY KEY (`Numero`),
+  KEY `fk_Pagos_Mensuales_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -160,18 +192,20 @@ CREATE TABLE `pagos_mensuales` (
 -- Estructura de tabla para la tabla `parroquia`
 --
 
-CREATE TABLE `parroquia` (
+DROP TABLE IF EXISTS `parroquia`;
+CREATE TABLE IF NOT EXISTS `parroquia` (
   `Codigo` int(11) NOT NULL,
   `Descripcion` varchar(45) NOT NULL,
-  `Municipio_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Municipio_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Codigo`,`Municipio_Codigo`),
+  KEY `fk_Parroquia_Municipio1` (`Municipio_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parroquia`
 --
 
 INSERT INTO `parroquia` (`Codigo`, `Descripcion`, `Municipio_Codigo`) VALUES
-(111, 'nueva', 132),
 (1122, 'wwww', 321);
 
 -- --------------------------------------------------------
@@ -180,12 +214,24 @@ INSERT INTO `parroquia` (`Codigo`, `Descripcion`, `Municipio_Codigo`) VALUES
 -- Estructura de tabla para la tabla `persona`
 --
 
-CREATE TABLE `persona` (
+DROP TABLE IF EXISTS `persona`;
+CREATE TABLE IF NOT EXISTS `persona` (
   `cedula` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `Apellido` varchar(45) NOT NULL,
-  `Ciudad_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Ciudad_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`cedula`),
+  KEY `fk_Persona_Ciudad1` (`Ciudad_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`cedula`, `nombre`, `Apellido`, `Ciudad_Codigo`) VALUES
+(3213213, 'dsds', 'dfdg', 23131),
+(30230460, 'Alexander', 'Gonzalez', 43254),
+(30911147, 'Andres', 'Hermoso', 43254);
 
 -- --------------------------------------------------------
 
@@ -193,11 +239,14 @@ CREATE TABLE `persona` (
 -- Estructura de tabla para la tabla `persona_juridica`
 --
 
-CREATE TABLE `persona_juridica` (
+DROP TABLE IF EXISTS `persona_juridica`;
+CREATE TABLE IF NOT EXISTS `persona_juridica` (
   `Rif` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
-  `Ciudad_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Ciudad_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Rif`),
+  KEY `fk_Persona_Juridica_Ciudad1` (`Ciudad_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -205,11 +254,13 @@ CREATE TABLE `persona_juridica` (
 -- Estructura de tabla para la tabla `persona_natural`
 --
 
-CREATE TABLE `persona_natural` (
+DROP TABLE IF EXISTS `persona_natural`;
+CREATE TABLE IF NOT EXISTS `persona_natural` (
   `Telefono` int(11) NOT NULL,
   `Correo` varchar(45) NOT NULL,
-  `cedula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `cedula` int(11) NOT NULL,
+  PRIMARY KEY (`cedula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -217,7 +268,8 @@ CREATE TABLE `persona_natural` (
 -- Estructura de tabla para la tabla `polizas_de_seguro`
 --
 
-CREATE TABLE `polizas_de_seguro` (
+DROP TABLE IF EXISTS `polizas_de_seguro`;
+CREATE TABLE IF NOT EXISTS `polizas_de_seguro` (
   `Numero` int(11) NOT NULL,
   `Fecha de Apertura` datetime NOT NULL,
   `Fecha de Cierre` datetime NOT NULL,
@@ -229,8 +281,14 @@ CREATE TABLE `polizas_de_seguro` (
   `Persona_Natural_cedula` int(11) NOT NULL,
   `Usuario_cedula` int(11) NOT NULL,
   `Responsable_Juridico_Rif` int(11) NOT NULL,
-  `Cementerio_Rif` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Cementerio_Rif` int(11) NOT NULL,
+  PRIMARY KEY (`Numero`),
+  KEY `fk_Polizas_De_Seguro_Difunto1` (`Difunto_cedula`),
+  KEY `fk_Polizas_De_Seguro_Persona_Natural1` (`Persona_Natural_cedula`),
+  KEY `fk_Polizas_De_Seguro_Usuario1` (`Usuario_cedula`),
+  KEY `fk_Polizas_De_Seguro_Responsable_Juridico1` (`Responsable_Juridico_Rif`),
+  KEY `fk_Polizas_De_Seguro_Cementerio1` (`Cementerio_Rif`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -238,10 +296,13 @@ CREATE TABLE `polizas_de_seguro` (
 -- Estructura de tabla para la tabla `polizas_de_seguro_has_servicios_prestados`
 --
 
-CREATE TABLE `polizas_de_seguro_has_servicios_prestados` (
+DROP TABLE IF EXISTS `polizas_de_seguro_has_servicios_prestados`;
+CREATE TABLE IF NOT EXISTS `polizas_de_seguro_has_servicios_prestados` (
   `Polizas_De_Seguro_Numero` int(11) NOT NULL,
-  `Servicios_Prestados_Codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Servicios_Prestados_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Polizas_De_Seguro_Numero`,`Servicios_Prestados_Codigo`),
+  KEY `fk_Polizas_De_Seguro_has_Servicios_Prestados_Servicios_Presta1` (`Servicios_Prestados_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -249,12 +310,14 @@ CREATE TABLE `polizas_de_seguro_has_servicios_prestados` (
 -- Estructura de tabla para la tabla `responsable_juridico`
 --
 
-CREATE TABLE `responsable_juridico` (
+DROP TABLE IF EXISTS `responsable_juridico`;
+CREATE TABLE IF NOT EXISTS `responsable_juridico` (
   `Correo` varchar(45) NOT NULL,
   `Telefono` int(11) NOT NULL,
   `Razon S.` varchar(45) NOT NULL,
-  `Rif` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Rif` int(11) NOT NULL,
+  PRIMARY KEY (`Rif`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -262,11 +325,13 @@ CREATE TABLE `responsable_juridico` (
 -- Estructura de tabla para la tabla `servicios_prestados`
 --
 
-CREATE TABLE `servicios_prestados` (
+DROP TABLE IF EXISTS `servicios_prestados`;
+CREATE TABLE IF NOT EXISTS `servicios_prestados` (
   `Codigo` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
-  `Tipo` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Tipo` varchar(45) NOT NULL,
+  PRIMARY KEY (`Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -274,139 +339,24 @@ CREATE TABLE `servicios_prestados` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
-  `N. Identificacion` int(11) NOT NULL,
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Login` varchar(45) NOT NULL,
-  `Password` varchar(45) NOT NULL,
-  `Telefono` int(11) NOT NULL,
-  `cedula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `Password` varchar(255) NOT NULL,
+  `Telefono` varchar(25) NOT NULL,
+  `cedula` int(11) NOT NULL,
+  PRIMARY KEY (`cedula`),
+  UNIQUE KEY `Id` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `usuario`
 --
 
---
--- Indices de la tabla `cementerio`
---
-ALTER TABLE `cementerio`
-  ADD PRIMARY KEY (`Rif`);
-
---
--- Indices de la tabla `ciudad`
---
-ALTER TABLE `ciudad`
-  ADD PRIMARY KEY (`Codigo`,`Parroquia_Codigo`),
-  ADD KEY `fk_Ciudad_Parroquia1` (`Parroquia_Codigo`);
-
---
--- Indices de la tabla `difunto`
---
-ALTER TABLE `difunto`
-  ADD PRIMARY KEY (`cedula`);
-
---
--- Indices de la tabla `estado`
---
-ALTER TABLE `estado`
-  ADD PRIMARY KEY (`Codigo`);
-
---
--- Indices de la tabla `factura_anual`
---
-ALTER TABLE `factura_anual`
-  ADD PRIMARY KEY (`Numero`),
-  ADD KEY `fk_Factura_Anual_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`);
-
---
--- Indices de la tabla `funeraria`
---
-ALTER TABLE `funeraria`
-  ADD PRIMARY KEY (`Rif`);
-
---
--- Indices de la tabla `funeraria_has_servicios_prestados`
---
-ALTER TABLE `funeraria_has_servicios_prestados`
-  ADD PRIMARY KEY (`Funeraria_Rif`,`Servicios_Prestados_Codigo`),
-  ADD KEY `fk_Funeraria_has_Servicios_Prestados_Servicios_Prestados1` (`Servicios_Prestados_Codigo`);
-
---
--- Indices de la tabla `municipio`
---
-ALTER TABLE `municipio`
-  ADD PRIMARY KEY (`Codigo`),
-  ADD KEY `fk_Municipio_Estado1` (`Estado_Codigo`);
-
---
--- Indices de la tabla `pagos_mensuales`
---
-ALTER TABLE `pagos_mensuales`
-  ADD PRIMARY KEY (`Numero`),
-  ADD KEY `fk_Pagos_Mensuales_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`);
-
---
--- Indices de la tabla `parroquia`
---
-ALTER TABLE `parroquia`
-  ADD PRIMARY KEY (`Codigo`,`Municipio_Codigo`),
-  ADD KEY `fk_Parroquia_Municipio1` (`Municipio_Codigo`);
-
---
--- Indices de la tabla `persona`
---
-ALTER TABLE `persona`
-  ADD PRIMARY KEY (`cedula`),
-  ADD KEY `fk_Persona_Ciudad1` (`Ciudad_Codigo`);
-
---
--- Indices de la tabla `persona_juridica`
---
-ALTER TABLE `persona_juridica`
-  ADD PRIMARY KEY (`Rif`),
-  ADD KEY `fk_Persona_Juridica_Ciudad1` (`Ciudad_Codigo`);
-
---
--- Indices de la tabla `persona_natural`
---
-ALTER TABLE `persona_natural`
-  ADD PRIMARY KEY (`cedula`);
-
---
--- Indices de la tabla `polizas_de_seguro`
---
-ALTER TABLE `polizas_de_seguro`
-  ADD PRIMARY KEY (`Numero`),
-  ADD KEY `fk_Polizas_De_Seguro_Difunto1` (`Difunto_cedula`),
-  ADD KEY `fk_Polizas_De_Seguro_Persona_Natural1` (`Persona_Natural_cedula`),
-  ADD KEY `fk_Polizas_De_Seguro_Usuario1` (`Usuario_cedula`),
-  ADD KEY `fk_Polizas_De_Seguro_Responsable_Juridico1` (`Responsable_Juridico_Rif`),
-  ADD KEY `fk_Polizas_De_Seguro_Cementerio1` (`Cementerio_Rif`);
-
---
--- Indices de la tabla `polizas_de_seguro_has_servicios_prestados`
---
-ALTER TABLE `polizas_de_seguro_has_servicios_prestados`
-  ADD PRIMARY KEY (`Polizas_De_Seguro_Numero`,`Servicios_Prestados_Codigo`),
-  ADD KEY `fk_Polizas_De_Seguro_has_Servicios_Prestados_Servicios_Presta1` (`Servicios_Prestados_Codigo`);
-
---
--- Indices de la tabla `responsable_juridico`
---
-ALTER TABLE `responsable_juridico`
-  ADD PRIMARY KEY (`Rif`);
-
---
--- Indices de la tabla `servicios_prestados`
---
-ALTER TABLE `servicios_prestados`
-  ADD PRIMARY KEY (`Codigo`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`cedula`);
+INSERT INTO `usuario` (`Id`, `Login`, `Password`, `Telefono`, `cedula`) VALUES
+(1, 'alexmgp7', '$2y$10$8HvaI9Qw7ubiutLQO.x/UOcCtju01pVypYRy6rN/ZXWchCbmv0APC', '04121118200', 30230460),
+(2, 'andres', '$2y$10$a8p1MHmWsQASao2EaYtwruRGgO/1YGVefYrs0wgOPfuPtMEarGXOS', '04147754292', 30911147);
 
 --
 -- Restricciones para tablas volcadas
