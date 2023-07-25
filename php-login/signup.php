@@ -74,13 +74,13 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
         <h1>Registrarse</h1>
         <form action="index.php" method="POST">
             <div class="input-field cedula">
-                <input name="cedula" type="text" required>
-                <label class="input-label">Cédula de identidad</label>
+                <input name="cedula" type="text" required pattern="\d+">
+                <label class="input-label">Cédula de identidad (Sin puntos)</label>
             </div>
 
             <div class="input-field telefono">
-                <input name="telefono" type="text" required>
-                <label>Teléfono</label>
+                <input name="telefono" type="text" required pattern="^\d{4}-\d{7}$">
+                <label>Teléfono (04xx-xxxxxxx)</label>
             </div>
 
             <div class="input-field nombre">
