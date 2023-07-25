@@ -25,10 +25,9 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             if (!$person) {
                 $message = 'The person with the provided cédula does not exist. Please register the person first.';
             } else {
-                // Perform the signup process
-                $sql = "INSERT INTO Usuario (id, cedula, telefono, login, password) VALUES (:id, :cedula, :telefono, :login, :password)";
+                // Perform the signup process without specifying the 'id' column
+                $sql = "INSERT INTO Usuario (cedula, telefono, login, password) VALUES (:cedula, :telefono, :login, :password)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':id', $_POST['id']);
                 $stmt->bindParam(':cedula', $_POST['cedula']);
                 $stmt->bindParam(':telefono', $_POST['telefono']);
                 $stmt->bindParam(':login', $_POST['login']);
@@ -73,7 +72,7 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
 
     <form action="signup.php" method="POST">
         <input name="cedula" type="text" placeholder="Ingresa la cédula de una persona registrada">
-        <input name="id" type="text" placeholder="Ingresa tu numero de identificacion">
+        <!-- <input name="id" type="text" placeholder="Ingresa tu numero de identificacion"> -->
         <input name="telefono" type="text" placeholder="Ingresa tu teléfono">
         <input name="login" type="text" placeholder="Ingresa tu username">
         <input name="password" type="password" placeholder="Ingresa tu contraseña">

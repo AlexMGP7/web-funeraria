@@ -4,7 +4,7 @@ session_start();
 require '../config/database.php';
 
 if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, email, password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT id, login, password FROM Usuario WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ if (isset($_SESSION['user_id'])) {
     <?php require 'partials/header.php' ?>
 
     <?php if (!empty($user)) : ?>
-        <br> Welcome. <?= $user['email']; ?>
+        <br> Welcome. <?= $user['login']; ?>
         <br>You are Successfully Logged In
         <a href="logout.php">
             Logout
