@@ -60,7 +60,7 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
     <meta charset="utf-8">
     <title>Registrar Usuario</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="style_signup.css">
+    <link rel="stylesheet" href="../css/style_signup.css">
 </head>
 
 <body>
