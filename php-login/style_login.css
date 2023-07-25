@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: url(601bbbd31bd05.jpeg);
+  background: url(../imagenes/login.jpeg) no-repeat center center fixed;
+  background-size: cover;
   font-family: sans-serif;
 }
 .formulario {
@@ -10,7 +11,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 450px;
+  height: 500px;
   background: white;
   border-radius: 10px;
 }

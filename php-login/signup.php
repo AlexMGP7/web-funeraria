@@ -1,5 +1,9 @@
 <?php
 
+if (isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+}
+
 require '../config/database.php';
 
 ini_set('display_errors', 1);
@@ -56,29 +60,53 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
     <meta charset="utf-8">
     <title>Registrar Usuario</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style_signup.css">
 </head>
 
 <body>
 
-    <?php require 'partials/header.php' ?>
-
     <?php if (!empty($message)) : ?>
-        <p> <?= $message ?></p>
+        <div class="message">
+            <p><?= $message ?></p>
+        </div>
     <?php endif; ?>
 
-    <h1>Registrarse</h1>
-    <span> <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a></span> /<span> </span> <span><a href="login.php">Iniciar Sesión</a></span>
+    <div class="formulario">
+        <h1>Registrarse</h1>
+        <form action="signup.php" method="POST">
+            <div class="cedula">
+                <input name="cedula" type="text" required>
+                <label>Cédula de identidad</label>
+            </div>
+            <div class="telefono">
+                <input name="telefono" type="text" required>
+                <label>Teléfono</label>
+            </div>
 
-    <form action="signup.php" method="POST">
-        <input name="cedula" type="text" placeholder="Ingresa la cédula de una persona registrada">
-        <!-- <input name="id" type="text" placeholder="Ingresa tu numero de identificacion"> -->
-        <input name="telefono" type="text" placeholder="Ingresa tu teléfono">
-        <input name="login" type="text" placeholder="Ingresa tu username">
-        <input name="password" type="password" placeholder="Ingresa tu contraseña">
-        <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
-        <input type="submit" value="Submit">
-    </form>
+            <div class="nombre">
+                <input name="login" type="text" required>
+                <label>Nombre de usuario</label>
+            </div>
+
+            <div class="contrasena">
+                <input name="password" type="password" required>
+                <label>Contraseña</label>
+            </div>
+
+            <div class="contrasena">
+                <input name="confirm_password" type="password" required>
+                <label>Confirma tu contraseña</label>
+            </div>
+
+            <input type="submit" value="Guardar">
+        </form>
+
+        <div class="links">
+            <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a>
+            <span>/</span>
+            <a href="login.php">Iniciar Sesión</a>
+        </div>
+    </div>
 
 </body>
 

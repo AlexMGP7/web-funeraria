@@ -22,25 +22,26 @@ if (isset($_SESSION['user_id'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>Welcome to you WebApp</title>
+    <title>Welcome to your WebApp</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style_index.css">
 </head>
 
 <body>
-    <?php require 'partials/header.php' ?>
 
     <?php if (!empty($user)) : ?>
-        <br> Welcome. <?= $user['login']; ?>
-        <br>You are Successfully Logged In
-        <a href="logout.php">
-            Logout
-        </a>
+        <div class="container">
+            <h1>Bienvenido, <?= $user['login']; ?></h1>
+            <p>Tu sesión inició correctamente</p>
+            <a href="logout.php">Deslogear</a>
+            <a href="../views/layouts/layout.php?controller=Estado&action=ListarEstado">Ir a Pólizas</a>
+        </div>
     <?php else : ?>
-        <h1>Please Login or SignUp</h1>
-
-        <a href="login.php">Login</a> or
-        <a href="signup.php">SignUp</a>
+        <div class="container">
+            <h1>Logeate o Registrate</h1>
+            <a href="login.php">Login</a> /
+            <a href="signup.php">Registrar</a>
+        </div>
     <?php endif; ?>
 </body>
 

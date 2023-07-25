@@ -1,0 +1,347 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(../imagenes/login.jpeg) no-repeat center center fixed;
+  background-size: cover;
+  font-family: sans-serif;
+}
+.formulario {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 640px;
+  background: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Increase padding to add space for the message */
+}
+
+.message {
+  background-color: #dff0d8; /* Light green background color for success message */
+  border: 1px solid #3c763d; /* Dark green border color */
+  color: #3c763d; /* Dark green text color */
+  padding: 10px 20px; /* Padding around the message */
+  margin-bottom: 20px; /* Add some space below the message */
+  border-radius: 5px; /* Rounded corners for the message */
+  text-align: center; /* Center the message text */
+  font-size: 16px; /* Font size for the message text */
+}
+
+.formulario h1 {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 15px 0 20px 0;
+  border-bottom: 1px solid silver;
+}
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #1857af;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.formulario form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+form .username {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 40px 0;
+}
+
+.username input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.username Label {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-180%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.username span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(32, 134, 134);
+  transition: 0.5s;
+}
+
+.username input:focus ~ label,
+.username input:focus ~ label {
+  top: 23px;
+  color: rgb(32, 134, 134);
+}
+
+.username input:focus ~ before,
+.username input:focus ~ before {
+  width: 100%;
+  color: rgb(32, 134, 134);
+}
+form .contrasena {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 40px 0;
+}
+
+.contrasena input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.contrasena Label {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-180%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.contrasena span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(32, 134, 134);
+  transition: 0.5s;
+}
+
+.contrasena input:focus ~ label,
+.contrasena input:focus ~ label {
+  top: 23px;
+  color: rgb(32, 134, 134);
+}
+
+.contrasena input:focus ~ before,
+.contrasena input:focus ~ before {
+  width: 100%;
+  color: rgb(32, 134, 134);
+}
+
+input[type="submit"] {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  border: 1px solid;
+  background: rgb(32, 134, 134);
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-radius: 30px;
+}
+
+input[type="submit"]:hover {
+  border-color: rgb(32, 134, 134);
+  transition: 0.5s;
+}
+.recordar {
+  margin: -5px 0 20px 5px;
+  color: #1857af;
+  cursor: pointer;
+}
+.recordar:hover {
+  text-decoration: underline;
+}
+.registrarse {
+  margin: 35px 0;
+  font-size: 16px;
+
+  color: black;
+}
+
+.registrarse a {
+  text-decoration: none;
+  color: #1857af;
+}
+
+.registrarse a:hover {
+  text-decoration: underline;
+}
+
+/*cedula*/
+
+form .cedula {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 40px 0;
+}
+
+.cedula input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.cedula Label {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-180%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.cedula span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(32, 134, 134);
+  transition: 0.5s;
+}
+
+.cedula input:focus ~ label,
+.cedula input:focus ~ label {
+  top: 23px;
+  color: rgb(32, 134, 134);
+}
+
+.cedula input:focus ~ before,
+.cedula input:focus ~ before {
+  width: 100%;
+  color: rgb(32, 134, 134);
+}
+/*nombre*/
+
+form .nombre {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 40px 0;
+}
+
+.nombre input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.nombre Label {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-180%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.nombre span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(32, 134, 134);
+  transition: 0.5s;
+}
+
+.nombre input:focus ~ label,
+.nombre input:focus ~ label {
+  top: 23px;
+  color: rgb(32, 134, 134);
+}
+
+.nombre input:focus ~ before,
+.nombre input:focus ~ before {
+  width: 100%;
+  color: rgb(32, 134, 134);
+}
+
+/*telefono*/
+
+form .telefono {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 40px 0;
+}
+
+.telefono input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.telefono Label {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-180%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.telefono span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(32, 134, 134);
+  transition: 0.5s;
+}
+
+.telefono input:focus ~ label,
+.telefono input:focus ~ label {
+  top: 23px;
+  color: rgb(32, 134, 134);
+}
+
+.telefono input:focus ~ before,
+.telefono input:focus ~ before {
+  width: 100%;
+  color: rgb(32, 134, 134);
+}
