@@ -23,21 +23,19 @@ if (isset($_GET['i'])) {
         }
 ?>
         <div class="container">
-            <div class="page-content">
-                <h4>Actualización de Estados</h4>
-                <form action="?controller=Estado&action=UpdateEstado1" method="POST">
+            <h4>Actualización de Estados</h4>
+            <form action="?controller=Estado&action=UpdateEstado1" method="POST">
+                <br>
+                <div class="alert alert-success">
+                    <label for="codigo"><b>Estado:</b></label>
+                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                     <br>
-                    <div class="alert alert-success">
-                        <label for="codigo"><b>Estado:</b></label>
-                        <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
-                        <br>
-                        <label for="descripcion"><b>Nueva Descripción:</b></label>
-                        <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
-                        <br>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
-                    </div>
-                </form>
-            </div>
+                    <label for="descripcion"><b>Nueva Descripción:</b></label>
+                    <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                    <br>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
+                </div>
+            </form>
         </div>
 <?php
     } else {

@@ -106,9 +106,6 @@ function call($controller, $action)
                 case 'DeleteParroquia':
                     $parroquiaController->DeleteParroquia();
                     break;
-                case 'ObtenerMunicipiosPorEstado':
-                    $municipioController->ObtenerMunicipiosPorEstado();
-                    break;
                 default:
                     $parroquiaController->ListarParroquia();
                     break;
@@ -140,31 +137,31 @@ function call($controller, $action)
                     $ciudadController->ListarCiudad();
                     break;
             }
-        case 'Persona':
-            $personaController = new PersonaController();
+        // case 'Persona':
+        //     $personaController = new PersonaController();
 
-            switch ($action) {
-                case 'ListarPersona':
-                    $personaController->ListarPersona();
-                    break;
-                case 'IngresarPersona':
-                    $personaController->IngresarPersona();
-                    break;
-                case 'IngresarPersona1':
-                    $personaController->IngresarPersona1();
-                    break;
-                case 'UpdatePersona':
-                    $personaController->UpdatePersona();
-                    break;
-                case 'DeletePersona':
-                    $personaController->DeletePersona();
-                    break;
-                default:
-                    $personaController->ListarPersona();
-                    break;
-            }
-        default:
-            $personaController->IngresarPersona();
-            break;
+        //     switch ($action) {
+        //         case 'ListarPersona':
+        //             $personaController->ListarPersona();
+        //             break;
+        //         case 'IngresarPersona':
+        //             $personaController->IngresarPersona();
+        //             break;
+        //         case 'IngresarPersona1':
+        //             $personaController->IngresarPersona1();
+        //             break;
+        //         case 'UpdatePersona':
+        //             $personaController->UpdatePersona();
+        //             break;
+        //         case 'DeletePersona':
+        //             $personaController->DeletePersona();
+        //             break;
+        //         default:
+        //             $personaController->ListarPersona();
+        //             break;
+        //     }
+        // default:
+        //     $personaController->IngresarPersona();
+        //     break;
     }
 }

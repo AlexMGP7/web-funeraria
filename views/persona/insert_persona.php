@@ -6,7 +6,6 @@ $numrows = mysqli_num_rows($result_persona);
 ?>
 
 <div class="container">
-    <div class="page-content">
         <form action="?controller=Persona&action=IngresarPersona1" method="POST">
             <br>
             <h4>Ingreso de Personas</h4>
@@ -39,5 +38,4 @@ $numrows = mysqli_num_rows($result_persona);
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
             </div>
         </form>
-    </div>
 </div>

@@ -52,12 +52,10 @@
     <main class="main">
 
         <section>
-            <div class="container">
                 <?php
                 // carga el archivo routing.php para direccionar a la página .php que se incrustará entre la header y el footer
                 require_once('../../views/routing.php');
                 ?>
-            </div>
         </section>
 
     </main>

@@ -28,14 +28,11 @@
 }
 /* CSS to make input and textarea elements occupy 100% width */
 
-.main .alert-success {
-  display: flex;
-  flex-direction: column;
-}
 
 .main .alert.alert-success {
   display: flex; /* Utilizamos flexbox para organizar los elementos internos */
   flex-direction: column; /* Alinear los elementos en columna */
+  width: 450px;
 }
 
 .main .button-container {
