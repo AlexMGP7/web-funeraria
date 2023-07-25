@@ -37,7 +37,7 @@ tr:hover td{
 
 /* Cambiar el color del texto del paginador cuando está desactivado */
 #dtBasicExample_paginate .paginate_button.disabled {
-  color: #6c757d;
+  color: #fff;
 }
 
 /* Estilizar el botón de búsqueda */
@@ -65,7 +65,7 @@ tr:hover td{
 
 /* Estilizar el botón de búsqueda */
 #dtBasicExample_filter input[type="search"] {
-  border: 1px solid #ccc;
+  border: 3px solid #fff;
   border-radius: 5px;
 }
 
@@ -79,6 +79,8 @@ tr:hover td{
 /* Ajustar el tamaño de la fuente de la paginación */
 #dtBasicExample_paginate .paginate_button {
   font-size: 14px;
+  color: #fff;
+  background-color: rgb(255, 255, 255); /* Opcional: Cambia el color del borde al pasar el cursor */
 }
 
 /* Ajustar el padding horizontal de los botones de paginación */
@@ -112,3 +114,15 @@ tr:hover td{
 .custom-btn:focus, .custom-btn:hover {
   border-color: rgb(123, 218, 218); /* Color del borde cuando se le da clic o se pasa el cursor */
 }
+/* Cambiar el color del texto de los elementos del DataTable a blanco */
+#dtBasicExample_wrapper .dataTables_length,
+#dtBasicExample_wrapper .dataTables_filter label,
+#dtBasicExample_wrapper .dataTables_info,
+#dtBasicExample_wrapper .dataTables_paginate .paginate_button {
+  color: #fff;
+}
+/* Cambiar el color del texto del botón desplegable de cantidad de opciones a mostrar */
+#dtBasicExample_length select {
+  color: #fff;
+}
+

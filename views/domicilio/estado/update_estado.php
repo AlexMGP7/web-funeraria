@@ -22,18 +22,19 @@ if (isset($_GET['i'])) {
             }
         }
 ?>
-        <div class="container">
-            <h4>Actualización de Estados</h4>
+        <div class="container-i mt-5">
             <form action="?controller=Estado&action=UpdateEstado1" method="POST">
-                <br>
-                <div class="alert alert-success">
-                    <label for="codigo"><b>Estado:</b></label>
-                    <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
-                    <br>
-                    <label for="descripcion"><b>Nueva Descripción:</b></label>
-                    <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
-                    <br>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
+                <div class="custom-form-background p-4">
+                    <h4 class="mb-4">Actualización de Estados</h4>
+                    <div class="form-group">
+                        <label for="codigo"><b>Estado:</b></label>
+                        <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion"><b>Nueva Descripción:</b></label>
+                        <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                    </div>
+                    <button class="btn btn-success" type="submit">Actualizar</button>
                 </div>
             </form>
         </div>

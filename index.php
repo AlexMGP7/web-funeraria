@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="container">
             <h1>Bienvenido, <?= $user['login']; ?></h1>
             <p>Tu sesión inició correctamente</p>
-            <a href="php-login/logout.php">Deslogear</a>
+            <a href="php-login/logout.php">Cerrar sesión</a>
             <a href="views/layouts/layout.php?controller=Estado&action=ListarEstado">Ir a Pólizas</a>
         </div>
     <?php else : ?>
