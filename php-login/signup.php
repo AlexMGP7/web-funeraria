@@ -39,11 +39,11 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
                 $stmt->bindParam(':password', $password);
 
                 if ($stmt->execute()) {
-                    $message = 'Successfully created new user';
+                    $message = 'Se ha creado al usuario correctamente, puede logearse';
                 } else {
                     // Display the error message and details if an exception occurs
                     $errorInfo = $stmt->errorInfo();
-                    $message = 'Sorry, there must have been an issue creating your account: ' . $errorInfo[2];
+                    $message = 'Lo siento, debió ocurrir un error al crear tu cuenta: ' . $errorInfo[2];
                 }
             }
         } catch (PDOException $e) {
@@ -64,7 +64,6 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
 </head>
 
 <body>
-
     <?php if (!empty($message)) : ?>
         <div class="message">
             <p><?= $message ?></p>
@@ -73,27 +72,28 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
 
     <div class="formulario">
         <h1>Registrarse</h1>
-        <form action="signup.php" method="POST">
-            <div class="cedula">
+        <form action="index.php" method="POST">
+            <div class="input-field cedula">
                 <input name="cedula" type="text" required>
-                <label>Cédula de identidad</label>
+                <label class="input-label">Cédula de identidad</label>
             </div>
-            <div class="telefono">
+
+            <div class="input-field telefono">
                 <input name="telefono" type="text" required>
                 <label>Teléfono</label>
             </div>
 
-            <div class="nombre">
+            <div class="input-field nombre">
                 <input name="login" type="text" required>
                 <label>Nombre de usuario</label>
             </div>
 
-            <div class="contrasena">
+            <div class="input-field contrasena">
                 <input name="password" type="password" required>
                 <label>Contraseña</label>
             </div>
 
-            <div class="contrasena">
+            <div class="input-field contrasena">
                 <input name="confirm_password" type="password" required>
                 <label>Confirma tu contraseña</label>
             </div>

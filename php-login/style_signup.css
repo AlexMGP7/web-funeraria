@@ -5,9 +5,10 @@ body {
   background-size: cover;
   font-family: sans-serif;
 }
+
 .formulario {
   position: absolute;
-  top: 500px;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
@@ -21,8 +22,8 @@ body {
 
 .message {
   background-color: #dff0d8; /* Light green background color for success message */
-  border: 1px solid #3c763d; /* Dark green border color */
-  color: #3c763d; /* Dark green text color */
+  border: 1px solid #990101; /* Dark green border color */
+  color: #ca3232; /* Dark green text color */
   padding: 10px 20px; /* Padding around the message */
   margin-bottom: 20px; /* Add some space below the message */
   border-radius: 5px; /* Rounded corners for the message */
@@ -57,13 +58,13 @@ body {
   box-sizing: border-box;
 }
 
-form .username {
+.input-field {
   position: relative;
   border-bottom: 2px solid #adadad;
   margin: 40px 0;
 }
 
-.username input {
+.input-field input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -72,7 +73,8 @@ form .username {
   background: none;
   outline: none;
 }
-.username Label {
+
+.input-field label {
   position: absolute;
   top: 50px;
   left: 5px;
@@ -82,7 +84,8 @@ form .username {
   pointer-events: none;
   transition: 0.5s;
 }
-.username span::before {
+
+.input-field span::before {
   content: "";
   position: absolute;
   top: 40px;
@@ -93,62 +96,14 @@ form .username {
   transition: 0.5s;
 }
 
-.username input:focus ~ label,
-.username input:focus ~ label {
+.input-field input:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label {
   top: 23px;
   color: rgb(32, 134, 134);
 }
 
-.username input:focus ~ before,
-.username input:focus ~ before {
-  width: 100%;
-  color: rgb(32, 134, 134);
-}
-form .contrasena {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 40px 0;
-}
-
-.contrasena input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.contrasena Label {
-  position: absolute;
-  top: 50px;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-180%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.contrasena span::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: rgb(32, 134, 134);
-  transition: 0.5s;
-}
-
-.contrasena input:focus ~ label,
-.contrasena input:focus ~ label {
-  top: 23px;
-  color: rgb(32, 134, 134);
-}
-
-.contrasena input:focus ~ before,
-.contrasena input:focus ~ before {
+.input-field input:focus ~ before,
+.input-field input:not(:placeholder-shown) ~ before {
   width: 100%;
   color: rgb(32, 134, 134);
 }
@@ -169,179 +124,4 @@ input[type="submit"] {
 input[type="submit"]:hover {
   border-color: rgb(32, 134, 134);
   transition: 0.5s;
-}
-.recordar {
-  margin: -5px 0 20px 5px;
-  color: #1857af;
-  cursor: pointer;
-}
-.recordar:hover {
-  text-decoration: underline;
-}
-.registrarse {
-  margin: 35px 0;
-  font-size: 16px;
-
-  color: black;
-}
-
-.registrarse a {
-  text-decoration: none;
-  color: #1857af;
-}
-
-.registrarse a:hover {
-  text-decoration: underline;
-}
-
-/*cedula*/
-
-form .cedula {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 40px 0;
-}
-
-.cedula input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.cedula Label {
-  position: absolute;
-  top: 50px;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-180%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.cedula span::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: rgb(32, 134, 134);
-  transition: 0.5s;
-}
-
-.cedula input:focus ~ label,
-.cedula input:focus ~ label {
-  top: 23px;
-  color: rgb(32, 134, 134);
-}
-
-.cedula input:focus ~ before,
-.cedula input:focus ~ before {
-  width: 100%;
-  color: rgb(32, 134, 134);
-}
-/*nombre*/
-
-form .nombre {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 40px 0;
-}
-
-.nombre input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.nombre Label {
-  position: absolute;
-  top: 50px;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-180%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.nombre span::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: rgb(32, 134, 134);
-  transition: 0.5s;
-}
-
-.nombre input:focus ~ label,
-.nombre input:focus ~ label {
-  top: 23px;
-  color: rgb(32, 134, 134);
-}
-
-.nombre input:focus ~ before,
-.nombre input:focus ~ before {
-  width: 100%;
-  color: rgb(32, 134, 134);
-}
-
-/*telefono*/
-
-form .telefono {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 40px 0;
-}
-
-.telefono input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.telefono Label {
-  position: absolute;
-  top: 50px;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-180%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.telefono span::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: rgb(32, 134, 134);
-  transition: 0.5s;
-}
-
-.telefono input:focus ~ label,
-.telefono input:focus ~ label {
-  top: 23px;
-  color: rgb(32, 134, 134);
-}
-
-.telefono input:focus ~ before,
-.telefono input:focus ~ before {
-  width: 100%;
-  color: rgb(32, 134, 134);
 }

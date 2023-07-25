@@ -21,7 +21,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
         header("Location: ../index.php");
         $message = 'Se inicio la sesion correctamente';
     } else {
-        $message = 'Sorry, those credentials do not match';
+        $message = 'Lo siento, las credenciales no concuerdan';
     }
 }
 ?>
@@ -39,25 +39,29 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
 <body>
 
     <?php if (!empty($message)) : ?>
-        <p> <?= $message ?></p>
+        <div class="message">
+            <p><?= $message ?></p>
+        </div>
     <?php endif; ?>
 
     <div class="formulario">
-    <h1>Inicio de sesión</h1>
-    <form action="login.php" method="POST">
-        <div class="username">
-            <input name="login" type="text" autocomplete="off" required>
-            <label>Nombre de usuario</label>
-        </div>
-        <div class="contrasena">
-            <input name="password" type="password" autocomplete="off" required>
-        </div>
-        <input type="submit" value="Iniciar">
-        <div class="registrarse">
-            No tengo cuenta: <a href="signup.php">Registrarme</a>
-        </div>
-        <i>Si olvidaste tu contraseña, <a href="contacto.php">ponte en contacto</a> con los administradores</i>
-    </form>
-</div>
+        <h1>Inicio de sesión</h1>
+        <form action="login.php" method="POST">
+            <div class="input-field username">
+                <input name="login" type="text" autocomplete="off" required>
+                <label>Nombre de usuario</label>
+            </div>
+            <div class="input-field contrasena">
+                <input name="password" type="password" autocomplete="off" required>
+                <label>Contraseña</label>
+            </div>
+            <input type="submit" value="Iniciar">
+            <div class="registrarse">
+                No tengo cuenta: <a href="signup.php">Registrarme</a>
+            </div>
+            <i>Si olvidaste tu contraseña, <a href="contacto.php">ponte en contacto</a> con los administradores</i>
+        </form>
+    </div>
 </body>
+
 </html>

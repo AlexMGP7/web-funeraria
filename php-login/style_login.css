@@ -27,13 +27,13 @@ body {
   box-sizing: border-box;
 }
 
-form .username {
+.input-field {
   position: relative;
   border-bottom: 2px solid #adadad;
   margin: 40px 0;
 }
 
-.username input {
+.input-field input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -42,7 +42,8 @@ form .username {
   background: none;
   outline: none;
 }
-.username Label {
+
+.input-field label {
   position: absolute;
   top: 50px;
   left: 5px;
@@ -52,7 +53,8 @@ form .username {
   pointer-events: none;
   transition: 0.5s;
 }
-.username span::before {
+
+.input-field span::before {
   content: "";
   position: absolute;
   top: 40px;
@@ -63,62 +65,14 @@ form .username {
   transition: 0.5s;
 }
 
-.username input:focus ~ label,
-.username input:focus ~ label {
+.input-field input:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label {
   top: 23px;
   color: rgb(32, 134, 134);
 }
 
-.username input:focus ~ before,
-.username input:focus ~ before {
-  width: 100%;
-  color: rgb(32, 134, 134);
-}
-form .contrasena {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 40px 0;
-}
-
-.contrasena input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.contrasena Label {
-  position: absolute;
-  top: 50px;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-180%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.contrasena span::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: rgb(32, 134, 134);
-  transition: 0.5s;
-}
-
-.contrasena input:focus ~ label,
-.contrasena input:focus ~ label {
-  top: 23px;
-  color: rgb(32, 134, 134);
-}
-
-.contrasena input:focus ~ before,
-.contrasena input:focus ~ before {
+.input-field input:focus ~ before,
+.input-field input:not(:placeholder-shown) ~ before {
   width: 100%;
   color: rgb(32, 134, 134);
 }
@@ -140,14 +94,6 @@ input[type="submit"]:hover {
   border-color: rgb(32, 134, 134);
   transition: 0.5s;
 }
-.recordar {
-  margin: -5px 0 20px 5px;
-  color: #1857af;
-  cursor: pointer;
-}
-.recordar:hover {
-  text-decoration: underline;
-}
 .registrarse {
   margin: 35px 0;
   font-size: 16px;
@@ -155,11 +101,11 @@ input[type="submit"]:hover {
   color: black;
 }
 
-.registrarse a {
+.registrarse a, a {
   text-decoration: none;
   color: #1857af;
 }
 
-.registrarse a:hover {
+.registrarse a:hover, a:hover {
   text-decoration: underline;
 }
