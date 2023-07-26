@@ -1,7 +1,7 @@
 <?php
 $controllers = array(
-    'Estado' => ['ListarEstado', 'IngresarEstado', 'IngresarEstado1', 'UpdateEstado', 'UpdateEstado1', 'DeleteEstado'],
-    'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'IngresarMunicipio1', 'UpdateMunicipio', 'UpdateMunicipio1', 'DeleteMunicipio'],
+    'Estado' => ['ListarEstado', 'IngresarEstado', 'UpdateEstado', 'DeleteEstado'],
+    'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'UpdateMunicipio', 'DeleteMunicipio'],
     'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'IngresarParroquia1', 'UpdateParroquia', 'UpdateParroquia1', 'DeleteParroquia'],
     'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'IngresarCiudad1', 'UpdateCiudad', 'UpdateCiudad1', 'DeleteCiudad'],
     'Persona' => ['ListarPersona', 'IngresarPersona', 'IngresarPersona1', 'UpdatePersona', 'UpdatePersona1', 'DeletePersona']
@@ -39,14 +39,8 @@ function call($controller, $action)
                 case 'IngresarEstado':
                     $estadoController->IngresarEstado();
                     break;
-                case 'IngresarEstado1':
-                    $estadoController->IngresarEstado1();
-                    break;
                 case 'UpdateEstado':
                     $estadoController->UpdateEstado();
-                    break;
-                case 'UpdateEstado1':
-                    $estadoController->UpdateEstado1();
                     break;
                 case 'DeleteEstado':
                     $estadoController->DeleteEstado();
@@ -66,14 +60,8 @@ function call($controller, $action)
                 case 'IngresarMunicipio':
                     $municipioController->IngresarMunicipio();
                     break;
-                case 'IngresarMunicipio1':
-                    $municipioController->IngresarMunicipio1();
-                    break;
                 case 'UpdateMunicipio':
                     $municipioController->UpdateMunicipio();
-                    break;
-                case 'UpdateMunicipio1':
-                    $municipioController->UpdateMunicipio1();
                     break;
                 case 'DeleteMunicipio':
                     $municipioController->DeleteMunicipio();

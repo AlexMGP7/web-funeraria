@@ -43,12 +43,6 @@ class MunicipioController
         require_once('../../views/domicilio/municipio/insert_municipio.php');
     }
 
-    function IngresarMunicipio1()
-    {
-        // Logica que ingresa al nuevo municipio y manda mensaje
-        require_once('../../views/domicilio/municipio/insert_municipio1.php');
-    }
-
     static public function IngresarMunicipio2($codigo, $descripcion, $codigoEstado)
     {
         // Insertar un nuevo municipio en el modelo "MunicipioModel"
@@ -72,12 +66,6 @@ class MunicipioController
     {
         // Mostrar la vista para actualizar un municipio
         require_once('../../views/domicilio/municipio/update_municipio.php');
-    }
-
-    function UpdateMunicipio1()
-    {
-        // Logica para actualizar al municipio y manda el mensaje
-        require_once('../../views/domicilio/municipio/update_municipio1.php');
     }
 
     function UpdateMunicipio2($codigo, $descripcion, $codigoEstado)

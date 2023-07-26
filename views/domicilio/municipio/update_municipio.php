@@ -2,6 +2,36 @@
 
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de actualización.
+
+    // Obtener el código, descripción y estado actualizados del municipio enviados a través del formulario de actualización.
+    $codigo = $_POST['codigo'];
+    $descripcion = $_POST['descripcion'];
+    $estado_codigo = $_POST['estado_codigo'];
+
+    require_once('../../controllers/municipio_controller.php');
+    $controller = new MunicipioController();
+
+    // Intentar actualizar el municipio utilizando el método 'UpdateMunicipio2' del controlador.
+    $result_municipio = $controller->UpdateMunicipio2($codigo, $descripcion, $estado_codigo);
+
+    if ($result_municipio) {
+        // Si la actualización fue exitosa, mostrar un mensaje de éxito.
+        $_SESSION['mensaje'] = "El municipio se ha modificado correctamente.";
+        $_SESSION['mensaje_tipo'] = "success";
+
+        // Redirigir a la página de listado de municipios después de intentar actualizar.
+        echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
+        exit();
+    } else {
+        // Si la actualización falló, mostrar un mensaje de advertencia.
+        $_SESSION['mensaje'] = "Error: No se pudo actualizar el municipio.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
 }
 
 if (isset($_GET['i'])) {
@@ -30,9 +60,10 @@ if (isset($_GET['i'])) {
             }
         }
 ?>
+
         <div class="container-i mt-5">
             <div class="page-content">
-                <form action="?controller=Municipio&action=UpdateMunicipio1" method="POST">
+                <form action="?controller=Municipio&action=UpdateMunicipio" method="POST">
                     <div class="custom-form-background p-4">
                         <h4>Actualización de Municipio</h4>
                         <div class="form-group">
@@ -41,7 +72,7 @@ if (isset($_GET['i'])) {
                         </div>
                         <div class="form-group">
                             <label for="descripcion"><b>Nueva Descripción:</b></label>
-                            <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                            <textarea class="form-control" name="descripcion" required><?php echo $descripcion; ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="estado_codigo"><b>Estado:</b></label>
@@ -73,6 +104,7 @@ if (isset($_GET['i'])) {
                 }
             });
         </script>
+
 <?php
     } else {
         require_once('../../views/domicilio/municipio/list_municipio.php');
