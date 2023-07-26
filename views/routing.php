@@ -124,14 +124,8 @@ function call($controller, $action)
                 case 'IngresarPersona':
                     $personaController->IngresarPersona();
                     break;
-                case 'IngresarPersona1':
-                    $personaController->IngresarPersona1();
-                    break;
                 case 'UpdatePersona':
                     $personaController->UpdatePersona();
-                    break;
-                case 'UpdatePersona1':
-                    $personaController->UpdatePersona1();
                     break;
                 case 'DeletePersona':
                     $personaController->DeletePersona();

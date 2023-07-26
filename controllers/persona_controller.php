@@ -44,12 +44,6 @@ class PersonaController
         require_once('../../views/persona/insert_persona.php');
     }
 
-    function IngresarPersona1()
-    {
-        // Mostrar la vista con un formulario para insertar una nueva persona
-        require_once('../../views/persona/insert_persona1.php');
-    }
-
     static public function IngresarPersona2($cedula, $nombre, $apellido, $ciudadCodigo)
     {
         // Insertar una nueva persona en el modelo "PersonaModel"
@@ -73,12 +67,6 @@ class PersonaController
     {
         // Mostrar la vista para actualizar una persona
         require_once('../../views/persona/update_persona.php');
-    }
-
-    function UpdatePersona1()
-    {
-        // Mostrar la vista con un formulario para actualizar una persona
-        require_once('../../views/persona/update_persona1.php');
     }
 
     function UpdatePersona2($cedula, $nombre, $apellido, $ciudadCodigo)
