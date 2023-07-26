@@ -46,7 +46,7 @@ $numrows = mysqli_num_rows($result_usuario);
                                 </a>
                             </td>
                             <td align="center">
-                                <a href="?controller=Usuario&action=DeleteUsuario&i=<?php echo $i; ?>" title="Eliminar">
+                                <a href="?controller=Usuario&action=DeleteUsuario&cedula=<?php echo $i; ?>" title="Eliminar">
                                     <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
                                 </a>
                             </td>

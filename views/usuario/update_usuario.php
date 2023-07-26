@@ -16,8 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once('../../controllers/usuario_controller.php');
     $controller = new UsuarioController();
 
+    // Encriptar la contraseña antes de guardarla en la base de datos
+    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+
     // Actualizar el usuario y obtener el resultado
-    $result_usuario = $controller->UpdateUsuario2($cedula, $login, $password, $telefono);
+    $result_usuario = $controller->UpdateUsuario2($cedula, $login, $password_hashed, $telefono);
 
     // Verificar si la actualización fue exitosa
     if ($result_usuario) {
@@ -50,7 +53,7 @@ if (isset($_GET['i'])) {
             if (isset($row["cedula"])) {
                 $cedula = $row["cedula"];
             }
-            if (isset($row["login"])) { // Anteriormente 'login', pero lo renombramos como 'login'
+            if (isset($row["login"])) {
                 $login = $row["login"];
             }
             if (isset($row["password"])) {

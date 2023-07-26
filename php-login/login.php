@@ -7,8 +7,6 @@ if (isset($_SESSION['user_id'])) {
 
 require '../config/database.php';
 
-// ... rest of the code ...
-
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
     $records = $conn->prepare('SELECT id, login, password FROM Usuario WHERE login = :login');
     $records->bindParam(':login', $_POST['login']);

@@ -8,15 +8,18 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos del formulario
     $cedula = $_POST['cedula'];
-    $username = $_POST['username']; // Anteriormente 'login', pero lo renombramos como 'username'
+    $username = $_POST['username'];
     $password = $_POST['password'];
     $telefono = $_POST['telefono'];
+
+    // Encriptar la contraseña antes de guardarla en la base de datos
+    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
 
     require_once('../../controllers/usuario_controller.php');
     $controller = new UsuarioController();
 
     // Insertar el usuario y obtener el resultado
-    $result_usuario = $controller->IngresarUsuario2($cedula, $username, $password, $telefono);
+    $result_usuario = $controller->IngresarUsuario2($cedula, $username, $password_hashed, $telefono);
 
     // Verificar si el insert fue exitoso
     if ($result_usuario) {
@@ -32,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
+
 require_once('../../controllers/persona_controller.php');
 $controller = new PersonaController();
 $result_persona = $controller->BuscarUltimaPersona();
@@ -44,9 +48,19 @@ $numrows = mysqli_num_rows($result_persona);
             <div class="custom-form-background p-4">
                 <h4>Ingreso de Usuarios</h4>
                 <div class="form-group">
-                    <label for="cedula"><b>Cédula:</b></label>
-                    <input class="form-control" type="text" name="cedula" id="cedula" pattern="[0-9]+" maxlength="10" required placeholder="Ingrese aquí la cédula del Usuario" />
-                    <small class="form-text text-muted">Solo se permiten números.</small>
+                    <label for="cedula"><b>Cedula:</b></label>
+                    <select class="form-control" name="cedula" id="cedula" required>
+                        <?php
+                        $controller = new UsuarioController();
+                        $result_persona = $controller->ListarPersonas();
+
+                        while ($row_persona = mysqli_fetch_array($result_persona)) {
+                            $cedula = $row_persona['cedula'];
+                            $nombre = $row_persona['nombre'];
+                            echo "<option value='$cedula'>$cedula - $nombre</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="username"><b>Usuario:</b></label>
