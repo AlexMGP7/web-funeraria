@@ -38,8 +38,8 @@ if (isset($_SESSION['user_id'])) {
         </div>
     <?php else : ?>
         <div class="container">
-            <h1>Logeate o Registrate</h1>
-            <a href="php-login/login.php">Login</a> /
+            <h1>Iniciar sesión o Registrate</h1>
+            <a href="php-login/login.php">Iniciar</a> /
             <a href="php-login/signup.php">Registrar</a>
         </div>
     <?php endif; ?>

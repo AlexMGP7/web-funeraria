@@ -14,6 +14,10 @@
             </li>
 
             <li class="item">
+                <a href="#">Persona</a>
+            </li>
+
+            <li class="item">
                 <div class="submenu-item">
                     <span>Persona Natural</span>
                     <i class="fa-solid fa-chevron-right"></i>
@@ -24,9 +28,6 @@
                         <i class="fa-solid fa-chevron-left"></i>
                         Tipos de persona
                     </div>
-                    <li class="item">
-                        <a href="#">Usuario</a>
-                    </li>
                     <li class="item">
                         <a href="?controller=PersonaNatural&action=ListarPersonaNatural">Persona Natural</a>
                     </li>
@@ -45,7 +46,7 @@
                 <ul class="menu-items submenu">
                     <div class="menu-title">
                         <i class="fa-solid fa-chevron-left"></i>
-                        Contienen RIF
+                        Personas Juridicas
                     </div>
                     <li class="item">
                         <a href="#">Responsable Juridico</a>
@@ -112,7 +113,7 @@
             </li>
 
             <li class="item">
-                <a href="#">Contacto</a>
+                <a href="../../php-login/contacto.php">Contacto</a>
             </li>
         </ul>
     </div>

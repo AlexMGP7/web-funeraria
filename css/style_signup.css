@@ -12,7 +12,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 640px;
+  height: 660px;
   background: white;
   border-radius: 10px;
   justify-content: center;
@@ -22,8 +22,8 @@ body {
 
 .message {
   background-color: #dff0d8; /* Light green background color for success message */
-  border: 1px solid #990101; /* Dark green border color */
-  color: #ca3232; /* Dark green text color */
+  border: 1px solid #77be48; /* Dark green border color */
+  color: #1e8a2c; /* Dark green text color */
   padding: 10px 20px; /* Padding around the message */
   margin-bottom: 20px; /* Add some space below the message */
   border-radius: 5px; /* Rounded corners for the message */
@@ -47,6 +47,10 @@ body {
 .links a {
   text-decoration: none;
   color: #1857af;
+}
+
+.links p {
+  color: #ca3232;
 }
 
 .links a:hover {

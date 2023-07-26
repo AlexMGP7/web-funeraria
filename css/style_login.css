@@ -109,3 +109,13 @@ input[type="submit"]:hover {
 .registrarse a:hover, a:hover {
   text-decoration: underline;
 }
+.message {
+  background-color: #e7b4b4; /* Light green background color for success message */
+  border: 1px solid #990101; /* Dark green border color */
+  color: #ca3232; /* Dark green text color */
+  padding: 10px 20px; /* Padding around the message */
+  margin-bottom: 20px; /* Add some space below the message */
+  border-radius: 5px; /* Rounded corners for the message */
+  text-align: center; /* Center the message text */
+  font-size: 16px; /* Font size for the message text */
+}

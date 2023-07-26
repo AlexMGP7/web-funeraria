@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 
 require '../config/database.php';
@@ -71,6 +71,12 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
     <?php endif; ?>
 
     <div class="formulario">
+        <div class="links">
+            <p>Debe registrarse como Persona primero</p>
+            <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a>
+            <span>/</span>
+            <a href="login.php">Iniciar Sesión</a>
+        </div>
         <h1>Registrarse</h1>
         <form action="index.php" method="POST">
             <div class="input-field cedula">
@@ -79,8 +85,8 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             </div>
 
             <div class="input-field telefono">
-                <input name="telefono" type="text" required pattern="^\d{4}-\d{7}$">
-                <label>Teléfono (04xx-xxxxxxx)</label>
+                <input name="telefono" type="text" required pattern="\d{11}" maxlength="11">
+                <label>Teléfono (04...)</label>
             </div>
 
             <div class="input-field nombre">
@@ -101,11 +107,6 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             <input type="submit" value="Guardar">
         </form>
 
-        <div class="links">
-            <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a>
-            <span>/</span>
-            <a href="login.php">Iniciar Sesión</a>
-        </div>
     </div>
 
 </body>
