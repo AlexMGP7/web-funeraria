@@ -137,6 +137,7 @@ function call($controller, $action)
                     $ciudadController->ListarCiudad();
                     break;
             }
+            break;
         case 'Persona':
             $personaController = new PersonaController();
 

@@ -38,7 +38,7 @@ $numrows = mysqli_num_rows($result_persona);
                         ?>
                     </select>
                 </div>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
+                <button class="btn btn-success" type="submit">Ingresar</button>
             </div>
         </form>
     </div>

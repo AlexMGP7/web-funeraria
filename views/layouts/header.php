@@ -14,7 +14,7 @@
             </li>
 
             <li class="item">
-                <a href="#">Persona</a>
+                <a href="?controller=Persona&action=ListarPersona">Persona</a>
             </li>
 
             <li class="item">

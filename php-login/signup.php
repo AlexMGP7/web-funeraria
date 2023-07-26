@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SESSION['user_id'])) {
-    header('Location: ../index.php');
+    header('Location: login.php');
 }
 
 require '../config/database.php';
@@ -15,7 +15,7 @@ $message = '';
 if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
     // Check if the password and confirm_password fields match
     if ($_POST['password'] !== $_POST['confirm_password']) {
-        $message = 'Password and Confirm Password do not match.';
+        $message = 'La contraseña y la contraseña de confirmacion no concuerdan';
     } else {
         try {
             // Check if the person with the provided cédula exists
@@ -27,7 +27,7 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             $person = $stmt_check_person->fetch(PDO::FETCH_ASSOC);
 
             if (!$person) {
-                $message = 'The person with the provided cédula does not exist. Please register the person first.';
+                $message = 'La persona con la cedula escrita no existe, por favor primero cree a la persona';
             } else {
                 // Perform the signup process without specifying the 'id' column
                 $sql = "INSERT INTO Usuario (cedula, telefono, login, password) VALUES (:cedula, :telefono, :login, :password)";
@@ -39,7 +39,7 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
                 $stmt->bindParam(':password', $password);
 
                 if ($stmt->execute()) {
-                    $message = 'Se ha creado al usuario correctamente, puede logearse';
+                    $message = 'Se ha creado al usuario correctamente, puede iniciar sesión';
                 } else {
                     // Display the error message and details if an exception occurs
                     $errorInfo = $stmt->errorInfo();
@@ -78,7 +78,7 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             <a href="login.php">Iniciar Sesión</a>
         </div>
         <h1>Registrarse</h1>
-        <form action="index.php" method="POST">
+        <form action="signup.php" method="POST">
             <div class="input-field cedula">
                 <input name="cedula" type="text" required pattern="\d+">
                 <label class="input-label">Cédula de identidad (Sin puntos)</label>
