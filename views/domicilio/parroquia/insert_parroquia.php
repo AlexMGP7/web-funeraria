@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="custom-form-background p-4">
             <h4 class="mb-4">Ingreso de Parroquias</h4>
             <div class="form-group">
-                <label for="codigo_parroquia"><b>Parroquia:</b></label>
+                <label for="codigo_parroquia"><b>Codigo de la Parroquia:</b></label>
                 <input class="form-control" type="text" name="codigo_parroquia" id="codigo_parroquia" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aquí el código de la parroquia" />
                 <small class="form-text text-muted">Solo se permiten números.</small>
             </div>

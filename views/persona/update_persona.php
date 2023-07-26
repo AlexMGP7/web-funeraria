@@ -2,6 +2,39 @@
 
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
+    exit();
+}
+
+// Verificar si se han enviado los datos del formulario a través de POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener los datos del formulario
+    $cedula = $_POST['cedula'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $ciudadCodigo = $_POST['ciudad_codigo'];
+
+    require_once('../../controllers/persona_controller.php');
+    $controller = new PersonaController();
+
+    // Actualizar la persona y obtener el resultado
+    $result_persona = $controller->UpdatePersona2($cedula, $nombre, $apellido, $ciudadCodigo);
+
+    // Verificar si la actualización fue exitosa
+    if ($result_persona) {
+        $_SESSION['mensaje'] = "La persona se ha actualizado correctamente.";
+        $_SESSION['mensaje_tipo'] = "success";
+    } else {
+        $_SESSION['mensaje'] = "Error al actualizar la persona. Por favor, intenta nuevamente.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
+
+    // Redirigir a la página de listado de personas después de intentar actualizar.
+    echo '<script>window.location.href = "?controller=Persona&action=ListarPersona";</script>';
+    exit();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
 }
 
 if (isset($_GET['i'])) {
@@ -30,7 +63,7 @@ if (isset($_GET['i'])) {
 ?>
         <div class="container-i mt-5">
             <div class="page-content">
-                <form action="?controller=Persona&action=UpdatePersona1" method="POST">
+                <form action="?controller=Persona&action=UpdatePersona" method="POST">
                     <div class="custom-form-background p-4">
                         <h4>Actualización de Persona</h4>
                         <div class="form-group">
@@ -46,8 +79,19 @@ if (isset($_GET['i'])) {
                             <input class="form-control" type="text" name="apellido" value="<?php echo $apellido; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="ciudad_codigo"><b>Código de Ciudad:</b></label>
-                            <input class="form-control" type="text" name="ciudad_codigo" value="<?php echo $ciudad_codigo; ?>" readonly>
+                            <label for="ciudad_codigo"><b>Ciudad Código:</b></label>
+                            <select class="form-control" name="ciudad_codigo" id="ciudad_codigo" required>
+                                <?php
+                                $controller = new PersonaController();
+                                $result_ciudad = $controller->ListarCiudades();
+
+                                while ($row_ciudad = mysqli_fetch_array($result_ciudad)) {
+                                    $codigo_ciudad = $row_ciudad['codigo'];
+                                    $descripcion_ciudad = $row_ciudad['descripcion'];
+                                    echo "<option value='$codigo_ciudad'>$codigo_ciudad - $descripcion_ciudad</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <!-- Add other fields related to Persona table here -->
 

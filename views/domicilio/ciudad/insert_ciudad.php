@@ -48,7 +48,7 @@ $numrows = mysqli_num_rows($result_ciudad);
             <div class="custom-form-background p-4">
                 <h4>Ingreso de Ciudades</h4>
                 <div class="form-group">
-                    <label for="codigo_ciudad"><b>Ciudad:</b></label>
+                    <label for="codigo_ciudad"><b>Codigo de la Ciudad:</b></label>
                     <input class="form-control" type="text" name="codigo_ciudad" id="codigo_ciudad" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aquí el código de la ciudad" />
                     <span class="text-black">Solo se permiten números.</span>
                 </div>

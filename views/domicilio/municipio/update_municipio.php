@@ -67,7 +67,7 @@ if (isset($_GET['i'])) {
                     <div class="custom-form-background p-4">
                         <h4>Actualización de Municipio</h4>
                         <div class="form-group">
-                            <label for="codigo"><b>Municipio:</b></label>
+                            <label for="codigo"><b>Codigo de Municipio:</b></label>
                             <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                         </div>
                         <div class="form-group">

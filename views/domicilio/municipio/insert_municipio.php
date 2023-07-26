@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="custom-form-background p-4">
                 <div class="form-group">
                     <h4 class="mb-4">Ingreso de Municipios</h4>
-                    <label for="codigo_municipio"><b>Municipio:</b></label>
+                    <label for="codigo_municipio"><b>Codigo de Municipio:</b></label>
                     <input class="form-control" type="text" name="codigo_municipio" id="codigo_municipio" pattern="[0-9]+" maxlength="5" required placeholder="Ingrese aquí el código del Municipio" />
                     <small class="form-text text-muted">Solo se permiten números.</small>
                 </div>

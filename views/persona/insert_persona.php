@@ -1,4 +1,37 @@
 <?php
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+    exit();
+}
+
+// Verificar si se han enviado los datos del formulario a través de POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener los datos del formulario
+    $cedula = $_POST['cedula'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $ciudadCodigo = $_POST['ciudad_codigo'];
+
+    require_once('../../controllers/persona_controller.php');
+    $controller = new PersonaController();
+
+    // Insertar la persona y obtener el resultado
+    $result_persona = $controller->IngresarPersona2($cedula, $nombre, $apellido, $ciudadCodigo);
+
+    // Verificar si el insert fue exitoso
+    if ($result_persona) {
+        $_SESSION['mensaje'] = "La persona se ha registrado correctamente.";
+        $_SESSION['mensaje_tipo'] = "success";
+    } else {
+        $_SESSION['mensaje'] = "Error al registrar la persona. Por favor, intenta nuevamente.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
+
+    // Redirigir a la página de listado de personas después de intentar insertar.
+    echo '<script>window.location.href = "?controller=Persona&action=ListarPersona";</script>';
+    exit();
+}
+
 require_once('../../controllers/persona_controller.php');
 $controller = new PersonaController();
 $result_persona = $controller->BuscarUltimaPersona();
@@ -7,7 +40,7 @@ $numrows = mysqli_num_rows($result_persona);
 
 <div class="container-i mt-5">
     <div class="page-content">
-        <form action="?controller=Persona&action=IngresarPersona1" method="POST">
+        <form action="?controller=Persona&action=IngresarPersona" method="POST">
             <div class="custom-form-background p-4">
                 <h4>Ingreso de Personas</h4>
                 <div class="form-group">
