@@ -33,10 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-if (!isset($_SESSION['user_id'])) {
-    echo '<script>window.location.href = "../../index.php";</script>';
-}
-
 if (isset($_GET['i'])) {
     $cedula = $_GET['i'];
     require_once('../../controllers/persona_controller.php');

@@ -89,7 +89,7 @@
             <div class="menu-title">>Seguridad<</div>
 
             <li class="item">
-                <a href="#">Usuarios</a>
+                <a href="?controller=Usuario&action=ListarUsuario">Usuario</a>
             </li>
 
             <li class="item">

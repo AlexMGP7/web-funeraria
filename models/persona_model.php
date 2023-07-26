@@ -102,12 +102,5 @@ class PersonaModel
         $result_persona = PersonaModel::Update_Data($sql_persona);
         return $result_persona;
     }
-    public static function CheckReferencedRecords($cedula)
-    {
-        // Your code to check if the person has references in other tables goes here
-        // For example, if the person is referenced in other tables, return true, else return false.
-        // Modify this method based on your database schema and relationships.
-        // For simplicity, this example assumes no referenced records.
-        return false;
-    }
+
 }

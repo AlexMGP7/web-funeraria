@@ -4,7 +4,8 @@ $controllers = array(
     'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'UpdateMunicipio', 'DeleteMunicipio'],
     'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'UpdateParroquia', 'DeleteParroquia'],
     'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'UpdateCiudad', 'DeleteCiudad'],
-    'Persona' => ['ListarPersona', 'IngresarPersona', 'UpdatePersona', 'DeletePersona']
+    'Persona' => ['ListarPersona', 'IngresarPersona', 'UpdatePersona', 'DeletePersona'],
+    'Usuario' => ['ListarUsuario', 'IngresarUsuario', 'UpdateUsuario', 'DeleteUsuario']
     // Agrega más controladores y acciones según sea necesario
 );
 
@@ -132,6 +133,27 @@ function call($controller, $action)
                     break;
                 default:
                     $personaController->ListarPersona();
+                    break;
+            }
+            break;
+        case 'Usuario':
+            $usuarioController = new UsuarioController();
+
+            switch ($action) {
+                case 'ListarUsuario':
+                    $usuarioController->ListarUsuario();
+                    break;
+                case 'IngresarUsuario':
+                    $usuarioController->IngresarUsuario();
+                    break;
+                case 'UpdateUsuario':
+                    $usuarioController->UpdateUsuario();
+                    break;
+                case 'DeleteUsuario':
+                    $usuarioController->DeleteUsuario();
+                    break;
+                default:
+                    $usuarioController->ListarUsuario();
                     break;
             }
             break;

@@ -5,26 +5,27 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Si se ha enviado el parámetro 'i' (cedula) a través de GET, procedemos con el proceso de eliminación.
-if (isset($_GET['i'])) {
-    $cedula = $_GET['i'];
+// Verificar si se ha enviado el parámetro 'cedula' a través de GET
+if (isset($_GET['cedula'])) {
+    $cedula = $_GET['cedula'];
 
-    require_once('../../controllers/persona_controller.php');
-    $controller = new PersonaController();
+    require_once('../../controllers/usuario_controller.php');
+    $controller = new UsuarioController();
 
-    // Intentar eliminar la persona utilizando el método 'DeletePersona1' del controlador.
-    if ($controller->DeletePersona1($cedula)) {
-        // Si la eliminación fue exitosa, mostramos un mensaje de éxito.
-        $_SESSION['mensaje'] = "La persona se ha eliminado correctamente.";
+    // Intentar eliminar el usuario utilizando el método 'DeleteUsuario1' del controlador.
+    if ($controller->DeleteUsuario1($cedula)) {
+        // Si la eliminación fue exitosa, mostrar un mensaje de éxito.
+        $_SESSION['mensaje'] = "El usuario se ha eliminado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
     } else {
-        // Si la eliminación falló, mostramos un mensaje de advertencia.
-        $_SESSION['mensaje'] = "Error: No se pudo eliminar la persona.";
+        // Si la eliminación falló, mostrar un mensaje de advertencia.
+        $_SESSION['mensaje'] = "Error: No se pudo eliminar el usuario.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
 }
 
-// Redirigir a la página de listado de personas después de intentar eliminar.
-echo '<script>window.location.href = "?controller=Persona&action=ListarPersona";</script>';
+// Redirigir a la página de listado de usuarios después de intentar eliminar.
+echo '<script>window.location.href = "?controller=Usuario&action=ListarUsuario";</script>';
 exit();
+
 ?>
