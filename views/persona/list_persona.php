@@ -26,7 +26,7 @@ $numrows = mysqli_num_rows($result_persona);
                     <th class="th-sm">Cédula</th>
                     <th class="th-sm">Nombre</th>
                     <th class="th-sm">Apellido</th>
-                    <th class="th-sm">Código de Ciudad</th>
+                    <th class="th-sm">Ciudad</th>
                     <th class="th-sm">Modificar</th>
                     <th class="th-sm">Eliminar</th>
                 </tr>
@@ -41,7 +41,7 @@ $numrows = mysqli_num_rows($result_persona);
                             <td><?php echo $numrows["cedula"]; ?></td>
                             <td><?php echo $numrows["nombre"]; ?></td>
                             <td><?php echo $numrows["apellido"]; ?></td>
-                            <td><?php echo $numrows["ciudad_codigo"]; ?></td>
+                            <td><?php echo $numrows["ciudad_descripcion"]; ?></td> <!-- Use ciudad_descripcion instead of Ciudad_Codigo -->
                             <td align="center">
                                 <a href="?controller=Persona&action=UpdatePersona&i=<?php echo $i; ?>" title="Modificar">
                                     <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">

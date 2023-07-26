@@ -17,5 +17,5 @@ try {
     $_SESSION['mensaje_tipo'] = "warning";
 }
 
-echo '<script>window.location.href = "../../php-login/signup.php";</script>';
+echo '<script>window.location.href = "?controller=Persona&action=ListarPersona";</script>';
 exit();

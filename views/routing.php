@@ -154,6 +154,9 @@ function call($controller, $action)
                 case 'UpdatePersona':
                     $personaController->UpdatePersona();
                     break;
+                case 'UpdatePersona1':
+                    $personaController->UpdatePersona1();
+                    break;
                 case 'DeletePersona':
                     $personaController->DeletePersona();
                     break;
@@ -161,8 +164,6 @@ function call($controller, $action)
                     $personaController->ListarPersona();
                     break;
             }
-        default:
-            $personaController->IngresarPersona();
             break;
     }
 }

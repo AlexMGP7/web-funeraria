@@ -49,10 +49,14 @@ class PersonaModel
 
     public static function ListarPersona()
     {
-        $sql_persona = "SELECT cedula, nombre, apellido, Ciudad_Codigo FROM persona ORDER BY cedula ASC";
+        $sql_persona = "SELECT p.cedula, p.nombre, p.apellido, c.descripcion AS ciudad_descripcion
+                    FROM persona p
+                    JOIN ciudad c ON p.Ciudad_Codigo = c.codigo
+                    ORDER BY p.cedula ASC";
         $result_persona = PersonaModel::Get_Data($sql_persona);
         return $result_persona;
     }
+
 
     // Para la insersión
 
