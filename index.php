@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require 'config/database.php';
@@ -38,7 +39,7 @@ if (isset($_SESSION['user_id'])) {
         </div>
     <?php else : ?>
         <div class="container">
-            <h1>Iniciar sesión o Registrate</h1>
+            <h1>Iniciar sesión o Registrarse</h1>
             <a href="php-login/login.php">Iniciar</a> /
             <a href="php-login/signup.php">Registrar</a>
         </div>

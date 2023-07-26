@@ -1,8 +1,7 @@
-
-# Habilitar el motor de reescritura de URL
 RewriteEngine On
+RewriteBase /
 
-# Redireccionar todas las solicitudes al archivo index.php
+# Redirect all requests that don't point to an existing file or directory to your index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ index.php [QSA,L]

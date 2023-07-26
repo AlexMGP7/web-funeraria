@@ -37,7 +37,7 @@ class EstadoController
         require_once('../../views/domicilio/estado/insert_estado.php');
     }
 
-    // Función para mostrar la vista con un formulario para insertar un nuevo estado.
+    // Logica para ingresar un estado nuevo y mandar el mensaje
     function IngresarEstado1()
     {
         require_once('../../views/domicilio/estado/insert_estado1.php');
@@ -68,7 +68,7 @@ class EstadoController
         require_once('../../views/domicilio/estado/update_estado.php');
     }
 
-    // Función para mostrar la vista con un formulario para actualizar un estado.
+    // Logica para actualizar el estado y mandar el mensaje
     function UpdateEstado1()
     {
         require_once('../../views/domicilio/estado/update_estado1.php');
