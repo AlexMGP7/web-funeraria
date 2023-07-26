@@ -118,8 +118,6 @@ class CiudadController
 
         require_once('../../models/ciudad_model.php');
 
-        // Aquí no se verifica si existen registros relacionados en otras tablas porque no se muestra esa parte del código.
-
         $result_Listar = CiudadModel::DeleteCiudad($codigo);
         return $result_Listar; // Devuelve el resultado de la operación de eliminación (true o false).
     }

@@ -110,14 +110,6 @@ class ParroquiaController
 
         require_once('../../models/parroquia_model.php');
 
-        // Verificar si existen registros relacionados en otras tablas
-        $hasReferencedRecords = ParroquiaModel::CheckReferencedRecords($codigo);
-
-        if ($hasReferencedRecords) {
-            throw new Exception("No se puede eliminar la parroquia porque tiene claves foráneas referenciadas en otras tablas.");
-        }
-
-        // Si no hay referencias, procede con la eliminación
         $result_Listar = ParroquiaModel::DeleteParroquia($codigo);
         return $result_Listar; // Devuelve el resultado de la operación de eliminación (true o false).
     }

@@ -102,14 +102,6 @@ class MunicipioController
 
         require_once('../../models/municipio_model.php');
 
-        // Verificar si existen registros relacionados en otras tablas
-        $hasReferencedRecords = MunicipioModel::CheckReferencedRecords($codigo);
-
-        if ($hasReferencedRecords) {
-            throw new Exception("No se puede eliminar el municipio porque tiene claves foráneas referenciadas en otras tablas.");
-        }
-
-        // Si no hay referencias, procede con la eliminación
         $result_Listar = MunicipioModel::DeleteMunicipio($codigo);
         return $result_Listar; // Devuelve el resultado de la operación de eliminación (true o false).
     }

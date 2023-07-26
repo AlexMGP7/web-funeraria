@@ -103,14 +103,6 @@ class PersonaController
 
         require_once('../../models/persona_model.php');
 
-        // Verificar si existen registros relacionados en otras tablas
-        $hasReferencedRecords = PersonaModel::CheckReferencedRecords($cedula);
-
-        if ($hasReferencedRecords) {
-            throw new Exception("No se puede eliminar la persona porque tiene claves foráneas referenciadas en otras tablas.");
-        }
-
-        // Si no hay referencias, procede con la eliminación
         $result_Listar = PersonaModel::DeletePersona($cedula);
         return $result_Listar; // Devuelve el resultado de la operación de eliminación (true o false).
     }
