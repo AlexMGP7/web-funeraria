@@ -75,7 +75,7 @@ if (isset($_GET['i'])) {
                     </div>
                     <div class="form-group">
                         <label for="descripcion"><b>Nueva Descripción:</b></label>
-                        <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                        <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion; ?>">
                     </div>
                     <div class="form-group">
                         <label for="estado_codigo"><b>Estado:</b></label>
