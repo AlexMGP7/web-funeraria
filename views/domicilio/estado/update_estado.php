@@ -3,14 +3,40 @@
 // Verificar si el usuario ha iniciado sesión. Si no, redirigir al índice (login) del sistema.
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
+    exit(); // Salir para evitar cargar el formulario si el usuario no ha iniciado sesión.
+}
+
+require_once('../../controllers/estado_controller.php');
+$controller = new EstadoController();
+
+// Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de actualización.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener el código y la descripción actualizados del estado enviados a través del formulario de actualización.
+    $codigo = $_POST['codigo'];
+    $descripcion = $_POST['descripcion'];
+
+    // Intentar actualizar el estado utilizando el método 'UpdateEstado2' del controlador.
+    $result_estado = $controller->UpdateEstado2($codigo, $descripcion);
+
+    if ($result_estado) {
+        // Si la actualización fue exitosa, mostrar un mensaje de éxito.
+        $_SESSION['mensaje'] = "El estado ha sido modificado en la base de datos de forma satisfactoria.";
+        $_SESSION['mensaje_tipo'] = "success";
+
+    } else {
+        // Si la actualización falló, mostrar un mensaje de advertencia.
+        $_SESSION['mensaje'] = "Error: No se pudo actualizar el estado.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
+    // Redirigir a la página de listado de estados después de intentar actualizar.
+    echo '<script>window.location.href = "?controller=Estado&action=ListarEstado";</script>';
+    exit();
 }
 
 // Verificar si se ha proporcionado un parámetro 'i' en la URL.
 if (isset($_GET['i'])) {
     // Obtener el código del estado a actualizar desde el parámetro 'i' en la URL.
     $codigo = $_GET['i'];
-    require_once('../../controllers/estado_controller.php');
-    $controller = new EstadoController();
 
     // Obtener los datos del estado a actualizar utilizando el método 'BuscarEstadoByCodigo' del controlador.
     $result_estado = $controller->BuscarEstadoByCodigo($codigo);
@@ -29,7 +55,7 @@ if (isset($_GET['i'])) {
         }
 ?>
         <div class="container-i mt-5">
-            <form action="?controller=Estado&action=UpdateEstado1" method="POST">
+            <form action="?controller=Estado&action=UpdateEstado" method="POST">
                 <div class="custom-form-background p-4">
                     <h4 class="mb-4">Actualización de Estados</h4>
                     <div class="form-group">

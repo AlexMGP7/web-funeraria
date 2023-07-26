@@ -31,16 +31,10 @@ class EstadoController
         return $result_Listar; // Devuelve el resultado de la consulta que contiene el último código de estado.
     }
 
-    // Función para mostrar la vista de inserción de un nuevo estado.
+    // Función para mostrar la vista de inserción de un nuevo estado y actualizarlo.
     function IngresarEstado()
     {
         require_once('../../views/domicilio/estado/insert_estado.php');
-    }
-
-    // Logica para ingresar un estado nuevo y mandar el mensaje
-    function IngresarEstado1()
-    {
-        require_once('../../views/domicilio/estado/insert_estado1.php');
     }
 
     // Función estática para insertar un nuevo estado en el modelo.
@@ -62,16 +56,10 @@ class EstadoController
         return $result_estado; // Devuelve el resultado de la consulta que contiene el estado encontrado.
     }
 
-    // Función para mostrar la vista de actualización de un estado.
+    // Función para mostrar la vista de actualización de un estado y actualizarlo.
     function UpdateEstado()
     {
         require_once('../../views/domicilio/estado/update_estado.php');
-    }
-
-    // Logica para actualizar el estado y mandar el mensaje
-    function UpdateEstado1()
-    {
-        require_once('../../views/domicilio/estado/update_estado1.php');
     }
 
     // Función estática para actualizar un estado existente en el modelo.
