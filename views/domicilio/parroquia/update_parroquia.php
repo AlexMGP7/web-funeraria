@@ -70,7 +70,7 @@ if (isset($_GET['i'])) {
                 <div class="custom-form-background p-4">
                     <h4 class="mb-4">Actualización de Parroquia</h4>
                     <div class="form-group">
-                        <label for="codigo"><b>Codigo de la Parroquia:</b></label>
+                        <label for="codigo"><b>Codigo de la Parroquia: <?php echo $descripcion ?></b></label>
                         <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                     </div>
                     <div class="form-group">
@@ -118,7 +118,9 @@ if (isset($_GET['i'])) {
                         success: function(data) {
                             var options = '<option value="">Seleccione una opción</option>';
                             for (var i = 0; i < data.length; i++) {
-                                options += '<option value="' + data[i]['codigo'] + '">' + data[i]['descripcion'] + '</option>';
+                                var codigo = data[i]['codigo'];
+                                var descripcion = data[i]['descripcion'];
+                                options += '<option value="' + codigo + '">' + codigo + ' - ' + descripcion + '</option>';
                             }
                             $(targetSelector).html(options);
                         },
@@ -137,15 +139,20 @@ if (isset($_GET['i'])) {
                         $('#municipio_codigo').html('<option value="">Seleccione un municipio</option>');
                     }
                 });
+
                 // Pre-select the previous municipality value
                 var prevMunicipioCodigo = '<?php echo $municipio_codigo; ?>';
                 if (prevMunicipioCodigo !== '') {
+                    var prevMunicipioDescripcion = '<?php echo $municipio_descripcion; ?>';
                     loadOptions('municipios', '<?php echo $estado_codigo; ?>', '#municipio_codigo');
                     $('#municipio_codigo').val(prevMunicipioCodigo);
-                }
 
+                    // Display the description of the municipality
+                    $('#municipio_descripcion').text(prevMunicipioDescripcion);
+                }
             });
         </script>
+
 <?php
     } else {
         require_once('../../views/domicilio/parroquia/list_parroquia.php');
