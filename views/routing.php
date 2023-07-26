@@ -2,9 +2,9 @@
 $controllers = array(
     'Estado' => ['ListarEstado', 'IngresarEstado', 'UpdateEstado', 'DeleteEstado'],
     'Municipio' => ['ListarMunicipio', 'IngresarMunicipio', 'UpdateMunicipio', 'DeleteMunicipio'],
-    'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'IngresarParroquia1', 'UpdateParroquia', 'UpdateParroquia1', 'DeleteParroquia'],
-    'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'IngresarCiudad1', 'UpdateCiudad', 'UpdateCiudad1', 'DeleteCiudad'],
-    'Persona' => ['ListarPersona', 'IngresarPersona', 'IngresarPersona1', 'UpdatePersona', 'UpdatePersona1', 'DeletePersona']
+    'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'UpdateParroquia', 'DeleteParroquia'],
+    'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'UpdateCiudad', 'DeleteCiudad'],
+    'Persona' => ['ListarPersona', 'IngresarPersona', 'UpdatePersona', 'DeletePersona']
     // Agrega más controladores y acciones según sea necesario
 );
 
@@ -82,14 +82,8 @@ function call($controller, $action)
                 case 'IngresarParroquia':
                     $parroquiaController->IngresarParroquia();
                     break;
-                case 'IngresarParroquia1':
-                    $parroquiaController->IngresarParroquia1();
-                    break;
                 case 'UpdateParroquia':
                     $parroquiaController->UpdateParroquia();
-                    break;
-                case 'UpdateParroquia1':
-                    $parroquiaController->UpdateParroquia1();
                     break;
                 case 'DeleteParroquia':
                     $parroquiaController->DeleteParroquia();
@@ -109,14 +103,8 @@ function call($controller, $action)
                 case 'IngresarCiudad':
                     $ciudadController->IngresarCiudad();
                     break;
-                case 'IngresarCiudad1':
-                    $ciudadController->IngresarCiudad1();
-                    break;
                 case 'UpdateCiudad':
                     $ciudadController->UpdateCiudad();
-                    break;
-                case 'UpdateCiudad1':
-                    $ciudadController->UpdateCiudad1();
                     break;
                 case 'DeleteCiudad':
                     $ciudadController->DeleteCiudad();

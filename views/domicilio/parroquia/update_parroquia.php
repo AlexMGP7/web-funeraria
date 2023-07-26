@@ -2,6 +2,38 @@
 
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
+    exit();
+}
+
+// Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de actualización.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener el código, la descripción y el código de municipio enviados a través del formulario.
+    $codigo = $_POST['codigo'];
+    $descripcion = $_POST['descripcion'];
+    $municipio_codigo = $_POST['municipio_codigo'];
+
+    require_once('../../controllers/parroquia_controller.php');
+    $controller = new ParroquiaController();
+
+    // Intentar actualizar la parroquia utilizando el método 'UpdateParroquia2' del controlador.
+    $result_parroquia = $controller->UpdateParroquia2($codigo, $descripcion, $municipio_codigo);
+
+    if ($result_parroquia) {
+        // Si la actualización fue exitosa, mostrar un mensaje de éxito.
+        $_SESSION['mensaje'] = "La parroquia se ha actualizado correctamente.";
+        $_SESSION['mensaje_tipo'] = "success";
+
+        // Redirigir a la página de listado de parroquias después de intentar actualizar.
+        echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
+        exit();
+    } else {
+        // Si la actualización falló, mostrar un mensaje de advertencia.
+        $_SESSION['mensaje'] = "Error: No se pudo actualizar la parroquia.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
+    // En caso de que el formulario no se haya enviado, redirigir a la página de listado de parroquias.
+    echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
+    exit();
 }
 
 if (isset($_GET['i'])) {
@@ -34,7 +66,7 @@ if (isset($_GET['i'])) {
         }
 ?>
         <div class="container-i mt-5">
-            <form action="?controller=Parroquia&action=UpdateParroquia1" method="POST">
+            <form action="?controller=Parroquia&action=UpdateParroquia" method="POST">
                 <div class="custom-form-background p-4">
                     <h4 class="mb-4">Actualización de Parroquia</h4>
                     <div class="form-group">

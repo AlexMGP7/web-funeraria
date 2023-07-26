@@ -51,12 +51,6 @@ class ParroquiaController
         require_once('../../views/domicilio/parroquia/insert_parroquia.php');
     }
 
-    function IngresarParroquia1()
-    {
-        // Logica para ingresar la parroquia y mandar el mensaje
-        require_once('../../views/domicilio/parroquia/insert_parroquia1.php');
-    }
-
     static public function IngresarParroquia2($codigo, $descripcion, $municipio_codigo)
     {
         // Insertar una nueva parroquia en el modelo "ParroquiaModel"
@@ -80,12 +74,6 @@ class ParroquiaController
     {
         // Mostrar la vista para actualizar una parroquia
         require_once('../../views/domicilio/parroquia/update_parroquia.php');
-    }
-
-    function UpdateParroquia1()
-    {
-        // Logica para modificar a la parroquia y mandar el mensaje
-        require_once('../../views/domicilio/parroquia/update_parroquia1.php');
     }
 
     function UpdateParroquia2($codigo, $descripcion, $municipio_codigo)

@@ -59,12 +59,6 @@ class CiudadController
         require_once('../../views/domicilio/ciudad/insert_ciudad.php');
     }
 
-    function IngresarCiudad1()
-    {
-        // Mostrar la vista con un formulario para insertar una nueva ciudad
-        require_once('../../views/domicilio/ciudad/insert_ciudad1.php');
-    }
-
     static public function IngresarCiudad2($codigo, $descripcion, $parroquia_codigo)
     {
         // Insertar una nueva ciudad en el modelo "CiudadModel"
@@ -88,12 +82,6 @@ class CiudadController
     {
         // Mostrar la vista para actualizar una ciudad
         require_once('../../views/domicilio/ciudad/update_ciudad.php');
-    }
-
-    function UpdateCiudad1()
-    {
-        // Mostrar la vista con un formulario para actualizar una ciudad
-        require_once('../../views/domicilio/ciudad/update_ciudad1.php');
     }
 
     function UpdateCiudad2($codigo, $descripcion, $parroquia_codigo)

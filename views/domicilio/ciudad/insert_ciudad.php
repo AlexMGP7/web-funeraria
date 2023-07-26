@@ -2,6 +2,38 @@
 
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
+    exit();
+}
+
+// Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de inserción.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener el código, descripción y parroquia_codigo de la ciudad enviados a través del formulario.
+    $codigo = $_POST['codigo_ciudad'];
+    $descripcion = $_POST['descripcion'];
+    $parroquia_codigo = $_POST['parroquia_codigo'];
+
+    require_once('../../controllers/ciudad_controller.php');
+    $controller = new CiudadController();
+
+    // Intentar insertar la nueva ciudad utilizando el método 'IngresarCiudad2' del controlador.
+    $result_ciudad = $controller->IngresarCiudad2($codigo, $descripcion, $parroquia_codigo);
+
+    if ($result_ciudad) {
+        // Si la inserción fue exitosa, mostrar un mensaje de éxito.
+        $_SESSION['mensaje'] = "La ciudad se ha registrado correctamente.";
+        $_SESSION['mensaje_tipo'] = "success";
+
+        // Redirigir a la página de listado de ciudades después de intentar insertar.
+        echo '<script>window.location.href = "?controller=Ciudad&action=ListarCiudad";</script>';
+        exit();
+    } else {
+        // Si la inserción falló, mostrar un mensaje de advertencia.
+        $_SESSION['mensaje'] = "Error: No se pudo registrar la ciudad.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
+    // Redirigir al formulario de ingreso de ciudades si no se ha enviado el formulario o si la inserción falló.
+    echo '<script>window.location.href = "?controller=Ciudad&action=IngresarCiudad1";</script>';
+    exit();
 }
 
 require_once('../../controllers/ciudad_controller.php');
@@ -12,7 +44,7 @@ $numrows = mysqli_num_rows($result_ciudad);
 ?>
 <div class="container-i mt-5">
     <div class="page-content">
-        <form action="?controller=Ciudad&action=IngresarCiudad1" method="POST">
+        <form action="?controller=Ciudad&action=IngresarCiudad" method="POST">
             <div class="custom-form-background p-4">
                 <h4>Ingreso de Ciudades</h4>
                 <div class="form-group">

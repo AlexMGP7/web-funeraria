@@ -2,6 +2,38 @@
 
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
+    exit();
+}
+
+// Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de actualización.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener el código, descripción y parroquia_codigo de la ciudad enviados a través del formulario.
+    $codigo = $_POST['codigo'];
+    $descripcion = $_POST['descripcion'];
+    $parroquia_codigo = $_POST['parroquia_codigo'];
+
+    require_once('../../controllers/ciudad_controller.php');
+    $controller = new CiudadController();
+
+    // Intentar actualizar la ciudad utilizando el método 'UpdateCiudad2' del controlador.
+    $result_ciudad = $controller->UpdateCiudad2($codigo, $descripcion, $parroquia_codigo);
+
+    if ($result_ciudad) {
+        // Si la actualización fue exitosa, mostrar un mensaje de éxito.
+        $_SESSION['mensaje'] = "La ciudad se ha actualizado correctamente.";
+        $_SESSION['mensaje_tipo'] = "success";
+
+        // Redirigir a la página de listado de ciudades después de intentar actualizar.
+        echo '<script>window.location.href = "?controller=Ciudad&action=ListarCiudad";</script>';
+        exit();
+    } else {
+        // Si la actualización falló, mostrar un mensaje de advertencia.
+        $_SESSION['mensaje'] = "Error: No se pudo actualizar la ciudad.";
+        $_SESSION['mensaje_tipo'] = "warning";
+    }
+    // Redirigir al formulario de actualización de ciudades si no se ha enviado el formulario o si la actualización falló.
+    echo '<script>window.location.href = "?controller=Ciudad&action=UpdateCiudad1&i=' . $codigo . '";</script>';
+    exit();
 }
 
 if (isset($_GET['i'])) {
@@ -42,7 +74,7 @@ if (isset($_GET['i'])) {
 ?>
         <div class="container-i mt-5">
             <div class="page-content">
-                <form action="?controller=Ciudad&action=UpdateCiudad1" method="POST">
+                <form action="?controller=Ciudad&action=UpdateCiudad" method="POST">
                     <div class="custom-form-background p-4">
                         <h4>Actualización de Ciudad</h4>
                         <div class="form-group">
@@ -79,7 +111,7 @@ if (isset($_GET['i'])) {
                             <select class="form-control" id="parroquia_codigo" name="parroquia_codigo">
                             </select>
                         </div>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Actualizar</button>
+                        <button class="btn btn-success" type="submit">Actualizar</button>
                     </div>
                 </form>
             </div>
