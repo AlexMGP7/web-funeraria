@@ -48,14 +48,17 @@
                         Personas Juridicas
                     </div>
                     <li class="item">
-                        <a href="#">Responsable Juridico</a>
+                        <a href="#">Persona Juridica</a>
                     </li>
                     <li class="item">
+                        <a href="#">Responsable Juridico</a>
+                    </li>
+                    <!-- <li class="item">
                         <a href="#">Cementerio</a>
                     </li>
                     <li class="item">
                         <a href="#">Funeraria</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 
