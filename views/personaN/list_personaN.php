@@ -1,85 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="vewport" content="width=device-width, initial-scale=1.0">
-    <title>P NATURAL</title>
-    <link rel="stylesheet" href="estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "../../index.php";</script>';
+}
 
-<body>
-    <table class="table-responsive">
-        <thead>
-            <tr>
-                <th class="th-sm">Cédula</th>
-                <th class="th-sm">Nombre</th>
-                <th class="th-sm">Apellido</th>
-                <th class="th-sm">Telefono</th>
-                <th class="th-sm">Correo</th>
-                <th class="th-sm">Modificar</th>
-                <th class="th-sm">Eliminar</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>8299391</td>
-            <td>Zuleyma</td>
-            <td>Duarte</td>
-            <td>04123561013</td>
-            <td>zuleyma@gmail.com</td>
-            <td>
-                <a href="" title="Modificar">
-                    <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">
-                </a>
-            </td>
-            <td>
-                <a href="" title="Eliminar">
-                    <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>30708168</td>
-            <td>Daniela</td>
-            <td>Rodriguez</td>
-            <td>04248673247</td>
-            <td>daniela@gmail.com</td>
-            <td>
-                <a href="" title="Modificar">
-                    <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">
-                </a>
-            </td>
-            <td>
-                <a href="" title="Eliminar">
-                    <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>6511857</td>
-            <td>Luis</td>
-            <td>Rodriguez</td>
-            <td>04167993251</td>
-            <td>luis@gmail.com</td>
-            <td>
-                <a href="" title="Modificar">
-                    <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">
-                </a>
-            </td>
-            <td>
-                <a href="" title="Eliminar">
-                    <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
-                </a>
-            </td>
-        </tr>
+require_once('../../controllers/personaNatural_controller.php');
+$controller = new PersonaNaturalController();
+$result_personan = $controller->ListarPersonaN1();
+$numrows = mysqli_num_rows($result_personan);
+?>
 
-    </table>
-    <div id="boton">
-        <a href="" title="Añadir" class="btn btn-green">Añadir persona natural</a>
+<div class="container">
+
+    <br> <br>
+    <h4>Listado de Personas Naturales registradas</h4>
+    <br> <br>
+
+    <!-- Botón Agregar -->
+    <a href="<?php echo $_SERVER['PHP_SELF'] ?>?controller=PersonaNatural&action=IngresarPersonaN" class="btn btn-primary custom-btn">Agregar Persona Natural</a>
+
+    <div class="table-responsive">
+        <table id="dtBasicExample" data-order='[[ 0, "asc" ]]' data-page-length='10' class="table table-sm table-striped table-hover table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="th-sm">Cédula</th>
+                    <th class="th-sm">Correo</th>
+                    <th class="th-sm">Teléfono</th>
+                    <th class="th-sm">Modificar</th>
+                    <th class="th-sm">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($numrows != 0) {
+                    while ($row = mysqli_fetch_array($result_personan)) {
+                        $cedula = $row["cedula"];
+                ?>
+                        <tr>
+                            <td><?php echo $cedula; ?></td>
+                            <td><?php echo $row["correo"]; ?></td>
+                            <td><?php echo $row["telefono"]; ?></td>
+                            <td align="center">
+                                <a href="?controller=PersonaNatural&action=UpdatePersonaN&cedula=<?php echo $cedula; ?>" title="Modificar">
+                                    <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">
+                                </a>
+                            </td>
+                            <td align="center">
+                                <a href="?controller=PersonaNatural&action=DeletePersonaN&cedula=<?php echo $cedula; ?>" title="Eliminar">
+                                    <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
-
-</html>
+</div>

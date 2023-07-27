@@ -5,8 +5,8 @@ $controllers = array(
     'Parroquia' => ['ListarParroquia', 'IngresarParroquia', 'UpdateParroquia', 'DeleteParroquia'],
     'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'UpdateCiudad', 'DeleteCiudad'],
     'Persona' => ['ListarPersona', 'IngresarPersona', 'UpdatePersona', 'DeletePersona'],
-    'Usuario' => ['ListarUsuario', 'IngresarUsuario', 'UpdateUsuario', 'DeleteUsuario']
-    // Agrega más controladores y acciones según sea necesario
+    'Usuario' => ['ListarUsuario', 'IngresarUsuario', 'UpdateUsuario', 'DeleteUsuario'],
+    'PersonaNatural' => ['ListarPersonaN', 'IngresarPersonaN', 'UpdatePersonaN', 'DeletePersonaN']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -16,13 +16,10 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     if (array_key_exists($controller, $controllers) && in_array($action, $controllers[$controller])) {
         call($controller, $action);
     } else {
-        call('Estado', 'ListarEstado');
+        call('Usuario', 'ListarUsuario');
     }
 } else {
-    call('Estado', 'ListarEstado');
-    // call('Municipio', 'ListarMunicipio');
-    // call('Parroquia', 'ListarParroquia');
-    // call('Ciudad', 'ListarCiudad');
+    call('Usuario', 'ListarUsuario');
 }
 
 function call($controller, $action)
@@ -133,6 +130,27 @@ function call($controller, $action)
                     break;
                 default:
                     $personaController->ListarPersona();
+                    break;
+            }
+            break;
+        case 'PersonaNatural':
+            $personaNaturalController = new PersonaNaturalController();
+
+            switch ($action) {
+                case 'ListarPersonaN':
+                    $personaNaturalController->ListarPersonaN();
+                    break;
+                case 'IngresarPersonaN':
+                    $personaNaturalController->IngresarPersonaN();
+                    break;
+                case 'UpdatePersonaN':
+                    $personaNaturalController->UpdatePersonaN();
+                    break;
+                case 'DeletePersonaN':
+                    $personaNaturalController->DeletePersonaN();
+                    break;
+                default:
+                    $personaNaturalController->ListarPersonaN();
                     break;
             }
             break;
