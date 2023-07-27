@@ -63,8 +63,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="form-group">
                 <label for="municipio_codigo"><b>Municipio:</b></label>
-                <select class="form-control" id="municipio_codigo" name="municipio_codigo">
+                <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
                     <option value="">Seleccione un Municipio</option>
+                    <?php
+                    $controller = new ParroquiaController();
+                    $result_municipios = $controller->ListarMunicipios();
+
+                    while ($row_municipio = mysqli_fetch_array($result_municipios)) {
+                        $codigo_municipio = $row_municipio['codigo'];
+                        $descripcion_municipio = $row_municipio['descripcion'];
+                        echo "<option value='$codigo_municipio'>$codigo_municipio - $descripcion_municipio</option>";
+                    }
+                    ?>
                 </select>
             </div>
             <button class="btn btn-success" type="submit">Ingresar</button>

@@ -91,7 +91,7 @@ if (isset($_GET['i'])) {
                     </div>
                     <div class="form-group">
                         <label for="municipio_codigo"><b>Municipio:</b></label>
-                        <select class="form-control" id="municipio_codigo" name="municipio_codigo">
+                        <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
                         </select>
                     </div>
                     <button class="btn btn-success" type="submit">Actualizar</button>

@@ -75,12 +75,12 @@ if (isset($_GET['i'])) {
                     <div class="custom-form-background p-4">
                         <h4>Actualización de Ciudad</h4>
                         <div class="form-group">
-                            <label for="codigo"><b>Codigo de la Ciudad:</b></label>
+                            <label for="codigo"><b>Codigo de la Ciudad: <?php echo $descripcion ?></b></label>
                             <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="descripcion"><b>Nueva Descripción:</b></label>
-                            <textarea class="form-control" name="descripcion" rows="4" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                            <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion; ?>">
                         </div>
                         <div class="form-group">
                             <label for="estado_codigo"><b>Estado:</b></label>
@@ -100,12 +100,34 @@ if (isset($_GET['i'])) {
                         </div>
                         <div class="form-group">
                             <label for="municipio_codigo"><b>Municipio:</b></label>
-                            <select class="form-control" id="municipio_codigo" name="municipio_codigo">
+                            <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
+                                <?php
+                                $controller = new CiudadController();
+                                $result_municipios = $controller->ListarMunicipios();
+
+                                while ($row_municipio = mysqli_fetch_array($result_municipios)) {
+                                    $codigo_municipio = $row_municipio['codigo'];
+                                    $descripcion_municipio = $row_municipio['descripcion'];
+                                    $selected = ($codigo_municipio == $municipio_codigo) ? 'selected' : '';
+                                    echo "<option value='$codigo_municipio' $selected>$codigo_municipio - $descripcion_municipio</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="parroquia_codigo"><b>Parroquia:</b></label>
-                            <select class="form-control" id="parroquia_codigo" name="parroquia_codigo">
+                            <select class="form-control" id="parroquia_codigo" name="parroquia_codigo" required>
+                                <?php
+                                $controller = new CiudadController();
+                                $result_parroquias = $controller->ListarParroquias();
+
+                                while ($row_parroquia = mysqli_fetch_array($result_parroquias)) {
+                                    $codigo_parroquia = $row_parroquia['codigo'];
+                                    $descripcion_parroquia = $row_parroquia['descripcion'];
+                                    $selected = ($codigo_parroquia == $parroquia_codigo) ? 'selected' : '';
+                                    echo "<option value='$codigo_parroquia' $selected>$codigo_parroquia - $descripcion_parroquia</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <button class="btn btn-success" type="submit">Actualizar</button>
@@ -129,7 +151,7 @@ if (isset($_GET['i'])) {
                         success: function(data) {
                             var options = '<option value="">Seleccione una opción</option>';
                             for (var i = 0; i < data.length; i++) {
-                                options += '<option value="' + data[i]['codigo'] + '">' + data[i]['descripcion'] + '</option>';
+                                options += '<option value="' + data[i]['codigo'] + '">' + data[i]['codigo'] + ' - ' + data[i]['descripcion'] + '</option>';
                             }
                             $(targetSelector).html(options);
                         },
@@ -172,8 +194,6 @@ if (isset($_GET['i'])) {
                     loadOptions('parroquias', '<?php echo $municipio_codigo; ?>', '#parroquia_codigo');
                     $('#parroquia_codigo').val(prevParroquiaCodigo);
                 }
-
-
             });
         </script>
 <?php

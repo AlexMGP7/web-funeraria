@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Si la actualización fue exitosa, mostrar un mensaje de éxito.
         $_SESSION['mensaje'] = "El estado ha sido modificado en la base de datos de forma satisfactoria.";
         $_SESSION['mensaje_tipo'] = "success";
+
     } else {
         // Si la actualización falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo actualizar el estado.";
@@ -58,14 +59,14 @@ if (isset($_GET['i'])) {
                 <div class="custom-form-background p-4">
                     <h4 class="mb-4">Actualización de Estados</h4>
                     <div class="form-group">
-                        <label for="codigo"><b>Codigo del Estado:</b></label>
+                        <label for="codigo"><b>Codigo del Estado: <?php echo $descripcion ?></b></label>
                         <!-- Mostrar el código del estado en un campo de solo lectura -->
                         <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="descripcion"><b>Nueva Descripción:</b></label>
                         <!-- Mostrar la descripción actual del estado en un campo de texto para ser modificada -->
-                        <textarea class="form-control" name="descripcion" required placeholder="<?php echo $descripcion; ?>"></textarea>
+                        <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion; ?>">
                     </div>
                     <button class="btn btn-success" type="submit">Actualizar</button>
                 </div>

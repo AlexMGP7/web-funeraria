@@ -24,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje'] = "El municipio se ha modificado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
 
-        // Redirigir a la página de listado de municipios después de intentar actualizar.
-        echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
-        exit();
     } else {
         // Si la actualización falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo actualizar el municipio.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
+    // Redirigir a la página de listado de municipios después de intentar actualizar.
+    echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
+    exit();
 }
 
 if (isset($_GET['i'])) {
@@ -67,7 +67,7 @@ if (isset($_GET['i'])) {
                     <div class="custom-form-background p-4">
                         <h4>Actualización de Municipio</h4>
                         <div class="form-group">
-                            <label for="codigo"><b>Codigo de Municipio:</b></label>
+                            <label for="codigo"><b>Codigo de Municipio: <?php echo $descripcion ?></b></label>
                             <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" readonly>
                         </div>
                         <div class="form-group">
