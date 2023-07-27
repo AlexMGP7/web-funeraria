@@ -23,16 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje'] = "La ciudad se ha registrado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
 
-        // Redirigir a la página de listado de ciudades después de intentar insertar.
-        echo '<script>window.location.href = "?controller=Ciudad&action=ListarCiudad";</script>';
-        exit();
     } else {
         // Si la inserción falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo registrar la ciudad.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
-    // Redirigir al formulario de ingreso de ciudades si no se ha enviado el formulario o si la inserción falló.
-    echo '<script>window.location.href = "?controller=Ciudad&action=IngresarCiudad1";</script>';
+    // Redirigir a la página de listado de ciudades después de intentar insertar.
+    echo '<script>window.location.href = "?controller=Ciudad&action=ListarCiudad";</script>';
     exit();
 }
 

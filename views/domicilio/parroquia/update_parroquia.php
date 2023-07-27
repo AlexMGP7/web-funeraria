@@ -22,16 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Si la actualización fue exitosa, mostrar un mensaje de éxito.
         $_SESSION['mensaje'] = "La parroquia se ha actualizado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
-
-        // Redirigir a la página de listado de parroquias después de intentar actualizar.
-        echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
-        exit();
     } else {
         // Si la actualización falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo actualizar la parroquia.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
-    // En caso de que el formulario no se haya enviado, redirigir a la página de listado de parroquias.
+    // Redirigir a la página de listado de parroquias después de intentar actualizar.
     echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
     exit();
 }

@@ -22,16 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Si la inserción fue exitosa, mostrar un mensaje de éxito.
         $_SESSION['mensaje'] = "La parroquia se ha registrado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
-
-        // Redirigir a la página de listado de parroquias después de intentar insertar.
-        echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
-        exit();
     } else {
         // Si la inserción falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo registrar la parroquia.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
-    // En caso de que el formulario no se haya enviado, redirigir a la página de listado de parroquias.
+    // Redirigir a la página de listado de parroquias después de intentar insertar.
     echo '<script>window.location.href = "?controller=Parroquia&action=ListarParroquia";</script>';
     exit();
 }

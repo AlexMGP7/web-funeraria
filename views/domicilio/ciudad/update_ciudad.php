@@ -23,16 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje'] = "La ciudad se ha actualizado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
 
-        // Redirigir a la página de listado de ciudades después de intentar actualizar.
-        echo '<script>window.location.href = "?controller=Ciudad&action=ListarCiudad";</script>';
-        exit();
     } else {
         // Si la actualización falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo actualizar la ciudad.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
-    // Redirigir al formulario de actualización de ciudades si no se ha enviado el formulario o si la actualización falló.
-    echo '<script>window.location.href = "?controller=Ciudad&action=UpdateCiudad1&i=' . $codigo . '";</script>';
+    // Redirigir a la página de listado de ciudades después de intentar actualizar.
+    echo '<script>window.location.href = "?controller=Ciudad&action=ListarCiudad";</script>';
     exit();
 }
 

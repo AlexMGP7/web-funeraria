@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Si la actualización fue exitosa, mostrar un mensaje de éxito.
         $_SESSION['mensaje'] = "El estado ha sido modificado en la base de datos de forma satisfactoria.";
         $_SESSION['mensaje_tipo'] = "success";
-
     } else {
         // Si la actualización falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo actualizar el estado.";
