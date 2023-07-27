@@ -13,6 +13,10 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+// Establecer el conjunto de caracteres a utf8
+$conn->set_charset("utf8");
+
+
 // Obtén los datos según el tipo solicitado (municipio, parroquia o ciudad)
 if (isset($_GET['type']) && isset($_GET['id'])) {
     $type = $_GET['type'];
