@@ -9,17 +9,13 @@
                 <a href="../../index.php">Inicio</a>
             </li> -->
 
-            <li class="item">
+            <!-- <li class="item">
                 <a href="#">Polizas</a>
-            </li>
-
-            <li class="item">
-                <a href="?controller=Persona&action=ListarPersona">Persona</a>
-            </li>
+            </li> -->
 
             <li class="item">
                 <div class="submenu-item">
-                    <span>Persona Natural</span>
+                    <span>Persona</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
 
@@ -29,7 +25,10 @@
                         Tipos de persona
                     </div>
                     <li class="item">
-                        <a href="?controller=PersonaNatural&action=ListarPersonaNatural">Persona Natural</a>
+                        <a href="?controller=Persona&action=ListarPersona">Persona</a>
+                    </li>
+                    <li class="item">
+                        <a href="?controller=PersonaN&action=ListarPersonaN">Persona Natural</a>
                     </li>
                     <li class="item">
                         <a href="#">Difunto</a>
@@ -92,7 +91,7 @@
                 <a href="?controller=Usuario&action=ListarUsuario">Usuario</a>
             </li>
 
-            <li class="item">
+            <!-- <li class="item">
                 <div class="submenu-item">
                     <span>Base de Datos</span>
                     <i class="fa-solid fa-chevron-right"></i>
@@ -110,7 +109,7 @@
                         <a href="#">Restaurar</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="item">
                 <a href="../../php-login/contacto.php">Contacto</a>
