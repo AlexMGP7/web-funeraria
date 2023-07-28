@@ -44,12 +44,12 @@ $numrows = mysqli_num_rows($result_cementerio);
                             <td><?php echo $row_cementerio["ciudad_descripcion"]; ?></td> <!-- Use ciudad_descripcion instead of Ciudad_Codigo -->
                             <td align="center">
                                 <a href="?controller=Cementerio&action=UpdateCementerio&i=<?php echo $rif; ?>" title="Modificar">
-                                    <img width="50px" height="50px" src="../imagenes/update_icon.png" alt="">
+                                    <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">
                                 </a>
                             </td>
                             <td align="center">
                                 <a href="?controller=Cementerio&action=DeleteCementerio&i=<?php echo $rif; ?>" title="Eliminar">
-                                    <img width="50px" height="50px" src="../imagenes/delete_icon.png" alt="">
+                                    <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
                                 </a>
                             </td>
                         </tr>
