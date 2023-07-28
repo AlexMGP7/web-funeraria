@@ -5,7 +5,7 @@ if (isset($_SESSION['user_id'])) {
     header('Location: index.php');
 }
 
-require '../config/database.php';
+require_once '../config/database.php';
 
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
     $records = $conn->prepare('SELECT id, login, password FROM Usuario WHERE login = :login');
