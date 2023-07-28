@@ -53,7 +53,7 @@
                     <!-- <li class="item">
                         <a href="#">Responsable Juridico</a>
                     </li> -->
-                    <a href="#">Cementerio</a>
+                    <a href="?controller=Cementerio&action=ListarCementerio">Cementerio</a>
                 </li>
                 <li class="item">
                         <!-- <li class="item">
