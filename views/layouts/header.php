@@ -30,9 +30,9 @@
                     <li class="item">
                         <a href="?controller=PersonaNatural&action=ListarPersonaN">Persona Natural</a>
                     </li>
-                    <!-- <li class="item">
-                        <a href="#">Difunto</a>
-                    </li> -->
+                    <li class="item">
+                        <a href="?controller=Difunto&action=ListarDifunto">Difunto</a>
+                    </li>
                 </ul>
             </li>
 

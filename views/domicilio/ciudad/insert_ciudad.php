@@ -101,7 +101,8 @@ $numrows = mysqli_num_rows($result_ciudad);
                 success: function(data) {
                     var options = '<option value="">Seleccione una opción</option>';
                     for (var i = 0; i < data.length; i++) {
-                        options += '<option value="' + data[i]['codigo'] + '">' + data[i]['descripcion'] + '</option>';
+                        // Modificar cómo se construyen las opciones para incluir código y descripción
+                        options += '<option value="' + data[i]['codigo'] + '">' + data[i]['codigo'] + ' - ' + data[i]['descripcion'] + '</option>';
                     }
                     $(targetSelector).html(options);
                 },

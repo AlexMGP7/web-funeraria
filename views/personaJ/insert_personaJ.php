@@ -3,7 +3,13 @@
 // Verificar si se han enviado los datos del formulario a través de POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos del formulario
-    $rif = $_POST['rif'];
+    $rif_letra = $_POST['rif_letra'];
+    $rif_numeros = $_POST['rif_numeros'];
+    $rif_verificador = $_POST['rif_verificador'];
+
+    // Combinar las partes del RIF en una sola variable
+    $rif = $rif_letra . '-' . $rif_numeros . '-' . $rif_verificador;
+
     $nombre = $_POST['nombre'];
     $ciudadCodigo = $_POST['ciudad_codigo'];
 
@@ -40,7 +46,24 @@ $numrows = mysqli_num_rows($result_ciudad);
                 <h4>Ingreso de Personas Jurídicas</h4>
                 <div class="form-group">
                     <label for="rif"><b>RIF:</b></label>
-                    <input class="form-control" type="text" name="rif" id="rif" maxlength="10" required placeholder="Ingrese aquí el RIF de la Persona Jurídica" />
+                    <!-- Dividir el campo RIF en tres partes -->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control" name="rif_letra" id="rif_letra" required>
+                                <option value="J">J</option>
+                                <option value="V">V</option>
+                                <option value="E">E</option>
+                                <option value="G">G</option>
+                                <option value="P">P</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="rif_numeros" id="rif_numeros" maxlength="8" required pattern="[0-9]{8}" placeholder="Ingrese aquí los 8 números del RIF" />
+                        </div>
+                        <div class="col-md-2">
+                            <input class="form-control" type="text" name="rif_verificador" id="rif_verificador" maxlength="1" required pattern="[0-9]" placeholder="Dígito" />
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="nombre"><b>Nombre:</b></label>

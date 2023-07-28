@@ -10,7 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos del formulario
     $cedula = $_POST['cedula'];
     $correo = $_POST['correo'];
-    $telefono = $_POST['telefono'];
+
+    // Unir el código de área seleccionado con el resto del teléfono
+    $codigo_telefono = $_POST['codigo_telefono'];
+    $telefono_resto = $_POST['telefono'];
+    $telefono = $codigo_telefono . $telefono_resto;
 
     require_once('../../controllers/personaNatural_controller.php');
     $controller = new PersonaNaturalController();
@@ -50,6 +54,9 @@ if (isset($_GET['cedula'])) {
             }
             if (isset($row["telefono"])) {
                 $telefono = $row["telefono"];
+                // Extract the area code and the rest of the phone number
+                $codigo_telefono = substr($telefono, 0, 4); // Extract the first 4 characters (area code)
+                $telefono_resto = substr($telefono, 4); // Extract the rest of the characters (phone number)
             }
         }
 ?>
@@ -68,8 +75,19 @@ if (isset($_GET['cedula'])) {
                         </div>
                         <div class="form-group">
                             <label for="telefono"><b>Teléfono:</b></label>
-                            <input class="form-control" type="text" name="telefono" value="<?php echo $telefono; ?>" required>
-                            <small class="form-text text-muted">Solo se permiten números.</small>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <select class="form-control" name="codigo_telefono" id="codigo_telefono" required>
+                                        <option value="0414" <?php if ($codigo_telefono === "0414") echo "selected"; ?>>0414</option>
+                                        <option value="0424" <?php if ($codigo_telefono === "0424") echo "selected"; ?>>0424</option>
+                                        <option value="0416" <?php if ($codigo_telefono === "0416") echo "selected"; ?>>0416</option>
+                                        <option value="0426" <?php if ($codigo_telefono === "0426") echo "selected"; ?>>0426</option>
+                                        <option value="0412" <?php if ($codigo_telefono === "0412") echo "selected"; ?>>0412</option>
+                                    </select>
+                                </div>
+                                <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" value="<?php echo $telefono_resto; ?>" />
+                            </div>
+                            <small class="form-text text-muted">Formato válido: seleccione el código de área y luego ingrese el resto del número (7 dígitos).</small>
                         </div>
                         <!-- Add other fields related to PersonaNatural table here -->
 

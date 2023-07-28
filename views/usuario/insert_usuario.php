@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
     exit();
@@ -10,10 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cedula = $_POST['cedula'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $telefono = $_POST['telefono'];
 
     // Encriptar la contraseña antes de guardarla en la base de datos
     $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+
+    // Unir el código de área seleccionado con el resto del teléfono
+    $codigo_telefono = $_POST['codigo_telefono'];
+    $telefono_resto = $_POST['telefono'];
+    $telefono = $codigo_telefono . $telefono_resto;
 
     require_once('../../controllers/usuario_controller.php');
     $controller = new UsuarioController();
@@ -72,8 +77,19 @@ $numrows = mysqli_num_rows($result_persona);
                 </div>
                 <div class="form-group">
                     <label for="telefono"><b>Teléfono:</b></label>
-                    <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]+" maxlength="15" required placeholder="Ingrese aquí el teléfono" />
-                    <small class="form-text text-muted">Solo se permiten números.</small>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select class="form-control" name="codigo_telefono" id="codigo_telefono" required>
+                                <option value="0414">0414</option>
+                                <option value="0424">0424</option>
+                                <option value="0416">0416</option>
+                                <option value="0426">0426</option>
+                                <option value="0412">0412</option>
+                            </select>
+                        </div>
+                        <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" />
+                    </div>
+                    <small class="form-text text-muted">Formato válido: seleccione el código de área y luego ingrese el resto del número (7 dígitos).</small>
                 </div>
                 <button class="btn btn-success" type="submit">Ingresar</button>
             </div>

@@ -8,7 +8,8 @@ $controllers = array(
     'PersonaNatural' => ['ListarPersonaN', 'IngresarPersonaN', 'UpdatePersonaN', 'DeletePersonaN'],
     'PersonaJuridica' => ['ListarPersonaJ', 'IngresarPersonaJ', 'UpdatePersonaJ', 'DeletePersonaJ'],
     'Usuario' => ['ListarUsuario', 'IngresarUsuario', 'UpdateUsuario', 'DeleteUsuario'],
-    'Cementerio' => ['ListarCementerio', 'IngresarCementerio', 'UpdateCementerio', 'DeleteCementerio']
+    'Cementerio' => ['ListarCementerio', 'IngresarCementerio', 'UpdateCementerio', 'DeleteCementerio'],
+    'Difunto' => ['ListarDifunto', 'IngresarDifunto', 'UpdateDifunto', 'DeleteDifunto']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -218,26 +219,26 @@ function call($controller, $action)
                     break;
             }
             break;
-            // case 'Difunto':
-            //     $DifuntoController = new DifuntoController();
+            case 'Difunto':
+                $difuntoController = new DifuntoController();
 
-            //     switch ($action) {
-            //         case 'ListarDifunto':
-            //             $difuntoController->ListarDifunto();
-            //             break;
-            //         case 'IngresarDifunto':
-            //             $difuntoController->IngresarDifunto();
-            //             break;
-            //         case 'UpdateDifunto':
-            //             $difuntoController->UpdateDifunto();
-            //             break;
-            //         case 'DeleteDifunto':
-            //             $difuntoController->DeleteDifunto();
-            //             break;
-            //         default:
-            //             $difuntoController->ListarDifunto();
-            //             break;
-            //     }
-            //     break;
+                switch ($action) {
+                    case 'ListarDifunto':
+                        $difuntoController->ListarDifuntos();
+                        break;
+                    case 'IngresarDifunto':
+                        $difuntoController->IngresarDifunto();
+                        break;
+                    case 'UpdateDifunto':
+                        $difuntoController->UpdateDifunto();
+                        break;
+                    case 'DeleteDifunto':
+                        $difuntoController->DeleteDifunto();
+                        break;
+                    default:
+                        $difuntoController->ListarDifuntos();
+                        break;
+                }
+                break;
     }
 }
