@@ -64,49 +64,50 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
 </head>
 
 <body>
-    <?php if (!empty($message)) : ?>
-        <div class="message">
-            <p><?= $message ?></p>
+    <div class="container">
+        <?php if (!empty($message)) : ?>
+            <div class="message">
+                <p><?= $message ?></p>
+            </div>
+        <?php endif; ?>
+
+        <div class="formulario">
+            <div class="links">
+                <p>Debe registrarse como Persona primero</p>
+                <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a>
+                <span>/</span>
+                <a href="login.php">Iniciar Sesión</a>
+            </div>
+            <h1>Registrarse</h1>
+            <form action="signup.php" method="POST">
+                <div class="input-field cedula">
+                    <input name="cedula" type="text" required pattern="\d+">
+                    <label class="input-label">Cédula de identidad (Sin puntos)</label>
+                </div>
+
+                <div class="input-field telefono">
+                    <input name="telefono" type="text" required pattern="\d{11}" maxlength="11">
+                    <label>Teléfono (04...)</label>
+                </div>
+
+                <div class="input-field nombre">
+                    <input name="login" type="text" required>
+                    <label>Nombre de usuario</label>
+                </div>
+
+                <div class="input-field contrasena">
+                    <input name="password" type="password" required>
+                    <label>Contraseña</label>
+                </div>
+
+                <div class="input-field contrasena">
+                    <input name="confirm_password" type="password" required>
+                    <label>Confirma tu contraseña</label>
+                </div>
+
+                <input type="submit" value="Guardar">
+            </form>
         </div>
-    <?php endif; ?>
-
-    <div class="formulario">
-        <div class="links">
-            <p>Debe registrarse como Persona primero</p>
-            <a href="../views/layouts/layout.php?controller=Persona&action=IngresarPersona">Registrar Persona</a>
-            <span>/</span>
-            <a href="login.php">Iniciar Sesión</a>
-        </div>
-        <h1>Registrarse</h1>
-        <form action="signup.php" method="POST">
-            <div class="input-field cedula">
-                <input name="cedula" type="text" required pattern="\d+">
-                <label class="input-label">Cédula de identidad (Sin puntos)</label>
-            </div>
-
-            <div class="input-field telefono">
-                <input name="telefono" type="text" required pattern="\d{11}" maxlength="11">
-                <label>Teléfono (04...)</label>
-            </div>
-
-            <div class="input-field nombre">
-                <input name="login" type="text" required>
-                <label>Nombre de usuario</label>
-            </div>
-
-            <div class="input-field contrasena">
-                <input name="password" type="password" required>
-                <label>Contraseña</label>
-            </div>
-
-            <div class="input-field contrasena">
-                <input name="confirm_password" type="password" required>
-                <label>Confirma tu contraseña</label>
-            </div>
-
-            <input type="submit" value="Guardar">
-        </form>
-
     </div>
 
 </body>

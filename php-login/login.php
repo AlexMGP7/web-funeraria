@@ -19,7 +19,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
         header("Location: ../index.php");
         $message = 'Se inicio la sesion correctamente';
     } else {
-        $message = 'Lo siento, las credenciales no concuerdan';
+        $message = 'Lo siento, las credenciales no concuerdan, puede que no se haya registrado aún';
     }
 }
 ?>

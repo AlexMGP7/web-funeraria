@@ -6,6 +6,12 @@ body {
   font-family: sans-serif;
 }
 
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
 .formulario {
   position: absolute;
   top: 50%;
@@ -17,18 +23,24 @@ body {
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Increase padding to add space for the message */
+  padding: 20px;
 }
 
 .message {
-  background-color: #dff0d8; /* Light green background color for success message */
-  border: 1px solid #77be48; /* Dark green border color */
-  color: #1e8a2c; /* Dark green text color */
-  padding: 10px 20px; /* Padding around the message */
-  margin-bottom: 20px; /* Add some space below the message */
-  border-radius: 5px; /* Rounded corners for the message */
-  text-align: center; /* Center the message text */
-  font-size: 16px; /* Font size for the message text */
+  position: absolute;
+  top: 10px; /* Adjust the distance from the top as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  background-color: #d6cece;
+  border: 1px solid #73796f;
+  color: #070707;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  z-index: 1; /* Ensure the message is on top of the other elements */
 }
 
 .formulario h1 {
@@ -37,6 +49,8 @@ body {
   padding: 15px 0 20px 0;
   border-bottom: 1px solid silver;
 }
+
+/* Resto del CSS sin cambios */
 
 .links {
   text-align: center;

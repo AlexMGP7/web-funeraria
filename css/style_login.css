@@ -110,12 +110,18 @@ input[type="submit"]:hover {
   text-decoration: underline;
 }
 .message {
-  background-color: #e7b4b4; /* Light green background color for success message */
-  border: 1px solid #990101; /* Dark green border color */
-  color: #ca3232; /* Dark green text color */
-  padding: 10px 20px; /* Padding around the message */
-  margin-bottom: 20px; /* Add some space below the message */
-  border-radius: 5px; /* Rounded corners for the message */
-  text-align: center; /* Center the message text */
-  font-size: 16px; /* Font size for the message text */
+  position: absolute;
+  top: 10px; /* Adjust the distance from the top as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  background-color: #d6cece;
+  border: 1px solid #73796f;
+  color: #070707;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  z-index: 1; /* Ensure the message is on top of the other elements */
 }
