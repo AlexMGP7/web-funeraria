@@ -48,7 +48,7 @@
                         Personas Juridicas
                     </div>
                     <li class="item">
-                        <a href="#">Persona Juridica</a>
+                        <a href="?controller=PersonaJuridica&action=ListarPersonaJ">Persona Juridica</a>
                     </li>
                     <!-- <li class="item">
                         <a href="#">Responsable Juridico</a>

@@ -6,6 +6,7 @@ $controllers = array(
     'Ciudad' => ['ListarCiudad', 'IngresarCiudad', 'UpdateCiudad', 'DeleteCiudad'],
     'Persona' => ['ListarPersona', 'IngresarPersona', 'UpdatePersona', 'DeletePersona'],
     'PersonaNatural' => ['ListarPersonaN', 'IngresarPersonaN', 'UpdatePersonaN', 'DeletePersonaN'],
+    'PersonaJuridica' => ['ListarPersonaJ', 'IngresarPersonaJ', 'UpdatePersonaJ', 'DeletePersonaJ'],
     'Usuario' => ['ListarUsuario', 'IngresarUsuario', 'UpdateUsuario', 'DeleteUsuario']
 );
 
@@ -175,26 +176,26 @@ function call($controller, $action)
                     break;
             }
             break;
-        // case 'PersonaJuridica':
-        //     $personaJuridicaController = new PersonaJuridicaController();
-        //     switch ($action) {
-        //         case 'ListarPersonaJ':
-        //             $personaJuridicaController->ListarPersonaJ();
-        //             break;
-        //         case 'IngresarPersonaJ':
-        //             $personaJuridicaController->IngresarPersonaJ();
-        //             break;
-        //         case 'UpdatePersonaJ':
-        //             $personaJuridicaController->UpdatePersonaJ();
-        //             break;
-        //         case 'DeletePersonaJ':
-        //             $personaJuridicaController->DeletePersonaJ();
-        //             break;
-        //         default:
-        //             $personaJuridicaController->ListarPersonaJ();
-        //             break;
-        //     }
-        //     break;
+        case 'PersonaJuridica':
+            $personaJuridicaController = new PersonaJuridicaController();
+            switch ($action) {
+                case 'ListarPersonaJ':
+                    $personaJuridicaController->ListarPersonaJ();
+                    break;
+                case 'IngresarPersonaJ':
+                    $personaJuridicaController->IngresarPersonaJ();
+                    break;
+                case 'UpdatePersonaJ':
+                    $personaJuridicaController->UpdatePersonaJ();
+                    break;
+                case 'DeletePersonaJ':
+                    $personaJuridicaController->DeletePersonaJ();
+                    break;
+                default:
+                    $personaJuridicaController->ListarPersonaJ();
+                    break;
+            }
+            break;
         // case 'Difunto':
         //     $DifuntoController = new DifuntoController();
 
