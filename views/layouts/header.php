@@ -28,11 +28,11 @@
                         <a href="?controller=Persona&action=ListarPersona">Persona</a>
                     </li>
                     <li class="item">
-                        <a href="?controller=PersonaN&action=ListarPersonaN">Persona Natural</a>
+                        <a href="?controller=PersonaNatural&action=ListarPersonaN">Persona Natural</a>
                     </li>
-                    <li class="item">
+                    <!-- <li class="item">
                         <a href="#">Difunto</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 
@@ -50,13 +50,13 @@
                     <li class="item">
                         <a href="#">Persona Juridica</a>
                     </li>
-                    <li class="item">
-                        <a href="#">Responsable Juridico</a>
-                    </li>
                     <!-- <li class="item">
-                        <a href="#">Cementerio</a>
-                    </li>
-                    <li class="item">
+                        <a href="#">Responsable Juridico</a>
+                    </li> -->
+                    <a href="#">Cementerio</a>
+                </li>
+                <li class="item">
+                        <!-- <li class="item">
                         <a href="#">Funeraria</a>
                     </li> -->
                 </ul>
