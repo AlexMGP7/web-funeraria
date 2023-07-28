@@ -48,29 +48,15 @@ class DifuntoModel
     // Para el resto de las operaciones
 
     public static function ListarDifuntos()
-{
-    $sql_difunto = "SELECT d.cedula, d.`Fecha de N.`, d.`Fecha de D.`, d.`Partida de N.`, d.`Causa de M.`, pj.nombre AS nombre_persona_juridica, ciudad.descripcion AS ciudad_descripcion
-                    FROM difunto d
-                    JOIN persona pj ON d.cedula = pj.cedula
-                    JOIN persona_juridica pj_cementerio ON d.Cementerio_Rif = pj_cementerio.Rif
-                    JOIN ciudad ON pj_cementerio.Ciudad_Codigo = ciudad.Codigo
-                    ORDER BY d.cedula ASC";
-    $result_difunto = DifuntoModel::Get_Data($sql_difunto);
-    return $result_difunto;
-}
-
-    public static function ListarCementerios()
     {
-        $sql_cementerio = "SELECT rif, codigo, tipo FROM cementerio";
-        $result_cementerio = DifuntoModel::Get_Data($sql_cementerio);
-        return $result_cementerio;
-    }
-
-    public static function ListarPersonas()
-    {
-        $sql_persona = "SELECT cedula, nombre FROM persona";
-        $result_persona = DifuntoModel::Get_Data($sql_persona);
-        return $result_persona;
+        $sql_difunto = "SELECT d.cedula, d.`Fecha de N.`, d.`Fecha de D.`, d.`Partida de N.`, d.`Causa de M.`, d.Cementerio_Rif, pj.nombre AS nombre_persona_juridica, ciudad.descripcion AS ciudad_descripcion
+                        FROM difunto d
+                        JOIN persona pj ON d.cedula = pj.cedula
+                        JOIN persona_juridica pj_cementerio ON d.Cementerio_Rif = pj_cementerio.Rif
+                        JOIN ciudad ON pj_cementerio.Ciudad_Codigo = ciudad.Codigo
+                        ORDER BY d.cedula ASC";
+        $result_difunto = DifuntoModel::Get_Data($sql_difunto);
+        return $result_difunto;
     }
 
     // Para la insersión
@@ -84,25 +70,26 @@ class DifuntoModel
 
     public static function IngresarDifunto($cedula, $fechaN, $fechaD, $partidaN, $causaM, $cementerioRif)
     {
-        $sql_difunto = "INSERT INTO difunto (cedula, FechaN, FechaD, PartidaN, CausaM, Cementerio_Rif) 
-                        VALUES ('$cedula', '$fechaN', '$fechaD', '$partidaN', '$causaM', '$cementerioRif')";
+        $sql_difunto = "INSERT INTO difunto (`cedula`, `Fecha de N.`, `Fecha de D.`, `Partida de N.`, `Causa de M.`, `Cementerio_Rif`)
+                VALUES ('$cedula', '$fechaN', '$fechaD', '$partidaN', '$causaM', '$cementerioRif')";
         $result_difunto = DifuntoModel::Update_Data($sql_difunto);
         return $result_difunto;
     }
+
 
     // Para la actualización
 
     public static function BuscarDifuntoByCedula($cedula)
     {
-        $sql_difunto = "SELECT cedula, FechaN, FechaD, PartidaN, CausaM, Cementerio_Rif FROM difunto WHERE cedula = '$cedula'";
+        $sql_difunto = "SELECT `cedula`, `Fecha de N.`, `Fecha de D.`, `Partida de N.`, `Causa de M.`, `Cementerio_Rif` FROM difunto WHERE cedula = '$cedula'";
         $result_difunto = DifuntoModel::Get_Data($sql_difunto);
         return $result_difunto;
     }
 
     public static function UpdateDifunto($cedula, $fechaN, $fechaD, $partidaN, $causaM, $cementerioRif)
     {
-        $sql_difunto = "UPDATE difunto SET cedula = '$cedula', FechaN = '$fechaN', FechaD = '$fechaD', PartidaN = '$partidaN', 
-                        CausaM = '$causaM', Cementerio_Rif = '$cementerioRif' WHERE cedula = '$cedula'";
+        $sql_difunto = "UPDATE difunto SET cedula = '$cedula', Fecha de N. = '$fechaN', Fecha de D. = '$fechaD', Partida de N. = '$partidaN', 
+                        Causa de M. = '$causaM', Cementerio_Rif = '$cementerioRif' WHERE cedula = '$cedula'";
         $result_difunto = DifuntoModel::Update_Data($sql_difunto);
         return $result_difunto;
     }
@@ -115,5 +102,4 @@ class DifuntoModel
         $result_difunto = DifuntoModel::Update_Data($sql_difunto);
         return $result_difunto;
     }
-
 }

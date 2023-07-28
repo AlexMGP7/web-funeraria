@@ -64,11 +64,19 @@ if (isset($_GET['i'])) {
                         </div>
                         <div class="form-group">
                             <label for="codigo"><b>Código:</b></label>
-                            <input class="form-control" type="text" name="codigo" value="<?php echo $codigo; ?>" required>
+                            <input class="form-control" type="number" name="codigo" value="<?php echo $codigo; ?>" required>
                         </div>
+
                         <div class="form-group">
                             <label for="tipo"><b>Tipo:</b></label>
-                            <input class="form-control" type="text" name="tipo" value="<?php echo $tipo; ?>" required>
+                            <select class="form-control" name="tipo" id="tipo" required>
+                                <option value="publico" <?php if ($tipo === 'publico') echo 'selected'; ?>>Público</option>
+                                <option value="privado" <?php if ($tipo === 'privado') echo 'selected'; ?>>Privado</option>
+                                <option value="ecologico" <?php if ($tipo === 'ecologico') echo 'selected'; ?>>Ecológico</option>
+                                <option value="catolico" <?php if ($tipo === 'catolico') echo 'selected'; ?>>Católico</option>
+                                <option value="religioso_no_catolico" <?php if ($tipo === 'religioso_no_catolico') echo 'selected'; ?>>Religioso no Católico</option>
+                                <option value="militar" <?php if ($tipo === 'militar') echo 'selected'; ?>>Militar</option>
+                            </select>
                         </div>
                         <!-- Add other fields related to Cementerio table here -->
 

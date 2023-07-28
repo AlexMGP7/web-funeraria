@@ -52,11 +52,19 @@ $result_persona_juridica = $persona_juridica_controller->ListarPersonaJ1();
                 </div>
                 <div class="form-group">
                     <label for="codigo"><b>Código:</b></label>
-                    <input class="form-control" type="text" name="codigo" id="codigo" maxlength="10" required placeholder="Ingrese aquí el código del cementerio" />
+                    <input class="form-control" type="number" name="codigo" id="codigo" required placeholder="Ingrese aquí el código del cementerio" />
                 </div>
+
                 <div class="form-group">
                     <label for="tipo"><b>Tipo:</b></label>
-                    <input class="form-control" type="text" name="tipo" id="tipo" maxlength="50" required placeholder="Ingrese aquí el tipo del cementerio" />
+                    <select class="form-control" name="tipo" id="tipo" required>
+                        <option value="publico">Público</option>
+                        <option value="privado">Privado</option>
+                        <option value="ecologico">Ecológico</option>
+                        <option value="catolico">Católico</option>
+                        <option value="religioso_no_catolico">Religioso no Católico</option>
+                        <option value="militar">Militar</option>
+                    </select>
                 </div>
                 <button class="btn btn-success" type="submit">Ingresar</button>
             </div>

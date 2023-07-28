@@ -33,7 +33,11 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
                 $sql = "INSERT INTO Usuario (cedula, telefono, login, password) VALUES (:cedula, :telefono, :login, :password)";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':cedula', $_POST['cedula']);
-                $stmt->bindParam(':telefono', $_POST['telefono']);
+
+                // Combine the selected value from the select and the input for the phone number
+                $telefono = $_POST['codigo_telefono'] . $_POST['telefono'];
+                $stmt->bindParam(':telefono', $telefono);
+
                 $stmt->bindParam(':login', $_POST['login']);
                 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $stmt->bindParam(':password', $password);
@@ -53,6 +57,7 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -80,27 +85,37 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             </div>
             <h1>Registrarse</h1>
             <form action="signup.php" method="POST">
-                <div class="input-field cedula">
+                <div class="input-field">
                     <input name="cedula" type="text" required pattern="\d+">
                     <label class="input-label">Cédula de identidad (Sin puntos)</label>
                 </div>
 
-                <div class="input-field telefono">
-                    <input name="telefono" type="text" required pattern="\d{11}" maxlength="11">
-                    <label>Teléfono (04...)</label>
+                <div class="input-field">
+                    <label class="telefono">Teléfono</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select class="input-group" name="codigo_telefono" id="codigo_telefono" required>
+                                <option value="0414">0414</option>
+                                <option value="0424">0424</option>
+                                <option value="0416">0416</option>
+                                <option value="0426">0426</option>
+                                <option value="0412">0412</option>
+                            </select>
+                        </div>
+                        <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" />
+                    </div>
                 </div>
-
-                <div class="input-field nombre">
+                <div class="input-field">
                     <input name="login" type="text" required>
                     <label>Nombre de usuario</label>
                 </div>
 
-                <div class="input-field contrasena">
+                <div class="input-field">
                     <input name="password" type="password" required>
                     <label>Contraseña</label>
                 </div>
 
-                <div class="input-field contrasena">
+                <div class="input-field">
                     <input name="confirm_password" type="password" required>
                     <label>Confirma tu contraseña</label>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-07-2023 a las 07:16:03
+-- Tiempo de generación: 28-07-2023 a las 10:45:26
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `cementerio` (
 --
 
 INSERT INTO `cementerio` (`Tipo`, `Rif`, `Codigo`) VALUES
-('no', 'J-23333333-1', 1);
+('Natural', 'J-22222222-1', 2),
+('Privado', 'J-23333333-1', 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +82,13 @@ CREATE TABLE IF NOT EXISTS `difunto` (
   PRIMARY KEY (`cedula`),
   KEY `fk_Difunto_Cementerio1` (`Cementerio_Rif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `difunto`
+--
+
+INSERT INTO `difunto` (`Fecha de N.`, `Fecha de D.`, `Partida de N.`, `Causa de M.`, `cedula`, `Cementerio_Rif`) VALUES
+('2023-07-19 00:00:00', '2023-07-13 00:00:00', 'no hay', 'Sida', 30230460, 'J-22222222-1');
 
 -- --------------------------------------------------------
 
@@ -1757,6 +1765,7 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
 --
 
 INSERT INTO `persona_juridica` (`Rif`, `Nombre`, `Ciudad_Codigo`) VALUES
+('J-22222222-1', 'segundo', 1),
 ('J-23333333-1', 'a', 1);
 
 -- --------------------------------------------------------
@@ -1772,6 +1781,13 @@ CREATE TABLE IF NOT EXISTS `persona_natural` (
   `cedula` int(11) NOT NULL,
   PRIMARY KEY (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `persona_natural`
+--
+
+INSERT INTO `persona_natural` (`Telefono`, `Correo`, `cedula`) VALUES
+('04121118200', 'agonzalezpastena@gmail.com', 30230460);
 
 -- --------------------------------------------------------
 

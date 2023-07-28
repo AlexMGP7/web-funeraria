@@ -28,7 +28,7 @@ $numrows = mysqli_num_rows($result_difunto);
                     <th class="th-sm">Fecha de D</th>
                     <th class="th-sm">P de Nacimiento</th>
                     <th class="th-sm">Causa de Muerte</th>
-                    <th class="th-sm">RIF</th>
+                    <th class="th-sm">RIF Cementerio</th>
                     <th class="th-sm">Modificar</th>
                     <th class="th-sm">Eliminar</th>
                 </tr>
@@ -41,10 +41,10 @@ $numrows = mysqli_num_rows($result_difunto);
                 ?>
                         <tr>
                             <td><?php echo $row_difunto["cedula"]; ?></td>
-                            <td><?php echo $row_difunto["Fecha de Nacimiento"]; ?></td>
-                            <td><?php echo $row_difunto["Fecha de Defunción"]; ?></td>
-                            <td><?php echo $row_difunto["Partida de Nacimiento"]; ?></td>
-                            <td><?php echo $row_difunto["Causa de Muerte"]; ?></td>
+                            <td><?php echo $row_difunto["Fecha de N."]; ?></td>
+                            <td><?php echo $row_difunto["Fecha de D."]; ?></td>
+                            <td><?php echo $row_difunto["Partida de N."]; ?></td>
+                            <td><?php echo $row_difunto["Causa de M."]; ?></td>
                             <td><?php echo $row_difunto["Cementerio_Rif"]; ?></td>
                             <td align="center">
                                 <a href="?controller=Difunto&action=UpdateDifunto&i=<?php echo $cedula; ?>" title="Modificar">

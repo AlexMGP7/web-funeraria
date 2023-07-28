@@ -17,13 +17,17 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 660px;
+  width: 20%;
+  height: 80vh;
   background: white;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+
+.telefono{
+  margin-top: -40px;
 }
 
 .message {
