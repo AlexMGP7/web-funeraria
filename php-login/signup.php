@@ -87,24 +87,23 @@ if (!empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['log
             <form action="signup.php" method="POST">
                 <div class="input-field">
                     <input name="cedula" type="text" required pattern="\d+">
-                    <label class="input-label">Cédula de identidad (Sin puntos)</label>
+                    <label class="input-label">Cédula (Sin puntos)</label>
                 </div>
 
                 <div class="input-field">
                     <label class="telefono">Teléfono</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <select class="input-group" name="codigo_telefono" id="codigo_telefono" required>
-                                <option value="0414">0414</option>
-                                <option value="0424">0424</option>
-                                <option value="0416">0416</option>
-                                <option value="0426">0426</option>
-                                <option value="0412">0412</option>
-                            </select>
-                        </div>
+                        <select class="input-group select-custom" name="codigo_telefono" id="codigo_telefono" required>
+                            <option value="0414">0414</option>
+                            <option value="0424">0424</option>
+                            <option value="0416">0416</option>
+                            <option value="0426">0426</option>
+                            <option value="0412">0412</option>
+                        </select>
                         <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" />
                     </div>
                 </div>
+
                 <div class="input-field">
                     <input name="login" type="text" required>
                     <label>Nombre de usuario</label>

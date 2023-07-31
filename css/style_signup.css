@@ -17,7 +17,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 20%;
+  width: fit-content;
   height:fit-content;
   background: white;
   border-radius: 10px;
@@ -26,9 +26,6 @@ body {
   padding: 20px;
 }
 
-.telefono{
-  margin-top: -40px;
-}
 
 .message {
   position: absolute;
@@ -146,4 +143,24 @@ input[type="submit"] {
 input[type="submit"]:hover {
   border-color: rgb(32, 134, 134);
   transition: 0.5s;
+}
+
+.input-field .telefono{
+  margin-top: -40px;
+  color: rgb(32, 134, 134);
+}
+
+.select-custom {
+  display: inline-block;
+  appearance: none;
+  padding: 8px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 14px;
+  color: #555;
+}
+
+.select-custom option {
+  background: white;
+  color: #555;
 }
