@@ -58,26 +58,12 @@ class CiudadModel
 
     public static function IngresarCiudad2($codigo, $descripcion, $parroquia_codigo)
     {
-        try {
-            require_once('../../core/conectar.php');
-            $conexion = conectar::conexion();
-            $sql_ciudad = "INSERT INTO ciudad (codigo, descripcion, Parroquia_Codigo) VALUES ($codigo, '$descripcion', $parroquia_codigo)";
-            $result_ciudad = mysqli_query($conexion, $sql_ciudad);
+        require_once('../../core/conectar.php');
+        $conexion = conectar::conexion();
+        $sql_ciudad = "INSERT INTO ciudad (codigo, descripcion, Parroquia_Codigo) VALUES ($codigo, '$descripcion', $parroquia_codigo)";
+        $result_ciudad = mysqli_query($conexion, $sql_ciudad);
 
-            if (!$result_ciudad) {
-                if (mysqli_errno($conexion) === 1062) {
-                    throw new Exception("Error: La ciudad con el código $codigo ya existe.");
-                } else {
-                    throw new Exception(mysqli_error($conexion));
-                }
-            }
-
-            $conexion = conectar::desconexion($conexion);
-
-            return true;
-        } catch (Exception $e) {
-            throw new Exception("Error al agregar la ciudad: " . $e->getMessage());
-        }
+        return $result_ciudad;
     }
 
     public static function BuscarCiudadByCodigo($codigo)

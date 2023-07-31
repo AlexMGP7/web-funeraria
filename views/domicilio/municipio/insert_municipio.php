@@ -24,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje'] = "El municipio se ha registrado correctamente.";
         $_SESSION['mensaje_tipo'] = "success";
 
-        // Redirigir a la página de listado de municipios después de intentar insertar.
-        echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
-        exit();
     } else {
         // Si la inserción falló, mostrar un mensaje de advertencia.
         $_SESSION['mensaje'] = "Error: No se pudo registrar el municipio.";
         $_SESSION['mensaje_tipo'] = "warning";
     }
+    // Redirigir a la página de listado de municipios después de intentar insertar.
+    echo '<script>window.location.href = "?controller=Municipio&action=ListarMunicipio";</script>';
+    exit();
 }
 
 ?>

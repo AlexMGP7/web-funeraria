@@ -67,6 +67,7 @@ tr:hover td{
 #dtBasicExample_filter input[type="search"] {
   border: 3px solid #fff;
   border-radius: 5px;
+  color: #fff;
 }
 
 /* Estilizar el botón de búsqueda al enfocarse */
@@ -125,4 +126,3 @@ tr:hover td{
 #dtBasicExample_length select {
   color: #fff;
 }
-

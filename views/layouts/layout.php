@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="style_header.css">
-    <link rel="stylesheet" href="style_cuadro.css">
+    <link rel="stylesheet" href="../../css/style_header.css">
+    <link rel="stylesheet" href="../../css/style_cuadro.css">
     <!-- Fontawesome CDN Link -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
@@ -69,10 +69,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="script_header.js"></script>
-    <script src="script_cuadro.js"></script>
-    <script src="script_select.js"></script>
-    <script src="script_select_dinamico.js"></script>
+    <script src="../../js/script_header.js"></script>
+    <script src="../../js/script_cuadro.js"></script>
+    <script src="../../js/script_select.js"></script>
+    <script src="../../js/script_select_dinamico.js"></script>
 </body>
 
 </body>

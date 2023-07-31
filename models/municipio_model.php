@@ -67,27 +67,12 @@ class MunicipioModel
 
     public static function IngresarMunicipio2($codigo, $descripcion, $estado_codigo)
     {
-        try {
             require_once('../../core/conectar.php');
             $conexion = conectar::conexion();
             $sql_municipio = "INSERT INTO municipio (codigo, descripcion, Estado_Codigo) VALUES ($codigo, '$descripcion', $estado_codigo)";
             $result_municipio = mysqli_query($conexion, $sql_municipio);
+            return $result_municipio;
 
-            if (!$result_municipio) {
-                // Capturar el error de llave duplicada
-                if (mysqli_errno($conexion) === 1062) {
-                    throw new Exception("Error: El municipio con el código $codigo ya existe.");
-                } else {
-                    throw new Exception(mysqli_error($conexion));
-                }
-            }
-
-            $conexion = conectar::desconexion($conexion);
-
-            return true;
-        } catch (Exception $e) {
-            throw new Exception("Error al agregar el municipio: " . $e->getMessage());
-        }
     }
 
     // Para la actualización
