@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id'])) {
     <meta charset="utf-8">
     <title>Polizas Funerarias</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
