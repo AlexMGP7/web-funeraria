@@ -110,3 +110,19 @@
 section {
   margin-top: 100px;
 }
+
+.select-custom {
+  display: inline-block;
+  appearance: none;
+  padding: 8px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.select-custom option {
+  background: white;
+  color: #555;
+}
