@@ -74,81 +74,41 @@ if (isset($_GET['i'])) {
                         <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion; ?>">
                     </div>
                     <div class="form-group">
-                        <label for="estado_codigo"><b>Estado:</b></label>
-                        <select class="form-control" name="estado_codigo" id="estado_codigo" required>
-                            <?php
-                            $controller = new ParroquiaController();
-                            $result_estados = $controller->ListarEstados();
+                            <label for="estado_codigo"><b>Estado:</b></label>
+                            <select class="form-control" name="estado_codigo" id="estado_codigo" required>
+                                <?php
+                                $controller = new ParroquiaController();
+                                $result_estados = $controller->ListarEstados();
 
-                            while ($row_estado = mysqli_fetch_array($result_estados)) {
-                                $codigo_estado = $row_estado['codigo'];
-                                $descripcion_estado = $row_estado['descripcion'];
-                                $selected = ($codigo_estado == $estado_codigo) ? 'selected' : '';
-                                echo "<option value='$codigo_estado' $selected>$codigo_estado - $descripcion_estado</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="municipio_codigo"><b>Municipio:</b></label>
-                        <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
-                        </select>
-                    </div>
+                                while ($row_estado = mysqli_fetch_array($result_estados)) {
+                                    $codigo_estado = $row_estado['codigo'];
+                                    $descripcion_estado = $row_estado['descripcion'];
+                                    $selected = ($codigo_estado == $estado_codigo) ? 'selected' : '';
+                                    echo "<option value='$codigo_estado' $selected>$codigo_estado - $descripcion_estado</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipio_codigo"><b>Municipio:</b></label>
+                            <select class="form-control" id="municipio_codigo" name="municipio_codigo" required>
+                                <?php
+                                $controller = new ParroquiaController();
+                                $result_municipios = $controller->ListarMunicipios();
+
+                                while ($row_municipio = mysqli_fetch_array($result_municipios)) {
+                                    $codigo_municipio = $row_municipio['codigo'];
+                                    $descripcion_municipio = $row_municipio['descripcion'];
+                                    $selected = ($codigo_municipio == $municipio_codigo) ? 'selected' : '';
+                                    echo "<option value='$codigo_municipio' $selected>$codigo_municipio - $descripcion_municipio</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
                     <button class="btn btn-success" type="submit">Actualizar</button>
                 </div>
             </form>
         </div>
-
-        <script>
-            $(document).ready(function() {
-                // Función para cargar datos en los selectores según el tipo
-                function loadOptions(type, id, targetSelector) {
-                    $.ajax({
-                        url: '../../models/obtener_domicilio.php',
-                        type: 'GET',
-                        data: {
-                            type: type,
-                            id: id
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            var options = '<option value="">Seleccione una opción</option>';
-                            for (var i = 0; i < data.length; i++) {
-                                var codigo = data[i]['codigo'];
-                                var descripcion = data[i]['descripcion'];
-                                options += '<option value="' + codigo + '">' + codigo + ' - ' + descripcion + '</option>';
-                            }
-                            $(targetSelector).html(options);
-                        },
-                        error: function(error) {
-                            console.log(error);
-                        }
-                    });
-                }
-
-                // Cargar los municipios al seleccionar un estado
-                $('#estado_codigo').on('change', function() {
-                    var estadoId = $(this).val();
-                    if (estadoId !== '') {
-                        loadOptions('municipios', estadoId, '#municipio_codigo');
-                    } else {
-                        $('#municipio_codigo').html('<option value="">Seleccione un municipio</option>');
-                    }
-                });
-
-                // Pre-select the previous municipality value
-                var prevMunicipioCodigo = '<?php echo $municipio_codigo; ?>';
-                if (prevMunicipioCodigo !== '') {
-                    var prevMunicipioDescripcion = '<?php echo $municipio_descripcion; ?>';
-                    loadOptions('municipios', '<?php echo $estado_codigo; ?>', '#municipio_codigo');
-                    $('#municipio_codigo').val(prevMunicipioCodigo);
-
-                    // Display the description of the municipality
-                    $('#municipio_descripcion').text(prevMunicipioDescripcion);
-                }
-            });
-        </script>
-
 <?php
     } else {
         require_once('../../views/domicilio/parroquia/list_parroquia.php');

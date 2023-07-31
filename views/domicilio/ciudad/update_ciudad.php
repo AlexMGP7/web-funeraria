@@ -135,67 +135,6 @@ if (isset($_GET['i'])) {
                 </form>
             </div>
         </div>
-
-        <script>
-            $(document).ready(function() {
-                // Function to load data into the select element
-                function loadOptions(type, id, targetSelector) {
-                    $.ajax({
-                        url: '../../models/obtener_domicilio.php',
-                        type: 'GET',
-                        data: {
-                            type: type,
-                            id: id
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            var options = '<option value="">Seleccione una opción</option>';
-                            for (var i = 0; i < data.length; i++) {
-                                options += '<option value="' + data[i]['codigo'] + '">' + data[i]['codigo'] + ' - ' + data[i]['descripcion'] + '</option>';
-                            }
-                            $(targetSelector).html(options);
-                        },
-                        error: function(error) {
-                            console.log(error);
-                        }
-                    });
-                }
-
-                // Load municipalities based on the selected state
-                $('#estado_codigo').on('change', function() {
-                    var estadoId = $(this).val();
-                    if (estadoId !== '') {
-                        loadOptions('municipios', estadoId, '#municipio_codigo');
-                    } else {
-                        $('#municipio_codigo').html('<option value="">Seleccione un municipio</option>');
-                    }
-                });
-
-                // Pre-select the previous municipality value
-                var prevMunicipioCodigo = '<?php echo $municipio_codigo; ?>';
-                if (prevMunicipioCodigo !== '') {
-                    loadOptions('municipios', '<?php echo $estado_codigo; ?>', '#municipio_codigo');
-                    $('#municipio_codigo').val(prevMunicipioCodigo);
-                }
-
-                // Load parroquias based on the selected municipality
-                $('#municipio_codigo').on('change', function() {
-                    var municipioId = $(this).val();
-                    if (municipioId !== '') {
-                        loadOptions('parroquias', municipioId, '#parroquia_codigo');
-                    } else {
-                        $('#parroquia_codigo').html('<option value="">Seleccione una parroquia</option>');
-                    }
-                });
-
-                // Pre-select the previous parroquia value
-                var prevParroquiaCodigo = '<?php echo $parroquia_codigo; ?>';
-                if (prevParroquiaCodigo !== '') {
-                    loadOptions('parroquias', '<?php echo $municipio_codigo; ?>', '#parroquia_codigo');
-                    $('#parroquia_codigo').val(prevParroquiaCodigo);
-                }
-            });
-        </script>
 <?php
     } else {
         require_once('../../views/domicilio/ciudad/list_ciudad.php');

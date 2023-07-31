@@ -72,6 +72,7 @@
     <script src="script_header.js"></script>
     <script src="script_cuadro.js"></script>
     <script src="script_select.js"></script>
+    <script src="script_select_dinamico.js"></script>
 </body>
 
 </body>
