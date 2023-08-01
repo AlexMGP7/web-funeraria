@@ -56,9 +56,9 @@
                     <a href="?controller=Cementerio&action=ListarCementerio">Cementerio</a>
                 </li>
                 <li class="item">
-                        <!-- <li class="item">
-                        <a href="#">Funeraria</a>
-                    </li> -->
+                    <li class="item">
+                        <a href="?controller=Funeraria&action=ListarFuneraria">Funeraria</a>
+                    </li>
                 </ul>
             </li>
 

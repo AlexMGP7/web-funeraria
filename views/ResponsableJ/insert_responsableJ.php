@@ -22,8 +22,8 @@
             $_SESSION['mensaje_tipo'] = "warning";
         }
         // Redirigir a la página de listado de responsables jurídicos después de intentar insertar.
-        // echo '<script>window.location.href = "?controller=ResponsableJ&action=ListarResponsablesJ";</script>';
-        // exit();
+        echo '<script>window.location.href = "?controller=ResponsableJ&action=ListarResponsableJ";</script>';
+        exit();
     }
 
     require_once('../../controllers/personaJuridica_controller.php');
