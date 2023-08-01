@@ -78,7 +78,7 @@
                     <a href="?controller=ResponsableJ&action=ListarResponsableJ">Servicios de Polizas</a>
                 </li> -->
                 <li class="item">
-                <a href="?controller=Cementerio&action=ListarCementerio">Servicios de Funerarias</a>
+                <a href="?controller=ServiciosXfuneraria&action=ListarServiciosXfuneraria">Servicios de Funerarias</a>
                 </li>
         </ul>
         </li>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-08-2023 a las 03:09:48
+-- Tiempo de generación: 01-08-2023 a las 17:10:09
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -180,6 +180,13 @@ CREATE TABLE IF NOT EXISTS `funeraria` (
   PRIMARY KEY (`Rif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `funeraria`
+--
+
+INSERT INTO `funeraria` (`Tipo`, `Rif`) VALUES
+('no', 'J-23333333-1');
+
 -- --------------------------------------------------------
 
 --
@@ -193,6 +200,13 @@ CREATE TABLE IF NOT EXISTS `funeraria_has_servicios_prestados` (
   PRIMARY KEY (`Funeraria_Rif`,`Servicios_Prestados_Codigo`),
   KEY `fk_Funeraria_has_Servicios_Prestados_Servicios_Prestados1` (`Servicios_Prestados_Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `funeraria_has_servicios_prestados`
+--
+
+INSERT INTO `funeraria_has_servicios_prestados` (`Funeraria_Rif`, `Servicios_Prestados_Codigo`) VALUES
+('J-23333333-1', 2);
 
 -- --------------------------------------------------------
 
@@ -1847,12 +1861,19 @@ CREATE TABLE IF NOT EXISTS `polizas_de_seguro_has_servicios_prestados` (
 
 DROP TABLE IF EXISTS `responsable_juridico`;
 CREATE TABLE IF NOT EXISTS `responsable_juridico` (
-  `Correo` varchar(45) NOT NULL,
+  `Correo` varchar(255) NOT NULL,
   `Telefono` int(11) NOT NULL,
-  `Razon_s` varchar(45) NOT NULL,
+  `Razon_s` varchar(255) NOT NULL,
   `Rif` varchar(15) NOT NULL,
   PRIMARY KEY (`Rif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `responsable_juridico`
+--
+
+INSERT INTO `responsable_juridico` (`Correo`, `Telefono`, `Razon_s`, `Rif`) VALUES
+('agonzalezpastena@gmail.com', 1118200, 'Ayudar', 'J-23333333-1');
 
 -- --------------------------------------------------------
 
@@ -1882,6 +1903,13 @@ CREATE TABLE IF NOT EXISTS `servicios_prestados` (
   `Monto` int(11) NOT NULL,
   PRIMARY KEY (`Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `servicios_prestados`
+--
+
+INSERT INTO `servicios_prestados` (`Codigo`, `Nombre`, `Tipo`, `Monto`) VALUES
+(2, 'Masaje', 'Lujuria', 10);
 
 -- --------------------------------------------------------
 

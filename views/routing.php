@@ -12,7 +12,8 @@ $controllers = array(
     'Difunto' => ['ListarDifunto', 'IngresarDifunto', 'UpdateDifunto', 'DeleteDifunto'],
     'ResponsableJ' => ['ListarResponsableJ', 'IngresarResponsableJ', 'UpdateResponsableJ', 'DeleteResponsableJ'],
     'Funeraria' => ['ListarFuneraria', 'IngresarFuneraria', 'UpdateFuneraria', 'DeleteFuneraria'],
-    'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP']
+    'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP'],
+    'ServiciosXfuneraria' => ['ListarServiciosXfuneraria', 'IngresarServiciosXfuneraria', 'UpdateServiciosXfuneraria', 'DeleteServiciosXfuneraria']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -303,6 +304,27 @@ function call($controller, $action)
                     break;
                 default:
                     $serviciosPController->ListarServiciosP();
+                    break;
+            }
+            break;
+        case 'ServiciosXfuneraria':
+            $serviciosXfunerariaController = new ServiciosXfunerariaController();
+
+            switch ($action) {
+                case 'ListarServiciosXfuneraria':
+                    $serviciosXfunerariaController->ListarServiciosXfuneraria();
+                    break;
+                case 'IngresarServiciosXfuneraria':
+                    $serviciosXfunerariaController->IngresarServicioXfuneraria();
+                    break;
+                case 'UpdateServiciosXfuneraria':
+                    $serviciosXfunerariaController->UpdateServicioXfuneraria();
+                    break;
+                case 'DeleteServiciosXfuneraria':
+                    $serviciosXfunerariaController->DeleteServicioXfuneraria();
+                    break;
+                default:
+                    $serviciosXfunerariaController->ListarServiciosXfuneraria();
                     break;
             }
             break;
