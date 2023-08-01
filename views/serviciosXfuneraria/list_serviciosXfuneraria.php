@@ -53,7 +53,7 @@ $numrows = mysqli_num_rows($result_serviciosXfuneraria);
                             </td> -->
                             <td align="center">
                                 <!-- El enlace para eliminar un servicioXfuneraria redirige a la vista de eliminación -->
-                                <a href="?controller=ServiciosXFuneraria&action=DeleteServiciosXfuneraria&funeraria_rif=<?php echo $funeraria_rif; ?>&servicios_prestados_codigo=<?php echo $servicios_prestados_codigo; ?>" title="Eliminar">
+                                <a href="?controller=ServiciosXfuneraria&action=DeleteServiciosXfuneraria&funeraria_rif=<?php echo $funeraria_rif; ?>&servicios_prestados_codigo=<?php echo $servicios_prestados_codigo; ?>" title="Eliminar">
                                     <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
                                 </a>
                             </td>

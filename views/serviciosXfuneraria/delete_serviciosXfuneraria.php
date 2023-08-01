@@ -6,17 +6,17 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Verificar si se ha proporcionado un parámetro 'Funeraria_Rif' y 'Servicios_Prestados_Codigo' en la URL.
-if (isset($_GET['Funeraria_Rif']) && isset($_GET['Servicios_Prestados_Codigo'])) {
+if (isset($_GET['funeraria_rif']) && isset($_GET['servicios_prestados_codigo'])) {
     // Obtener los valores de las claves primarias desde los parámetros en la URL.
-    $funeraria_rif = $_GET['Funeraria_Rif'];
-    $servicios_prestados_codigo = $_GET['Servicios_Prestados_Codigo'];
+    $funeraria_rif = $_GET['funeraria_rif'];
+    $servicios_prestados_codigo = $_GET['servicios_prestados_codigo'];
 
     // Incluir el controlador 'ServiciosXFunerariaController' para manejar las operaciones con la relación.
     require_once('../../controllers/serviciosXfuneraria_controller.php');
     $controller = new ServiciosXFunerariaController();
 
     // Intentar eliminar la relación utilizando el método 'EliminarServicioXFuneraria' del controlador.
-    $result_eliminar = $controller->DeleteServicioXFuneraria($funeraria_rif, $servicios_prestados_codigo);
+    $result_eliminar = $controller->DeleteServicioXFuneraria1($funeraria_rif, $servicios_prestados_codigo);
 
     if ($result_eliminar) {
         // Si la eliminación fue exitosa, mostrar un mensaje de éxito.
@@ -29,11 +29,10 @@ if (isset($_GET['Funeraria_Rif']) && isset($_GET['Servicios_Prestados_Codigo']))
     }
 
     // Redirigir a la página de listado de servicios prestados después de intentar eliminar.
-    echo '<script>window.location.href = "?controller=ServiciosP&action=ListarServiciosP";</script>';
+    echo '<script>window.location.href = "?controller=ServiciosXfuneraria&action=ListarServiciosXfuneraria";</script>';
     exit();
 }
 
 // Si no se proporcionan los parámetros necesarios en la URL, redirigir a la página de listado de servicios prestados sin realizar ninguna acción de eliminación.
-echo '<script>window.location.href = "?controller=ServiciosP&action=ListarServiciosP";</script>';
+echo '<script>window.location.href = "?controller=ServiciosXfuneraria&action=ListarServiciosXfuneraria";</script>';
 exit();
-?>
