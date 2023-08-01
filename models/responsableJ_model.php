@@ -15,26 +15,29 @@ class ResponsableJuridicoModel
         $conexion = conectar::desconexion($conexion);
         return $result;
     }
-     public static function Update_Data($sql)
+    public static function Update_Data($sql)
     {
         include_once('../../core/conectar.php');
         $conexion = conectar::conexion();
         mysqli_autocommit($conexion, FALSE);
         $result = mysqli_query($conexion, $sql);
-         if ($result == true) 
+
+        if ($result == true) // la consulta fue exitosa
         {
-            if (mysqli_affected_rows($conexion) == 0) 
+            if (mysqli_affected_rows($conexion) == 0) // si no hizo la actualizacion
             {
                 mysqli_rollback($conexion);
                 $result = false;
-            } else   
+            } else   // si hizo la actualizacion
             {
                 mysqli_commit($conexion);
                 $result = true;
             }
         }
-         $conexion = conectar::desconexion($conexion);
-         return $result;
+
+        $conexion = conectar::desconexion($conexion);
+
+        return $result;
     }
      // Para el resto de las operaciones
      public static function ListarResponsableJ()

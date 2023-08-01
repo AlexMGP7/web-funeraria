@@ -42,12 +42,12 @@ $numrows = mysqli_num_rows($result_responsable_juridico);
                             <td><?php echo $numrows["telefono"]; ?></td>
                             <td><?php echo $numrows["razon_s"]; ?></td>
                             <td align="center">
-                                <a href="?controller=ResponsableJuridico&action=UpdateResponsableJ&i=<?php echo $i; ?>" title="Modificar">
+                                <a href="?controller=ResponsableJ&action=UpdateResponsableJ&i=<?php echo $i; ?>" title="Modificar">
                                     <img width="50px" height="50px" src="../../imagenes/update_icon.png" alt="">
                                 </a>
                             </td>
                             <td align="center">
-                                <a href="?controller=ResponsableJuridico&action=DeleteResponsableJ&i=<?php echo $i; ?>" title="Eliminar">
+                                <a href="?controller=ResponsableJ&action=DeleteResponsableJ&i=<?php echo $i; ?>" title="Eliminar">
                                     <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
                                 </a>
                             </td>

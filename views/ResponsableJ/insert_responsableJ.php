@@ -53,9 +53,18 @@
                      <input class="form-control" type="email" name="correo" id="correo" maxlength="100" required placeholder="Ingrese aquí el correo del responsable jurídico" />
                  </div>
                  <div class="form-group">
-                     <label for="telefono"><b>Teléfono:</b></label>
-                     <input class="form-control" type="text" name="telefono" id="telefono" maxlength="20" required placeholder="Ingrese aquí el teléfono del responsable jurídico" />
-                 </div>
+                    <label class="telefono">Teléfono</label>
+                    <div class="input-group">
+                        <select class="input-group select-custom" name="codigo_telefono" id="codigo_telefono" required>
+                            <option value="0414">0414</option>
+                            <option value="0424">0424</option>
+                            <option value="0416">0416</option>
+                            <option value="0426">0426</option>
+                            <option value="0412">0412</option>
+                        </select>
+                        <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" />
+                    </div>
+                </div>
                  <div class="form-group">
                      <label for="razon_social"><b>Razón Social:</b></label>
                      <input class="form-control" type="text" name="razon_social" id="razon_social" maxlength="100" required placeholder="Ingrese aquí la razón social del responsable jurídico" />
