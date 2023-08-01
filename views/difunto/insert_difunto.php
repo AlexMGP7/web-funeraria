@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cedula = $_POST['cedula'];
     $fechaN = $_POST['fechaN'];
     $fechaD = $_POST['fechaD'];
-    $partidaN = $_POST['partidaN'];
+    $partidaN = !empty($_POST['partidaN']) ? $_POST['partidaN'] : 'n/a';
     $causaM = $_POST['causaM'];
     $rif = $_POST['rif'];
     // Verificar que la fecha de nacimiento sea anterior a la fecha actual

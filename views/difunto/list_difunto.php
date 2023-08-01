@@ -28,7 +28,7 @@ $numrows = mysqli_num_rows($result_difunto);
                     <th class="th-sm">Fecha de D</th>
                     <th class="th-sm">P de Nacimiento</th>
                     <th class="th-sm">Causa de Muerte</th>
-                    <th class="th-sm">RIF Cementerio</th>
+                    <th class="th-sm">RIF del Cementerio asociado</th>
                     <th class="th-sm">Modificar</th>
                     <th class="th-sm">Eliminar</th>
                 </tr>
