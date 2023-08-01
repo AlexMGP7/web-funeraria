@@ -70,7 +70,7 @@ if (isset($_GET['i'])) {
                 $telefono_resto = substr($telefono, 4); // Extract the rest of the characters (phone number)
             }
         }
-        ?>
+?>
         <div class="container-i mt-5">
             <div class="page-content">
                 <form action="?controller=Usuario&action=UpdateUsuario" method="POST">
@@ -89,19 +89,17 @@ if (isset($_GET['i'])) {
                             <input class="form-control" type="password" name="password" value="<?php echo $password; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="telefono"><b>Teléfono:</b></label>
+                            <label class="telefono">Teléfono</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control" name="codigo_telefono" id="codigo_telefono" required>
-                                        <option value="0414" <?php if ($codigo_telefono === "0414") echo "selected"; ?>>0414</option>
-                                        <option value="0424" <?php if ($codigo_telefono === "0424") echo "selected"; ?>>0424</option>
-                                        <option value="0416" <?php if ($codigo_telefono === "0416") echo "selected"; ?>>0416</option>
-                                        <option value="0426" <?php if ($codigo_telefono === "0426") echo "selected"; ?>>0426</option>                                        <option value="0412" <?php if ($codigo_telefono === "0412") echo "selected"; ?>>0412</option>
-                                    </select>
-                                </div>
-                                <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required value="<?php echo $telefono_resto; ?>" />
+                                <select class="input-group select-custom" name="codigo_telefono" id="codigo_telefono" required>
+                                    <option value="0414">0414</option>
+                                    <option value="0424">0424</option>
+                                    <option value="0416">0416</option>
+                                    <option value="0426">0426</option>
+                                    <option value="0412">0412</option>
+                                </select>
+                                <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" />
                             </div>
-                            <small class="form-text text-muted">Formato válido: seleccione el código de área y luego ingrese el resto del número (7 dígitos).</small>
                         </div>
                         <!-- Add other fields related to Usuario table here -->
 
@@ -110,7 +108,7 @@ if (isset($_GET['i'])) {
                 </form>
             </div>
         </div>
-        <?php
+<?php
     } else {
         // If Usuario not found, redirect to the list of usuarios
         require_once('../../views/usuario/list_usuario.php');

@@ -9,7 +9,8 @@ $controllers = array(
     'PersonaJuridica' => ['ListarPersonaJ', 'IngresarPersonaJ', 'UpdatePersonaJ', 'DeletePersonaJ'],
     'Usuario' => ['ListarUsuario', 'IngresarUsuario', 'UpdateUsuario', 'DeleteUsuario'],
     'Cementerio' => ['ListarCementerio', 'IngresarCementerio', 'UpdateCementerio', 'DeleteCementerio'],
-    'Difunto' => ['ListarDifunto', 'IngresarDifunto', 'UpdateDifunto', 'DeleteDifunto']
+    'Difunto' => ['ListarDifunto', 'IngresarDifunto', 'UpdateDifunto', 'DeleteDifunto'],
+    'ResponsableJ' => ['ListarResponsableJ', 'IngresarResponsableJ', 'UpdateResponsableJ', 'DeleteResponsableJ']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -219,26 +220,47 @@ function call($controller, $action)
                     break;
             }
             break;
-            case 'Difunto':
-                $difuntoController = new DifuntoController();
+        case 'Difunto':
+            $difuntoController = new DifuntoController();
 
-                switch ($action) {
-                    case 'ListarDifunto':
-                        $difuntoController->ListarDifuntos();
-                        break;
-                    case 'IngresarDifunto':
-                        $difuntoController->IngresarDifunto();
-                        break;
-                    case 'UpdateDifunto':
-                        $difuntoController->UpdateDifunto();
-                        break;
-                    case 'DeleteDifunto':
-                        $difuntoController->DeleteDifunto();
-                        break;
-                    default:
-                        $difuntoController->ListarDifuntos();
-                        break;
-                }
-                break;
+            switch ($action) {
+                case 'ListarDifunto':
+                    $difuntoController->ListarDifuntos();
+                    break;
+                case 'IngresarDifunto':
+                    $difuntoController->IngresarDifunto();
+                    break;
+                case 'UpdateDifunto':
+                    $difuntoController->UpdateDifunto();
+                    break;
+                case 'DeleteDifunto':
+                    $difuntoController->DeleteDifunto();
+                    break;
+                default:
+                    $difuntoController->ListarDifuntos();
+                    break;
+            }
+            break;
+        case 'ResponsableJ':
+            $responsableJController = new ResponsableJuridicoController();
+
+            switch ($action) {
+                case 'ListarResponsableJ':
+                    $responsableJController->ListarResponsableJ();
+                    break;
+                case 'IngresarResponsableJ':
+                    $responsableJController->IngresarResponsableJ();
+                    break;
+                case 'UpdateResponsableJ':
+                    $responsableJController->UpdateResponsableJ();
+                    break;
+                case 'DeleteResponsableJ':
+                    $responsableJController->DeleteResponsableJ();
+                    break;
+                default:
+                    $responsableJController->ListarResponsableJ();
+                    break;
+            }
+            break;
     }
 }

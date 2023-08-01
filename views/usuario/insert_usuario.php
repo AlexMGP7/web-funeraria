@@ -76,20 +76,17 @@ $numrows = mysqli_num_rows($result_persona);
                     <input class="form-control" type="password" name="password" id="password" maxlength="50" required placeholder="Ingrese aquí la contraseña" />
                 </div>
                 <div class="form-group">
-                    <label for="telefono"><b>Teléfono:</b></label>
+                    <label class="telefono">Teléfono</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <select class="form-control" name="codigo_telefono" id="codigo_telefono" required>
-                                <option value="0414">0414</option>
-                                <option value="0424">0424</option>
-                                <option value="0416">0416</option>
-                                <option value="0426">0426</option>
-                                <option value="0412">0412</option>
-                            </select>
-                        </div>
+                        <select class="input-group select-custom" name="codigo_telefono" id="codigo_telefono" required>
+                            <option value="0414">0414</option>
+                            <option value="0424">0424</option>
+                            <option value="0416">0416</option>
+                            <option value="0426">0426</option>
+                            <option value="0412">0412</option>
+                        </select>
                         <input class="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{7}" maxlength="7" required placeholder="Ingrese aquí el resto del número" />
                     </div>
-                    <small class="form-text text-muted">Formato válido: seleccione el código de área y luego ingrese el resto del número (7 dígitos).</small>
                 </div>
                 <button class="btn btn-success" type="submit">Ingresar</button>
             </div>

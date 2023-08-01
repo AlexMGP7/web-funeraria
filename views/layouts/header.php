@@ -50,9 +50,9 @@
                     <li class="item">
                         <a href="?controller=PersonaJuridica&action=ListarPersonaJ">Persona Juridica</a>
                     </li>
-                    <!-- <li class="item">
-                        <a href="#">Responsable Juridico</a>
-                    </li> -->
+                    <li class="item">
+                        <a href="?controller=ResponsableJ&action=ListarResponsableJ">Responsable Juridico</a>
+                    </li>
                     <a href="?controller=Cementerio&action=ListarCementerio">Cementerio</a>
                 </li>
                 <li class="item">
