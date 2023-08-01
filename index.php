@@ -35,7 +35,7 @@ if (isset($_SESSION['user_id'])) {
             <h1>Bienvenido, <?= $user['login']; ?></h1>
             <p>Tu sesión inició correctamente</p>
             <a href="php-login/logout.php">Cerrar sesión</a>
-            <a href="views/layouts/layout.php?controller=Estado&action=ListarEstado">Continuar a Pólizas</a>
+            <a href="views/layouts/layout.php?controller=Polizas&action=ListarPolizas">Continuar a Pólizas</a>
         </div>
     <?php else : ?>
         <div class="container">

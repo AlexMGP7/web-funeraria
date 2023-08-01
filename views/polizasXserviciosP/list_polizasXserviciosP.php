@@ -2,66 +2,63 @@
 // Verificar si el usuario ha iniciado sesión. Si no, redirigir al índice (login) del sistema.
 if (!isset($_SESSION['user_id'])) {
     echo '<script>window.location.href = "../../index.php";</script>';
-    exit(); // Salir para evitar cargar el formulario si el usuario no ha iniciado sesión.
 }
- // Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de inserción.
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los datos del formulario.
-    $poliza_numero = $_POST['poliza_numero'];
-    $servicios_prestados_codigo = $_POST['servicios_prestados_codigo'];
-     require_once('../../controllers/polizasXservicioP_controller.php');
-    $controller = new PolizasXservicioPController();
-     // Intentar insertar el nuevo polizaXservicioP utilizando el método 'IngresarPolizaXservicioP2' del controlador.
-    $result_polizasXservicioP = $controller->IngresarPolizaXservicioP2($poliza_numero, $servicios_prestados_codigo);
-     if ($result_polizasXservicioP) {
-        // Si la inserción fue exitosa, mostrar un mensaje de éxito.
-        $_SESSION['mensaje'] = "El poliza de seguro se ha registrado correctamente.";
-        $_SESSION['mensaje_tipo'] = "success";
-    } else {
-        // Si la inserción falló, mostrar un mensaje de advertencia.
-        $_SESSION['mensaje'] = "Error: No se pudo registrar el poliza de seguro.";
-        $_SESSION['mensaje_tipo'] = "warning";
-    }
-    // Redirigir a la página de listado de polizasXservicioP después de intentar insertar.
-    echo '<script>window.location.href = "?controller=PolizasXservicioP&action=ListarPolizasXservicioP";</script>';
-    exit();
-}
- require_once('../../controllers/Polizas_controller.php');
-$poliza_controller = new PolizasController();
-$result_poliza = $poliza_controller->ListarPolizas1();
- require_once('../../controllers/ServiciosP_controller.php');
-$servicios_prestados_controller = new ServiciosPController();
-$result_servicios_prestados = $servicios_prestados_controller->ListarServiciosP1();
+
+// Incluir el controlador 'PolizasXservicioPController' para manejar las operaciones con los polizasXservicioP.
+require_once('../../controllers/polizaXserviciosP_controller.php');
+$controller = new PolizasXservicioPController();
+
+// Obtener la lista de polizasXservicioP utilizando el método 'ListarPolizasXservicioP1' del controlador.
+$result_polizasXservicioP = $controller->ListarPolizasXservicioP1();
+
+// Contar el número de filas (polizasXservicioP) obtenidos de la consulta.
+$numrows = mysqli_num_rows($result_polizasXservicioP);
 ?>
- <!-- Aquí empieza el formulario -->
-<div class="container-i mt-5">
-    <form action="?controller=PolizasXserviciosP&action=IngresarPolizasXserviciosP" method="POST">
-        <div class="custom-form-background p-4">
-            <h4 class="mb-4">Ingreso de Poliza asociada a servicio</h4>
-            <div class="form-group">
-                <label for="poliza_numero"><b>Número de Poliza:</b></label>
-                <select class="form-control" name="poliza_numero" id="poliza_numero" required>
-                    <?php
-                    while ($row_poliza = mysqli_fetch_array($result_poliza)) {
-                        $numero_poliza = $row_poliza['Numero'];
-                        echo "<option value='$numero_poliza'>$numero_poliza</option>";
+
+<div class="container">
+
+    <br> <br>
+    <h4> Listado de Polizas de Seguro asociados a Servicios Prestados registrados </h4>
+    <br> <br>
+
+    <!-- Botón Agregar -->
+    <!-- El botón Agregar redirige a la vista de inserción de un nuevo polizaXservicioP. -->
+    <a href="<?php echo $_SERVER['PHP_SELF'] ?>?controller=PolizaXserviciosP&action=IngresarPolizaXserviciosP" class="btn btn-primary custom-btn">Agregar Poliza asociada a Servicio Prestado</a>
+
+    <div class="table-responsive">
+        <table id="dtBasicExample" data-order='[[ 0, "asc" ]]' data-page-length='5' class="table table-sm table-striped table-hover table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="th-sm">Número de Póliza</th>
+                    <th class="th-sm">Código de Servicio Prestado</th>
+                    <th class="th-sm">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Si hay polizasXservicioP registrados, se muestran en la tabla.
+                if ($numrows != 0) {
+                    while ($row = mysqli_fetch_array($result_polizasXservicioP)) {
+                        $poliza_numero = $row["Polizas_De_Seguro_Numero"];
+                        $servicios_prestados_codigo = $row["Servicios_Prestados_Codigo"];
+                ?>
+                        <tr>
+                            <td><?php echo $poliza_numero; ?></td>
+                            <td><?php echo $servicios_prestados_codigo; ?></td>
+                            <td align="center">
+                                <!-- El enlace para eliminar un polizaXservicioP redirige a la vista de eliminación -->
+                                <a href="?controller=PolizaXserviciosP&action=DeletePolizaXserviciosP&poliza_numero=<?php echo $poliza_numero; ?>&servicios_prestados_codigo=<?php echo $servicios_prestados_codigo; ?>" title="Eliminar">
+                                    <img width="50px" height="50px" src="../../imagenes/delete_icon.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+
+                <?php
                     }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="servicios_prestados_codigo"><b>Código de Servicios Prestados:</b></label>
-                <select class="form-control" name="servicios_prestados_codigo" id="servicios_prestados_codigo" required>
-                    <?php
-                    while ($row_servicios_prestados = mysqli_fetch_array($result_servicios_prestados)) {
-                        $codigo_servicios_prestados = $row_servicios_prestados['codigo'];
-                        $nombre_servicios_prestados = $row_servicios_prestados['nombre'];
-                        echo "<option value='$codigo_servicios_prestados'>$codigo_servicios_prestados - $nombre_servicios_prestados</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <button class="btn btn-success" type="submit">Ingresar</button>
-        </div>
-    </form>
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </div>
+  

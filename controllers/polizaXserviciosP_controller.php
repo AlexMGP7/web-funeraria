@@ -29,7 +29,7 @@ class PolizasXservicioPController
     // Función para mostrar la vista de inserción de un nuevo polizaXservicioP y actualizarlo.
     function IngresarPolizaXservicioP()
     {
-        require_once('../../views/polizasXserviciosP/insert_polizasXservicioP.php');
+        require_once('../../views/polizasXserviciosP/insert_polizasXserviciosP.php');
     }
 
     // Función estática para insertar un nuevo polizaXservicioP en el modelo.
@@ -43,7 +43,7 @@ class PolizasXservicioPController
     // Función para mostrar la vista de eliminación de un polizaXservicioP.
     function DeletePolizaXservicioP()
     {
-        require_once('../../views/polizasXserviciosP/delete_polizasXservicioP.php');
+        require_once('../../views/polizasXserviciosP/delete_polizasXserviciosP.php');
     }
 
     // Función estática para eliminar un polizaXservicioP de la tabla 'polizasXservicioP' en el modelo.
