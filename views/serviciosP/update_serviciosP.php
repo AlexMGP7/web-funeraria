@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos actualizados del formulario.
     $codigo = $_POST['codigo'];
     $nombre = $_POST['nombre'];
-    $tipo = $_POST['tipo'];
+    $tipo = $_POST['tipo_servicio'];
     $monto = $_POST['monto'];
 
     // Intentar actualizar el servicio prestado utilizando el método 'UpdateServicioP2' del controlador.
@@ -77,10 +77,23 @@ if (isset($_GET['codigo'])) {
                         <input class="form-control" type="text" name="nombre" value="<?php echo $nombre; ?>">
                     </div>
                     <div class="form-group">
-                        <label for="tipo"><b>Tipo:</b></label>
-                        <!-- Mostrar el tipo actual del servicio prestado en un campo de texto para ser modificado -->
-                        <input class="form-control" type="text" name="tipo" value="<?php echo $tipo; ?>">
-                    </div>
+                <label for="tipo_servicio"><b>Tipo:</b></label>
+                <select class="form-control" name="tipo_servicio" id="tipo_servicio" required>
+            <option value="">Seleccione un tipo de Servicio</option>
+            <option value="Carro Fúnebre">Carro Fúnebre</option>
+            <option value="Sillas y Servicio en Casa">Sillas y Servicio en Casa</option>
+            <option value="Urna">Urna</option>
+            <option value="Capilla">Capilla</option>
+            <option value="Cremación">Cremación</option>
+            <option value="Oficio de Misa">Oficio de Misa</option>
+            <option value="Traslado Local">Traslado Local</option>
+            <option value="Traslado Nacional">Traslado Nacional</option>
+            <option value="Traslado Internacional">Traslado Internacional</option>
+            <option value="Preparación del Difunto 24H">Preparación del Difunto 24H</option>
+            <option value="Preparación del Difunto 48H">Preparación del Difunto 48H</option>
+            <option value="Preparación del Difunto 64H">Preparación del Difunto 64H</option>
+                </select>
+            </div>
                     <div class="form-group">
                         <label for="monto"><b>Monto:</b></label>
                         <!-- Mostrar el monto actual del servicio prestado en un campo de texto para ser modificado -->

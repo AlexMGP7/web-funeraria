@@ -13,7 +13,8 @@ $controllers = array(
     'ResponsableJ' => ['ListarResponsableJ', 'IngresarResponsableJ', 'UpdateResponsableJ', 'DeleteResponsableJ'],
     'Funeraria' => ['ListarFuneraria', 'IngresarFuneraria', 'UpdateFuneraria', 'DeleteFuneraria'],
     'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP'],
-    'ServiciosXfuneraria' => ['ListarServiciosXfuneraria', 'IngresarServiciosXfuneraria', 'UpdateServiciosXfuneraria', 'DeleteServiciosXfuneraria']
+    'ServiciosXfuneraria' => ['ListarServiciosXfuneraria', 'IngresarServiciosXfuneraria', 'DeleteServiciosXfuneraria'],
+    'Polizas' => ['ListarPolizas', 'IngresarPolizas', 'DeletePolizas']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -317,14 +318,32 @@ function call($controller, $action)
                 case 'IngresarServiciosXfuneraria':
                     $serviciosXfunerariaController->IngresarServicioXfuneraria();
                     break;
-                case 'UpdateServiciosXfuneraria':
-                    $serviciosXfunerariaController->UpdateServicioXfuneraria();
-                    break;
                 case 'DeleteServiciosXfuneraria':
                     $serviciosXfunerariaController->DeleteServicioXfuneraria();
                     break;
                 default:
                     $serviciosXfunerariaController->ListarServiciosXfuneraria();
+                    break;
+            }
+            break;
+        case 'Polizas':
+            $PolizasController = new PolizasController();
+
+            switch ($action) {
+                case 'ListarPolizas':
+                    $PolizasController->ListarPolizas();
+                    break;
+                case 'IngresarPolizas':
+                    $PolizasController->IngresarPoliza();
+                    break;
+                case 'UpdatePolizas':
+                    $polizasController->UpdatePolizas();
+                    break;
+                case 'DeletePolizas':
+                    $PolizasController->DeletePoliza();
+                    break;
+                default:
+                    $PolizasController->ListarPolizas();
                     break;
             }
             break;

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos del formulario.
     $codigo = $_POST['codigo'];
     $nombre = $_POST['nombre'];
-    $tipo = $_POST['tipo'];
+    $tipo = $_POST['tipo_servicio'];
     $monto = $_POST['monto'];
 
     require_once('../../controllers/serviciosP_controller.php');
@@ -48,10 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="nombre"><b>Nombre:</b></label>
                 <input class="form-control" type="text" name="nombre" id="nombre" required placeholder="Ingrese aquí el nombre del Servicio Prestado" />
             </div>
+
             <div class="form-group">
-                <label for="tipo"><b>Tipo:</b></label>
-                <input class="form-control" type="text" name="tipo" id="tipo" required placeholder="Ingrese aquí el tipo del Servicio Prestado" />
-            </div>
+                <label for="tipo_servicio"><b>Tipo:</b></label>
+                <select class="form-control" name="tipo_servicio" id="tipo_servicio" required>
+            <option value="">Seleccione un tipo de Servicio</option>
+            <option value="Carro Fúnebre">Carro Fúnebre</option>
+            <option value="Sillas y Servicio en Casa">Sillas y Servicio en Casa</option>
+            <option value="Urna">Urna</option>
+            <option value="Capilla">Capilla</option>
+            <option value="Cremación">Cremación</option>
+            <option value="Oficio de Misa">Oficio de Misa</option>
+            <option value="Traslado Local">Traslado Local</option>
+            <option value="Traslado Nacional">Traslado Nacional</option>
+            <option value="Traslado Internacional">Traslado Internacional</option>
+            <option value="Preparación del Difunto 24H">Preparación del Difunto 24H</option>
+            <option value="Preparación del Difunto 48H">Preparación del Difunto 48H</option>
+            <option value="Preparación del Difunto 64H">Preparación del Difunto 64H</option>
+        </select>
+    </div>
+
             <div class="form-group">
                 <label for="monto"><b>Monto:</b></label>
                 <input class="form-control" type="number" name="monto" id="monto" required placeholder="Ingrese aquí el monto del Servicio Prestado" />
