@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_id'])) {
 
 // Si el formulario ha sido enviado (se verifica por el método POST), procesar la lógica de inserción.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener la fecha actual
+    $fechaActual = date('Y-m-d');
     // Obtener los datos del formulario.
     $numero = $_POST['numero'];
     $fecha_apertura = $_POST['fecha_apertura'];
@@ -14,6 +16,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cuota_anual = $_POST['cuota_anual'];
     $cuota_mensual = $_POST['cuota_mensual'];
     $observaciones = $_POST['observaciones'];
+    // Verificar que la fecha de apertura sea anterior a la fecha actual
+    if ($fecha_apertura > $fechaActual) {
+        $_SESSION['mensaje'] = "La fecha de apertura no puede ser posterior a la fecha actual.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=Polizas&action=IngresarPolizas";</script>';
+        exit();
+    }
+    if ($fecha_cierre > $fechaActual) {
+        $_SESSION['mensaje'] = "La fecha de cierre no puede ser posterior a la fecha actual.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=Polizas&action=IngresarPolizas";</script>';
+        exit();
+    }
+    // Verificar que la fecha de cierre sea posterior a la fecha de apertura
+    if ($fecha_cierre <= $fecha_apertura) {
+        $_SESSION['mensaje'] = "La fecha de cierre debe ser posterior a la fecha de apertura.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=Polizas&action=IngresarPolizas";</script>';
+        exit();
+    }
 
     require_once('../../controllers/polizas_controller.php');
     $controller = new PolizasController();
@@ -38,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- Aquí empieza el formulario -->
 <div class="container-i mt-5">
-    <form action="?controller=Polizas&action=IngresarPoliza" method="POST">
+    <form action="?controller=Polizas&action=IngresarPolizas" method="POST">
         <div class="custom-form-background p-4">
             <h4 class="mb-4">Ingreso de Póliza de Seguro</h4>
             <div class="form-group">
