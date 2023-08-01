@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-08-2023 a las 17:10:09
+-- Tiempo de generación: 01-08-2023 a las 22:56:02
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -160,7 +160,7 @@ INSERT INTO `estado` (`Codigo`, `Descripcion`) VALUES
 DROP TABLE IF EXISTS `factura_anual`;
 CREATE TABLE IF NOT EXISTS `factura_anual` (
   `Numero` int(11) NOT NULL,
-  `Fecha` datetime NOT NULL,
+  `Fecha` date NOT NULL,
   `Monto` varchar(45) NOT NULL,
   `Polizas_De_Seguro_Numero` int(11) NOT NULL,
   PRIMARY KEY (`Numero`),
@@ -574,7 +574,7 @@ INSERT INTO `municipio` (`Codigo`, `Descripcion`, `Estado_Codigo`) VALUES
 DROP TABLE IF EXISTS `pagos_mensuales`;
 CREATE TABLE IF NOT EXISTS `pagos_mensuales` (
   `Numero` int(11) NOT NULL,
-  `Fecha` datetime NOT NULL,
+  `Fecha` date NOT NULL,
   `Monto` varchar(45) NOT NULL,
   `Polizas_De_Seguro_Numero` int(11) NOT NULL,
   PRIMARY KEY (`Numero`),
@@ -1831,13 +1831,20 @@ CREATE TABLE IF NOT EXISTS `persona_natural_has_polizas_de_seguro` (
 DROP TABLE IF EXISTS `polizas_de_seguro`;
 CREATE TABLE IF NOT EXISTS `polizas_de_seguro` (
   `Numero` int(11) NOT NULL,
-  `Fecha de Apertura` datetime NOT NULL,
-  `Fecha de Cierre` datetime NOT NULL,
-  `Cuota anual` int(11) NOT NULL,
-  `Cuota mensual` int(11) NOT NULL,
+  `Fecha_apertura` date NOT NULL,
+  `Fecha_cierre` date NOT NULL,
+  `Cuota_anual` int(15) NOT NULL,
+  `Cuota_mensual` int(15) NOT NULL,
   `Observaciones` varchar(45) NOT NULL,
   PRIMARY KEY (`Numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `polizas_de_seguro`
+--
+
+INSERT INTO `polizas_de_seguro` (`Numero`, `Fecha_apertura`, `Fecha_cierre`, `Cuota_anual`, `Cuota_mensual`, `Observaciones`) VALUES
+(100, '2023-07-05', '2023-08-01', 60, 20, 'hola');
 
 -- --------------------------------------------------------
 
@@ -1899,7 +1906,7 @@ DROP TABLE IF EXISTS `servicios_prestados`;
 CREATE TABLE IF NOT EXISTS `servicios_prestados` (
   `Codigo` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
-  `Tipo` varchar(45) NOT NULL,
+  `Tipo` varchar(255) NOT NULL,
   `Monto` int(11) NOT NULL,
   PRIMARY KEY (`Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1927,14 +1934,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`cedula`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Login` (`Login`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`Id`, `Login`, `Password`, `Telefono`, `cedula`) VALUES
-(1, 'alexmgp7', '$2y$10$PGOOisdEDm5BCT6iSqx.UelvX5Fv9p2rCat1IKXAXUHarUXbuUHRG', '04121118200', 30230460);
+(2, 'alexmgp7', '$2y$10$81kCztjHwSi3ZvxJLob.a.JXr7lyk4NThibALSji0Qg9NruIX5EaO', '04121118200', 30230460);
 
 --
 -- Restricciones para tablas volcadas

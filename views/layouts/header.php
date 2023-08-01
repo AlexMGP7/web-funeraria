@@ -9,7 +9,23 @@
             </li> -->
 
             <li class="item">
-                <a href="?controller=Polizas&action=ListarPolizas">Polizas</a>
+                <div class="submenu-item">
+                    <span>Polizas</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <ul class="menu-items submenu">
+                    <div class="menu-title">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        Polizas
+                    </div>
+                    <li class="item">
+                        <a href="?controller=Polizas&action=ListarPolizas">Polizas</a>
+                    </li>
+                    <li class="item">
+                        <a href="?controller=PolizaXserviciosP&action=ListarPolizaXserviciosP">Servicio asociado a Poliza</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="item">

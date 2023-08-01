@@ -14,7 +14,8 @@ $controllers = array(
     'Funeraria' => ['ListarFuneraria', 'IngresarFuneraria', 'UpdateFuneraria', 'DeleteFuneraria'],
     'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP'],
     'ServiciosXfuneraria' => ['ListarServiciosXfuneraria', 'IngresarServiciosXfuneraria', 'DeleteServiciosXfuneraria'],
-    'Polizas' => ['ListarPolizas', 'IngresarPolizas', 'DeletePolizas', 'UpdatePolizas']
+    'Polizas' => ['ListarPolizas', 'IngresarPolizas', 'DeletePolizas', 'UpdatePolizas'],
+    'PolizaXserviciosP' => ['ListarPolizaXserviciosP', 'IngresarPolizaXserviciosP', 'DeletePolizaXserviciosP']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -344,6 +345,23 @@ function call($controller, $action)
                     break;
                 default:
                     $polizasController->ListarPolizas();
+                    break;
+            }
+            break;
+        case 'PolizaXserviciosP':
+            $polizaXserviciosPController = new PolizasXservicioPController();
+            switch ($action) {
+                case 'ListarPolizaXserviciosP':
+                    $polizaXserviciosPController->ListarPolizasXservicioP();
+                    break;
+                case 'IngresarPolizaXserviciosP':
+                    $polizaXserviciosPController->IngresarPolizaXservicioP();
+                    break;
+                case 'DeletePolizaXserviciosP':
+                    $polizaXserviciosPController->DeletePolizaXservicioP();
+                    break;
+                default:
+                    $polizaXserviciosPController->ListarPolizasXservicioP();
                     break;
             }
             break;
