@@ -2,6 +2,8 @@
 
 // Verificar si se han enviado los datos del formulario a través de POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener la fecha actual
+    $fechaActual = date('Y-m-d');
     // Obtener los datos del formulario
     $cedula = $_POST['cedula'];
     $fechaN = $_POST['fechaN'];
@@ -9,6 +11,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $partidaN = $_POST['partidaN'];
     $causaM = $_POST['causaM'];
     $rif = $_POST['rif'];
+    // Verificar que la fecha de nacimiento sea anterior a la fecha actual
+    if ($fechaN > $fechaActual) {
+        $_SESSION['mensaje'] = "La fecha de nacimiento no puede ser posterior a la fecha actual.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=Difunto&action=IngresarDifunto";</script>';
+        exit();
+    }
+    // Verificar que la fecha de defunción sea anterior o igual a la fecha actual
+    if ($fechaD > $fechaActual) {
+        $_SESSION['mensaje'] = "La fecha de defunción no puede ser posterior a la fecha actual.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=Difunto&action=IngresarDifunto";</script>';
+        exit();
+    }
+    // Verificar que la fecha de defunción sea posterior a la fecha de nacimiento
+    if ($fechaD <= $fechaN) {
+        $_SESSION['mensaje'] = "La fecha de defunción debe ser posterior a la fecha de nacimiento.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=Difunto&action=IngresarDifunto";</script>';
+        exit();
+    }
+
     require_once('../../controllers/difunto_controller.php');
     $controller = new DifuntoController();
 

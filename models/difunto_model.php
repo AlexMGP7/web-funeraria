@@ -88,8 +88,8 @@ class DifuntoModel
 
     public static function UpdateDifunto($cedula, $fechaN, $fechaD, $partidaN, $causaM, $cementerioRif)
     {
-        $sql_difunto = "UPDATE difunto SET cedula = '$cedula', Fecha de N. = '$fechaN', Fecha de D. = '$fechaD', Partida de N. = '$partidaN', 
-                        Causa de M. = '$causaM', Cementerio_Rif = '$cementerioRif' WHERE cedula = '$cedula'";
+        $sql_difunto = "UPDATE difunto SET cedula = '$cedula', `Fecha de N.` = '$fechaN', `Fecha de D.` = '$fechaD', `Partida de N.` = '$partidaN', 
+                `Causa de M.` = '$causaM', `Cementerio_Rif` = '$cementerioRif' WHERE cedula = '$cedula'";
         $result_difunto = DifuntoModel::Update_Data($sql_difunto);
         return $result_difunto;
     }
