@@ -11,7 +11,8 @@ $controllers = array(
     'Cementerio' => ['ListarCementerio', 'IngresarCementerio', 'UpdateCementerio', 'DeleteCementerio'],
     'Difunto' => ['ListarDifunto', 'IngresarDifunto', 'UpdateDifunto', 'DeleteDifunto'],
     'ResponsableJ' => ['ListarResponsableJ', 'IngresarResponsableJ', 'UpdateResponsableJ', 'DeleteResponsableJ'],
-    'Funeraria' => ['ListarFuneraria', 'IngresarFuneraria', 'UpdateFuneraria', 'DeleteFuneraria']
+    'Funeraria' => ['ListarFuneraria', 'IngresarFuneraria', 'UpdateFuneraria', 'DeleteFuneraria'],
+    'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -281,6 +282,27 @@ function call($controller, $action)
                     break;
                 default:
                     $funerariaController->ListarFuneraria();
+                    break;
+            }
+            break;
+        case 'ServiciosP':
+            $serviciosPController = new ServiciosPController();
+
+            switch ($action) {
+                case 'ListarServiciosP':
+                    $serviciosPController->ListarServiciosP();
+                    break;
+                case 'IngresarServiciosP':
+                    $serviciosPController->IngresarServicioP();
+                    break;
+                case 'UpdateServiciosP':
+                    $serviciosPController->UpdateServicioP();
+                    break;
+                case 'DeleteServiciosP':
+                    $serviciosPController->DeleteServicioP();
+                    break;
+                default:
+                    $serviciosPController->ListarServiciosP();
                     break;
             }
             break;
