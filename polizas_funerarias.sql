@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-07-2023 a las 10:45:26
+-- Tiempo de generación: 01-08-2023 a las 03:09:48
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -63,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `ciudad` (
 --
 
 INSERT INTO `ciudad` (`Codigo`, `Descripcion`, `Parroquia_Codigo`) VALUES
-(1, 'Porlamar', 713);
+(1, 'Porlamar', 713),
+(11111, '2', 11111);
 
 -- --------------------------------------------------------
 
@@ -73,8 +74,8 @@ INSERT INTO `ciudad` (`Codigo`, `Descripcion`, `Parroquia_Codigo`) VALUES
 
 DROP TABLE IF EXISTS `difunto`;
 CREATE TABLE IF NOT EXISTS `difunto` (
-  `Fecha de N.` datetime NOT NULL,
-  `Fecha de D.` datetime NOT NULL,
+  `Fecha de N.` date NOT NULL,
+  `Fecha de D.` date NOT NULL,
   `Partida de N.` varchar(45) DEFAULT NULL,
   `Causa de M.` varchar(45) NOT NULL,
   `cedula` int(11) NOT NULL,
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `difunto` (
 --
 
 INSERT INTO `difunto` (`Fecha de N.`, `Fecha de D.`, `Partida de N.`, `Causa de M.`, `cedula`, `Cementerio_Rif`) VALUES
-('2023-07-19 00:00:00', '2023-07-13 00:00:00', 'no hay', 'Sida', 30230460, 'J-22222222-1');
+('2023-07-12', '2023-07-26', '', 'colera', 30230460, 'J-22222222-1');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,9 @@ INSERT INTO `estado` (`Codigo`, `Descripcion`) VALUES
 (22, 'Yaracuy'),
 (23, 'Zulia'),
 (24, 'Distrito Capital'),
-(25, 'Dependencias Federales');
+(25, 'Dependencias Federales'),
+(1111, '1'),
+(11111, '2');
 
 -- --------------------------------------------------------
 
@@ -545,7 +548,8 @@ INSERT INTO `municipio` (`Codigo`, `Descripcion`, `Estado_Codigo`) VALUES
 (459, 'Simón Bolívar', 23),
 (460, 'Sucre', 23),
 (461, 'Valmore Rodríguez', 23),
-(462, 'Libertador', 24);
+(462, 'Libertador', 24),
+(11111, '2', 11111);
 
 -- --------------------------------------------------------
 
@@ -1720,7 +1724,8 @@ INSERT INTO `parroquia` (`Codigo`, `Descripcion`, `Municipio_Codigo`) VALUES
 (1135, 'Santa Rosalía', 462),
 (1136, 'Santa Teresa', 462),
 (1137, 'Sucre (Catia)', 462),
-(1138, '23 de enero', 462);
+(1138, '23 de enero', 462),
+(11111, '2', 11111);
 
 -- --------------------------------------------------------
 
@@ -1844,7 +1849,7 @@ DROP TABLE IF EXISTS `responsable_juridico`;
 CREATE TABLE IF NOT EXISTS `responsable_juridico` (
   `Correo` varchar(45) NOT NULL,
   `Telefono` int(11) NOT NULL,
-  `Razon S.` varchar(45) NOT NULL,
+  `Razon_s` varchar(45) NOT NULL,
   `Rif` varchar(15) NOT NULL,
   PRIMARY KEY (`Rif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
