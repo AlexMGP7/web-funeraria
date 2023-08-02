@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-08-2023 a las 06:04:51
+-- Tiempo de generación: 02-08-2023 a las 06:15:47
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -170,6 +170,13 @@ CREATE TABLE IF NOT EXISTS `factura_anual` (
   PRIMARY KEY (`Numero`),
   KEY `fk_Factura_Anual_Polizas_De_Seguro1` (`Numero_poliza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `factura_anual`
+--
+
+INSERT INTO `factura_anual` (`Numero`, `Fecha`, `Monto`, `Numero_poliza`) VALUES
+(1, '2023-08-01', '5', 100);
 
 -- --------------------------------------------------------
 
@@ -583,6 +590,13 @@ CREATE TABLE IF NOT EXISTS `pagos_mensuales` (
   PRIMARY KEY (`Numero`),
   KEY `fk_Pagos_Mensuales_Polizas_De_Seguro1` (`Numero_poliza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pagos_mensuales`
+--
+
+INSERT INTO `pagos_mensuales` (`Numero`, `Fecha`, `Monto`, `Numero_poliza`) VALUES
+(5, '2023-08-01', '5', 100);
 
 -- --------------------------------------------------------
 
