@@ -45,47 +45,47 @@ class PagoMModel
     // Para el resto de las operaciones
     public static function ListarPagoM()
     {
-        $sql_pagoM = "SELECT numero, fecha, monto, numero_poliza FROM pago_mensual ORDER BY numero ASC";
-        $result_pagoM = PagoMModel::Get_Data($sql_pagoM);
-        return $result_pagoM;
+        $sql_pagos_mensuales = "SELECT numero, fecha, monto, numero_poliza FROM pagos_mensuales ORDER BY numero ASC";
+        $result_pagos_mensuales = PagoMModel::Get_Data($sql_pagos_mensuales);
+        return $result_pagos_mensuales;
     }
 
     // Para la insersión
     public static function IngresarPagoM($numero, $fecha, $monto, $numero_poliza)
     {
-        $sql_pagoM = "INSERT INTO pago_mensual (numero, fecha, monto, numero_poliza) VALUES ('$numero', '$fecha', '$monto', '$numero_poliza')";
-        $result_pagoM = PagoMModel::Update_Data($sql_pagoM);
-        return $result_pagoM;
+        $sql_pago_mensual = "INSERT INTO pagos_mensuales (numero, fecha, monto, numero_poliza) VALUES ('$numero', '$fecha', '$monto', '$numero_poliza')";
+        $result_pago_mensual = PagoMModel::Update_Data($sql_pago_mensual);
+        return $result_pago_mensual;
     }
 
     // Para la actualización
-    public static function BuscarPagoMByNumero($numero)
+    public static function UpdatePagoM($numero, $fecha, $monto, $numero_poliza)
     {
-        $sql_pagoM = "SELECT numero, fecha, monto, numero_poliza FROM pago_mensual WHERE numero = '$numero'";
-        $result_pagoM = PagoMModel::Get_Data($sql_pagoM);
-        return $result_pagoM;
+        $sql_pago_mensual = "UPDATE pagos_mensuales SET fecha = '$fecha', monto = '$monto', numero_poliza = '$numero_poliza' WHERE numero = '$numero'";
+        $result_pago_mensual = PagoMModel::Update_Data($sql_pago_mensual);
+        return $result_pago_mensual;
     }
 
     public static function BuscarUltimoPagoM()
     {
-        $sql_pagoM = "SELECT * FROM pago_mensual ORDER BY numero DESC LIMIT 1";
-        $result_pagoM = PagoMModel::Get_Data($sql_pagoM);
-        return $result_pagoM;
+        $sql_pago_mensual = "SELECT * FROM pagos_mensuales ORDER BY numero DESC LIMIT 1";
+        $result_pago_mensual = PagoMModel::Get_Data($sql_pago_mensual);
+        return $result_pago_mensual;
     }
 
-    public static function UpdatePagoM($numero, $fecha, $monto, $numero_poliza)
+    public static function BuscarPagoMPorNumero($numero)
     {
-        $sql_pagoM = "UPDATE pago_mensual SET fecha = '$fecha', monto = '$monto', numero_poliza = '$numero_poliza' WHERE numero = '$numero'";
-        $result_pagoM = PagoMModel::Update_Data($sql_pagoM);
-        return $result_pagoM;
+        $sql_pago_mensual = "SELECT numero, fecha, monto, numero_poliza FROM pagos_mensuales WHERE numero = '$numero'";
+        $result_pago_mensual = PagoMModel::Get_Data($sql_pago_mensual);
+        return $result_pago_mensual;
     }
 
     // Para eliminar
     public static function DeletePagoM($numero)
     {
-        $sql_pagoM = "DELETE FROM pago_mensual WHERE numero = '$numero'";
-        $result_pagoM = PagoMModel::Update_Data($sql_pagoM);
-        return $result_pagoM;
+        $sql_pago_mensual = "DELETE FROM pagos_mensuales WHERE numero = '$numero'";
+        $result_pago_mensual = PagoMModel::Update_Data($sql_pago_mensual);
+        return $result_pago_mensual;
     }
 }
 ?>

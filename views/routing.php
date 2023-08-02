@@ -448,7 +448,7 @@ function call($controller, $action)
             $PolizaXdifuntoController = new PolizaXdifuntoController();
             switch ($action) {
                 case 'ListarPolizaXdifunto':
-                    $PolizaXdifuntoController->ListarPolizaXdifunto();
+                    $PolizaXdifuntoController->ListarPolizasXdifunto();
                     break;
                 case 'IngresarPolizaXdifunto':
                     $PolizaXdifuntoController->IngresarPolizaXdifunto();
@@ -457,7 +457,7 @@ function call($controller, $action)
                     $PolizaXdifuntoController->DeletePolizaXdifunto();
                     break;
                 default:
-                    $PolizaXdifuntoController->ListarPolizaXdifunto();
+                    $PolizaXdifuntoController->ListarPolizasXdifunto();
                     break;
             }
             break;

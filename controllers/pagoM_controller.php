@@ -41,7 +41,7 @@ class PagoMController
     {
         require_once('../../models/pagoM_model.php');
         $pagoM_model = new PagoMModel();
-        $result_pagoM = $pagoM_model->BuscarPagoMByNumero($numero);
+        $result_pagoM = $pagoM_model->BuscarPagoMporNumero($numero);
         return $result_pagoM;
     }
 
