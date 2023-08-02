@@ -31,6 +31,12 @@
                     <li class="item">
                         <a href="?controller=PolizaXresponsableJ&action=ListarPolizaXresponsableJ">Responsable Juridico asociado a Poliza</a>
                     </li>
+                    <li class="item">
+                        <a href="?controller=PolizaXpersonaN&action=ListarPolizaXpersonaN">Persona Natural asociada a Poliza</a>
+                    </li>
+                    <li class="item">
+                        <a href="?controller=PolizaXdifunto&action=ListarPolizaXdifunto">Difunto asociado a Poliza</a>
+                    </li>
                 </ul>
             </li>
 

@@ -15,9 +15,12 @@ $controllers = array(
     'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP'],
     'ServiciosXfuneraria' => ['ListarServiciosXfuneraria', 'IngresarServiciosXfuneraria', 'DeleteServiciosXfuneraria'],
     'Polizas' => ['ListarPolizas', 'IngresarPolizas', 'DeletePolizas', 'UpdatePolizas'],
+    'FacturaA' => ['ListarFacturaA', 'IngresarFacturaA', 'UpdateFacturaA', 'DeleteFacturaA'],
+    'PagoM' => ['ListarPagoM', 'IngresarPagoM', 'UpdatePagoM', 'DeletePagoM'],
     'PolizaXserviciosP' => ['ListarPolizaXserviciosP', 'IngresarPolizaXserviciosP', 'DeletePolizaXserviciosP'],
     'PolizaXresponsableJ' => ['ListarPolizaXresponsableJ', 'IngresarPolizaXresponsableJ', 'DeletePolizaXresponsableJ'],
-    'FacturaA' => ['ListarFacturaA', 'IngresarFacturaA', 'UpdateFacturaA', 'DeleteFacturaA']
+    'PolizaXpersonaN' => ['ListarPolizaXpersonaN', 'IngresarPolizaXpersonaN', 'DeletePolizaXpersonaN'],
+    'PolizaXdifunto' => ['ListarPolizaXdifunto', 'IngresarPolizaXdifunto', 'DeletePolizaXdifunto']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -370,6 +373,26 @@ function call($controller, $action)
                     break;
             }
             break;
+        case 'PagoM':
+            $pagoMController = new PagoMController();
+            switch ($action) {
+                case 'ListarPagoM':
+                    $pagoMController->ListarPagoM();
+                    break;
+                case 'IngresarPagoM':
+                    $pagoMController->IngresarPagoM();
+                    break;
+                case 'UpdatePagoM':
+                    $pagoMController->UpdatePagoM();
+                    break;
+                case 'DeletePagoM':
+                    $pagoMController->DeletePagoM();
+                    break;
+                default:
+                    $pagoMController->ListarPagoM();
+                    break;
+            }
+            break;
         case 'PolizaXserviciosP':
             $polizaXserviciosPController = new PolizasXservicioPController();
             switch ($action) {
@@ -401,6 +424,40 @@ function call($controller, $action)
                     break;
                 default:
                     $polizaXresponsableJController->ListarPolizasXResponsableJ();
+                    break;
+            }
+            break;
+        case 'PolizaXpersonaN':
+            $PolizaXpersonaNController = new PolizaXpersonaNController();
+            switch ($action) {
+                case 'ListarPolizaXpersonaN':
+                    $PolizaXpersonaNController->ListarPolizasXpersonaN();
+                    break;
+                case 'IngresarPolizaXpersonaN':
+                    $PolizaXpersonaNController->IngresarPolizaXpersonaN();
+                    break;
+                case 'DeletePolizaXpersonaN':
+                    $PolizaXpersonaNController->DeletePolizaXpersonaN();
+                    break;
+                default:
+                    $PolizaXpersonaNController->ListarPolizasXpersonaN();
+                    break;
+            }
+            break;
+        case 'PolizaXdifunto':
+            $PolizaXdifuntoController = new PolizaXdifuntoController();
+            switch ($action) {
+                case 'ListarPolizaXdifunto':
+                    $PolizaXdifuntoController->ListarPolizaXdifunto();
+                    break;
+                case 'IngresarPolizaXdifunto':
+                    $PolizaXdifuntoController->IngresarPolizaXdifunto();
+                    break;
+                case 'DeletePolizaXdifunto':
+                    $PolizaXdifuntoController->DeletePolizaXdifunto();
+                    break;
+                default:
+                    $PolizaXdifuntoController->ListarPolizaXdifunto();
                     break;
             }
             break;
