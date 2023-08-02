@@ -15,7 +15,9 @@ $controllers = array(
     'ServiciosP' => ['ListarServiciosP', 'IngresarServiciosP', 'UpdateServiciosP', 'DeleteServiciosP'],
     'ServiciosXfuneraria' => ['ListarServiciosXfuneraria', 'IngresarServiciosXfuneraria', 'DeleteServiciosXfuneraria'],
     'Polizas' => ['ListarPolizas', 'IngresarPolizas', 'DeletePolizas', 'UpdatePolizas'],
-    'PolizaXserviciosP' => ['ListarPolizaXserviciosP', 'IngresarPolizaXserviciosP', 'DeletePolizaXserviciosP']
+    'PolizaXserviciosP' => ['ListarPolizaXserviciosP', 'IngresarPolizaXserviciosP', 'DeletePolizaXserviciosP'],
+    'PolizaXresponsableJ' => ['ListarPolizaXresponsableJ', 'IngresarPolizaXresponsableJ', 'DeletePolizaXresponsableJ'],
+    'FacturaA' => ['ListarFacturaA', 'IngresarFacturaA', 'UpdateFacturaA', 'DeleteFacturaA']
 );
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -348,6 +350,26 @@ function call($controller, $action)
                     break;
             }
             break;
+        case 'FacturaA':
+            $facturaAController = new FacturaAController();
+            switch ($action) {
+                case 'ListarFacturaA':
+                    $facturaAController->ListarFacturaA();
+                    break;
+                case 'IngresarFacturaA':
+                    $facturaAController->IngresarFacturaA();
+                    break;
+                case 'UpdateFacturaA':
+                    $facturaAController->UpdateFacturaA();
+                    break;
+                case 'DeleteFacturaA':
+                    $facturaAController->DeleteFacturaA();
+                    break;
+                default:
+                    $facturaAController->ListarFacturaA();
+                    break;
+            }
+            break;
         case 'PolizaXserviciosP':
             $polizaXserviciosPController = new PolizasXservicioPController();
             switch ($action) {
@@ -362,6 +384,23 @@ function call($controller, $action)
                     break;
                 default:
                     $polizaXserviciosPController->ListarPolizasXservicioP();
+                    break;
+            }
+            break;
+        case 'PolizaXresponsableJ':
+            $polizaXresponsableJController = new PolizaXresponsableJController();
+            switch ($action) {
+                case 'ListarPolizaXresponsableJ':
+                    $polizaXresponsableJController->ListarPolizasXResponsableJ();
+                    break;
+                case 'IngresarPolizaXresponsableJ':
+                    $polizaXresponsableJController->IngresarPolizaXresponsableJ();
+                    break;
+                case 'DeletePolizaXresponsableJ':
+                    $polizaXresponsableJController->DeletePolizaXresponsableJ();
+                    break;
+                default:
+                    $polizaXresponsableJController->ListarPolizasXResponsableJ();
                     break;
             }
             break;
