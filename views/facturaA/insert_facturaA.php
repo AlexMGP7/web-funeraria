@@ -1,6 +1,8 @@
 <?php
 // Verificar si se han enviado los datos del formulario a través de POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener la fecha actual
+    $fechaActual = date('Y-m-d');
     // Obtener los datos del formulario
     $numero = $_POST['numero'];
     $fecha = $_POST['fecha'];

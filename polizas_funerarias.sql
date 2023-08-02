@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-08-2023 a las 05:57:55
+-- Tiempo de generación: 02-08-2023 a las 06:04:51
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -579,9 +579,9 @@ CREATE TABLE IF NOT EXISTS `pagos_mensuales` (
   `Numero` int(11) NOT NULL,
   `Fecha` date NOT NULL,
   `Monto` varchar(45) NOT NULL,
-  `Polizas_De_Seguro_Numero` int(11) NOT NULL,
+  `Numero_poliza` int(11) NOT NULL,
   PRIMARY KEY (`Numero`),
-  KEY `fk_Pagos_Mensuales_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`)
+  KEY `fk_Pagos_Mensuales_Polizas_De_Seguro1` (`Numero_poliza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2025,7 +2025,7 @@ ALTER TABLE `municipio`
 -- Filtros para la tabla `pagos_mensuales`
 --
 ALTER TABLE `pagos_mensuales`
-  ADD CONSTRAINT `fk_Pagos_Mensuales_Polizas_De_Seguro1` FOREIGN KEY (`Polizas_De_Seguro_Numero`) REFERENCES `polizas_de_seguro` (`Numero`);
+  ADD CONSTRAINT `fk_Pagos_Mensuales_Polizas_De_Seguro1` FOREIGN KEY (`Numero_poliza`) REFERENCES `polizas_de_seguro` (`Numero`);
 
 --
 -- Filtros para la tabla `parroquia`
