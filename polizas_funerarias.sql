@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-08-2023 a las 22:56:02
+-- Tiempo de generación: 02-08-2023 a las 05:57:55
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -63,8 +63,7 @@ CREATE TABLE IF NOT EXISTS `ciudad` (
 --
 
 INSERT INTO `ciudad` (`Codigo`, `Descripcion`, `Parroquia_Codigo`) VALUES
-(1, 'Porlamar', 713),
-(11111, '2', 11111);
+(1, 'Porlamar', 713);
 
 -- --------------------------------------------------------
 
@@ -104,6 +103,13 @@ CREATE TABLE IF NOT EXISTS `difunto_has_polizas_de_seguro` (
   PRIMARY KEY (`Difunto_cedula`,`Polizas_De_Seguro_Numero`),
   KEY `fk_Difunto_has_Polizas_De_Seguro_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `difunto_has_polizas_de_seguro`
+--
+
+INSERT INTO `difunto_has_polizas_de_seguro` (`Difunto_cedula`, `Polizas_De_Seguro_Numero`) VALUES
+(30230460, 100);
 
 -- --------------------------------------------------------
 
@@ -147,9 +153,7 @@ INSERT INTO `estado` (`Codigo`, `Descripcion`) VALUES
 (22, 'Yaracuy'),
 (23, 'Zulia'),
 (24, 'Distrito Capital'),
-(25, 'Dependencias Federales'),
-(1111, '1'),
-(11111, '2');
+(25, 'Dependencias Federales');
 
 -- --------------------------------------------------------
 
@@ -162,9 +166,9 @@ CREATE TABLE IF NOT EXISTS `factura_anual` (
   `Numero` int(11) NOT NULL,
   `Fecha` date NOT NULL,
   `Monto` varchar(45) NOT NULL,
-  `Polizas_De_Seguro_Numero` int(11) NOT NULL,
+  `Numero_poliza` int(11) NOT NULL,
   PRIMARY KEY (`Numero`),
-  KEY `fk_Factura_Anual_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`)
+  KEY `fk_Factura_Anual_Polizas_De_Seguro1` (`Numero_poliza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -562,8 +566,7 @@ INSERT INTO `municipio` (`Codigo`, `Descripcion`, `Estado_Codigo`) VALUES
 (459, 'Simón Bolívar', 23),
 (460, 'Sucre', 23),
 (461, 'Valmore Rodríguez', 23),
-(462, 'Libertador', 24),
-(11111, '2', 11111);
+(462, 'Libertador', 24);
 
 -- --------------------------------------------------------
 
@@ -1738,8 +1741,7 @@ INSERT INTO `parroquia` (`Codigo`, `Descripcion`, `Municipio_Codigo`) VALUES
 (1135, 'Santa Rosalía', 462),
 (1136, 'Santa Teresa', 462),
 (1137, 'Sucre (Catia)', 462),
-(1138, '23 de enero', 462),
-(11111, '2', 11111);
+(1138, '23 de enero', 462);
 
 -- --------------------------------------------------------
 
@@ -1822,6 +1824,13 @@ CREATE TABLE IF NOT EXISTS `persona_natural_has_polizas_de_seguro` (
   KEY `fk_Persona_Natural_has_Polizas_De_Seguro_Polizas_De_Seguro1` (`Polizas_De_Seguro_Numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `persona_natural_has_polizas_de_seguro`
+--
+
+INSERT INTO `persona_natural_has_polizas_de_seguro` (`Persona_Natural_cedula`, `Polizas_De_Seguro_Numero`) VALUES
+(30230460, 100);
+
 -- --------------------------------------------------------
 
 --
@@ -1860,6 +1869,13 @@ CREATE TABLE IF NOT EXISTS `polizas_de_seguro_has_servicios_prestados` (
   KEY `fk_Polizas_De_Seguro_has_Servicios_Prestados_Servicios_Presta1` (`Servicios_Prestados_Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `polizas_de_seguro_has_servicios_prestados`
+--
+
+INSERT INTO `polizas_de_seguro_has_servicios_prestados` (`Polizas_De_Seguro_Numero`, `Servicios_Prestados_Codigo`) VALUES
+(100, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -1891,10 +1907,17 @@ INSERT INTO `responsable_juridico` (`Correo`, `Telefono`, `Razon_s`, `Rif`) VALU
 DROP TABLE IF EXISTS `responsable_juridico_has_polizas_de_seguro`;
 CREATE TABLE IF NOT EXISTS `responsable_juridico_has_polizas_de_seguro` (
   `Responsable_Juridico_Rif` varchar(15) NOT NULL,
-  `Polizas_De_Seguro_Numero` int(11) NOT NULL,
+  `Polizas_De_Seguro_Numero` int(55) NOT NULL,
   PRIMARY KEY (`Responsable_Juridico_Rif`,`Polizas_De_Seguro_Numero`),
   KEY `fk_Responsable_Juridico_has_Polizas_De_Seguro_Polizas_De_Segu1` (`Polizas_De_Seguro_Numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `responsable_juridico_has_polizas_de_seguro`
+--
+
+INSERT INTO `responsable_juridico_has_polizas_de_seguro` (`Responsable_Juridico_Rif`, `Polizas_De_Seguro_Numero`) VALUES
+('J-23333333-1', 100);
 
 -- --------------------------------------------------------
 
@@ -1934,14 +1957,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`cedula`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Login` (`Login`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`Id`, `Login`, `Password`, `Telefono`, `cedula`) VALUES
-(2, 'alexmgp7', '$2y$10$81kCztjHwSi3ZvxJLob.a.JXr7lyk4NThibALSji0Qg9NruIX5EaO', '04121118200', 30230460);
+(3, 'alexmgp7', '$2y$10$SjNmkcLc8pXEJAP4zGg5COPixBF1Fns.Tc9BIW8YfT9rS53vg1hje', '04121118200', 30230460);
 
 --
 -- Restricciones para tablas volcadas
@@ -1977,7 +2000,7 @@ ALTER TABLE `difunto_has_polizas_de_seguro`
 -- Filtros para la tabla `factura_anual`
 --
 ALTER TABLE `factura_anual`
-  ADD CONSTRAINT `fk_Factura_Anual_Polizas_De_Seguro1` FOREIGN KEY (`Polizas_De_Seguro_Numero`) REFERENCES `polizas_de_seguro` (`Numero`);
+  ADD CONSTRAINT `fk_Factura_Anual_Polizas_De_Seguro1` FOREIGN KEY (`Numero_poliza`) REFERENCES `polizas_de_seguro` (`Numero`);
 
 --
 -- Filtros para la tabla `funeraria`
