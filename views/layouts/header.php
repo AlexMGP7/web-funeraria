@@ -20,13 +20,13 @@
                         Polizas
                     </div>
                     <li class="item">
+                        <a href="?controller=Polizas&action=ListarPolizas">Polizas</a>
+                    </li>
+                    <li class="item">
                         <a href="?controller=FacturaA&action=ListarFacturaA">Factura anual</a>
                     </li>
                     <li class="item">
                         <a href="?controller=PagoM&action=ListarPagoM">Pago mensual</a>
-                    </li>
-                    <li class="item">
-                        <a href="?controller=Polizas&action=ListarPolizas">Polizas</a>
                     </li>
                     <li class="item">
                         <a href="?controller=PolizaXserviciosP&action=ListarPolizaXserviciosP">Servicio asociado a Poliza</a>
