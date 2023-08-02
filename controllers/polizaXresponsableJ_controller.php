@@ -36,7 +36,7 @@ class PolizaXResponsableJController
     static public function IngresarPolizaXResponsableJ2($responsable_juridico_rif, $polizas_de_seguro_numero)
     {
         require_once('../../models/polizaXresponsableJ_model.php');
-        $result_Listar = PolizaXresponsableJModel::IngresarPolizasXresponsableJ($responsable_juridico_rif, $polizas_de_seguro_numero);
+        $result_Listar = PolizaXresponsableJModel::IngresarPolizasXResponsableJ($responsable_juridico_rif, $polizas_de_seguro_numero);
         return $result_Listar; // Devuelve el resultado de la operación de inserción (true o false).
     }
 

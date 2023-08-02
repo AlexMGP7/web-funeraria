@@ -46,11 +46,11 @@ class PolizaXResponsableJModel
     }
 
     public static function IngresarPolizasXResponsableJ($responsable_juridico_rif, $polizas_de_seguro_numero)
-    {
-        $sql_polizas_x_responsableJ = "INSERT INTO Responsable_Juridico_has_Polizas_De_Seguro (Responsable_Juridico_Rif, Polizas_De_Seguro_Numero) VALUES ('$responsable_juridico_rif', '$polizas_de_seguro_numero')";
-        $result_polizas_x_responsableJ = PolizaXResponsableJModel::Update_Data($sql_polizas_x_responsableJ);
-        return $result_polizas_x_responsableJ;
-    }
+{
+    $sql_polizas_x_responsableJ = "INSERT INTO Responsable_Juridico_has_Polizas_De_Seguro (Responsable_Juridico_Rif, Polizas_De_Seguro_Numero) VALUES ('$responsable_juridico_rif', '$polizas_de_seguro_numero')";
+    $result_polizas_x_responsableJ = PolizaXResponsableJModel::Update_Data($sql_polizas_x_responsableJ);
+    return $result_polizas_x_responsableJ;
+}
 
     public static function BuscarPolizasXResponsableJ($responsable_juridico_rif, $polizas_de_seguro_numero)
     {

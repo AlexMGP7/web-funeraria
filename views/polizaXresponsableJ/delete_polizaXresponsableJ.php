@@ -29,10 +29,10 @@ if (isset($_GET['responsable_rif']) && isset($_GET['poliza_numero'])) {
     }
 
     // Redirigir a la página de listado de PolizaXresponsableJ después de intentar eliminar.
-    echo '<script>window.location.href = "?controller=PolizaXresponsableJ&action=ListarPolizasXresponsableJ";</script>';
+    echo '<script>window.location.href = "?controller=PolizaXresponsableJ&action=ListarPolizaXresponsableJ";</script>';
     exit();
 }
 
 // Si no se proporcionan los parámetros necesarios en la URL, redirigir a la página de listado de PolizaXresponsableJ sin realizar ninguna acción de eliminación.
-echo '<script>window.location.href = "?controller=PolizaXresponsableJ&action=ListarPolizasXresponsableJ";</script>';
+echo '<script>window.location.href = "?controller=PolizaXresponsableJ&action=ListarPolizaXresponsableJ";</script>';
 exit();

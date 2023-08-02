@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once('../../controllers/polizaXresponsableJ_controller.php');
     $controller = new PolizaXresponsableJController();
     // Intentar insertar la nueva PolizaXresponsableJ utilizando el método 'IngresarPolizaXresponsableJ' del controlador.
-    $result_polizaXresponsableJ = $controller->IngresarPolizaXResponsableJ2($poliza_numero, $rif);
+    $result_polizaXresponsableJ = $controller->IngresarPolizaXResponsableJ2($rif, $poliza_numero);
     if ($result_polizaXresponsableJ) {
         // Si la inserción fue exitosa, mostrar un mensaje de éxito.
         $_SESSION['mensaje'] = "La póliza de seguro se ha registrado correctamente.";
@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje_tipo'] = "warning";
     }
     // Redirigir a la página de listado de PolizaXresponsableJ después de intentar insertar.
-    // echo '<script>window.location.href = "?controller=PolizaXresponsableJ&action=ListarPolizasXresponsableJ";</script>';
-    // exit();
+    echo '<script>window.location.href = "?controller=PolizaXresponsableJ&action=ListarPolizaXresponsableJ";</script>';
+    exit();
 }
 require_once('../../controllers/polizas_controller.php');
 $poliza_controller = new PolizasController();
