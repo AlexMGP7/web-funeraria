@@ -12,7 +12,7 @@ $numrows = mysqli_num_rows($result_facturaA);
 <div class="container">
 
     <br> <br>
-    <h4>Listado de Facturas registradas en el Sistema de Pólizas Funerarias</h4>
+    <h4>Listado de Facturas Anuales registradas en el Sistema de Pólizas Funerarias</h4>
     <br> <br>
 
     <!-- Botón Agregar -->

@@ -7,7 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $numero = $_POST['numero'];
     $fecha = $_POST['fecha'];
     $monto = $_POST['monto'];
-    $numero_poliza = $_POST['numero_poliza'];
+    $numero_poliza = $_POST['poliza_numero'];
+    // Verificar que la fecha sea anterior o igual a la fecha actual
+    if ($fecha > $fechaActual) {
+        $_SESSION['mensaje'] = "La fecha no puede ser posterior a la fecha actual.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=PolizaXdifunto&action=IngresarPolizaXdifunto";</script>';
+        exit();
+    }
 
     require_once('../../controllers/facturaA_controller.php');
     $controller = new FacturaAController();
@@ -28,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo '<script>window.location.href = "?controller=FacturaA&action=ListarFacturaA";</script>';
     exit();
 }
-
+require_once('../../controllers/polizas_controller.php');
+$poliza_controller = new PolizasController();
+$result_poliza = $poliza_controller->ListarPolizas1();
 require_once('../../controllers/facturaA_controller.php');
 $controller = new FacturaAController();
 $result_facturaA = $controller->BuscarUltimaFacturaA();
@@ -53,9 +62,16 @@ $numrows = mysqli_num_rows($result_facturaA);
                     <input class="form-control" type="number" name="monto" id="monto" required placeholder="Ingrese aquí el monto de la factura" />
                 </div>
                 <div class="form-group">
-                    <label for="numero_poliza"><b>Número de Póliza de Seguro:</b></label>
-                    <input class="form-control" type="text" name="numero_poliza" id="numero_poliza" maxlength="50" required placeholder="Ingrese aquí el número de póliza de seguro" />
-                </div>
+                <label for="poliza_numero"><b>Número de Póliza:</b></label>
+                <select class="form-control" name="poliza_numero" id="poliza_numero" required>
+                    <?php
+                    while ($row_poliza = mysqli_fetch_array($result_poliza)) {
+                        $numero_poliza = $row_poliza['Numero'];
+                        echo "<option value='$numero_poliza'>$numero_poliza</option>";
+                    }
+                    ?>
+                </select>
+            </div>
                 <button class="btn btn-success" type="submit">Ingresar</button>
             </div>
         </form>
