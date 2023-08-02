@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($fecha > $fechaActual) {
         $_SESSION['mensaje'] = "La fecha no puede ser posterior a la fecha actual.";
         $_SESSION['mensaje_tipo'] = "warning";
-        echo '<script>window.location.href = "?controller=PolizaXdifunto&action=IngresarPolizaXdifunto";</script>';
+        echo '<script>window.location.href = "?controller=FacturaA&action=ListarFacturaA";</script>';
         exit();
     }
 

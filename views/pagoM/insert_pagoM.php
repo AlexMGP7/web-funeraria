@@ -1,11 +1,20 @@
 <?php
 // Verificar si se han enviado los datos del formulario a través de POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener la fecha actual
+    $fechaActual = date('Y-m-d');
     // Obtener los datos del formulario
     $numero = $_POST['numero'];
     $fecha = $_POST['fecha'];
     $monto = $_POST['monto'];
     $numero_poliza = $_POST['poliza_numero'];
+    // Verificar que la fecha sea anterior o igual a la fecha actual
+    if ($fecha > $fechaActual) {
+        $_SESSION['mensaje'] = "La fecha no puede ser posterior a la fecha actual.";
+        $_SESSION['mensaje_tipo'] = "warning";
+        echo '<script>window.location.href = "?controller=PagoM&action=ListarPagoM";</script>';
+        exit();
+    }
 
     require_once('../../controllers/pagoM_controller.php');
     $controller = new PagoMController();
